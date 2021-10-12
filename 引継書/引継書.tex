@@ -142,6 +142,41 @@
   \item ピロティはWi-Fiが使えない\\
   ピロティではiPadが学校のWi-Fiに繋がらないので、一部食品店舗で電子決済を導入する場合はポケットWi-Fiをレンタルするか、山口先生\footnote{\url{yuri.ayamguchi@seiko.ac.jp}}に頼んで、Wi-Fiの子機を設置していただくと良い。\footnote{第62回聖光祭では食品予約システムが停止されていたため、余っていたポケットWi-Fiを割くことができたが、食品予約システムをやるのであれば、子機を設置する方が良いだろう。}
  \end{enumerate}
+ \subsubsection{必要な機材}
+ \begin{itemize}
+  \item Square リーダー （本体）\\
+  ほぼ全ての電子決済はここで処理できる。
+  \item Square リーダー （磁気専用リーダー）\\
+  \includegraphics[scale=0.2]{assets/square_reader2.png}\\
+  一部の古いクレジットカードでSquareで読み取れない場合はこれを用いる。
+  \item iPad\\
+  決済を行うのに用いる。
+ \end{itemize}
+ \subsubsection{使い方}
+ \begin{itemize}
+  \item クレジットカード
+  \begin{itemize}
+  \item ICカード
+  \begin{enumerate}[手順1]
+   \item Square リーダー上部にあるカードスロットに、ICカードのオモテ面を上にしてICチップのある側からカードを挿入する。\\
+   \includegraphics[scale=0.4]{assets/square_insert-card.png}
+   \item カードは差し込んだままにし、 Square リーダーから「ピー」と音が鳴って、\\緑色のランプが4つ{\color{green}●●●●}点灯したらカードを取り出す。
+   \item お客様にiPadの画面に指でサインをもらい決済を完了する。
+  \end{enumerate}
+  \item 磁気テープカード\\
+  リーダーをiPadのイヤホンジャックに差し込み、磁気テープのみのクレジットカードをスワイプする。
+  \includegraphics[scale=0.4]{assets/square_slide-card.png}
+  \end{itemize}
+  \item 電子マネー\\
+  交通系IC、QUICPay、iDでの決済
+  \begin{enumerate}[手順1]
+   \item 「電子マネー」をタップ。
+   \item お客様が希望する決済方法を選択。
+   \item 青色のランプが4つ{\color{blue} ●●●●}点滅し、画面が「お待ちください。準備をしています。」から「交通系ICカード/iD/QUICPayカードをSquare リーダーにタッチしてください。決済音が鳴るまで動かさないでください。」に変わる。お客様に支払い金額を確認いただき、カードもしくはモバイル端末をSquare リーダーにタッチしてもらう。
+   \item POSレジから「ピピッ」と決済音が鳴ったら決済完了。
+  \end{enumerate}
+ \end{itemize}
+ 
 \subsection{展示団体入退場管理システム}
 \subsection{入場システム}
 \section{さいごに}
