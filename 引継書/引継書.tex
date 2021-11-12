@@ -8,11 +8,13 @@
 \usepackage[dvipdfmx]{color}
 \usepackage{color}
 \usepackage{url}
+\usepackage{ascmac}
 \usepackage {fancybox}
 \usepackage{jvlisting, listings}
 \usepackage[deluxe]{otf}
 \usepackage{graphicx}
 \usepackage{enumerate}
+\usepackage{ulem}
 
 \title{第62回聖光祭 技術部門 引き継ぎ書}
 \author{飼沼 隼 \\ 三枝 義啓 \and 浅井 祐一朗 \\ 矢向 俊貴 \and 李 博之 \\ 黒羽 }
@@ -21,6 +23,8 @@
 \begin{document}
 
 \begin{center}
+
+\newcommand{\impact}[1]{\textbf{\gtfamily #1}}
 
 \textbf {
 \vspace{8.5cm}
@@ -251,6 +255,20 @@
  \subsection{YouTube企画}
  部門長(副部門長)や展示団体のインタビューや、活動風景などを投稿する。
  第61回からこの企画は始まったが、YouTubeへの投稿が聖光祭1~2ヶ月後になってしまうなどといった問題がある。YouTube企画専門のチームを作るといいと思った。
+ 第62回聖光祭副実行委員長のコメントを載せる。
+ \begin{itembox}[l]{第62回聖光祭副実行委員長 向山 雄登より}
+ 引き継ぐことは何もありません。\\
+ ただYoutubeはやった方が良いと思います。\\
+ 61期の中で管理者の代表を決めたら僕に教えてください。チャンネルの権限を付与します。ちなみになぜか聖光メールアドレスでは出来ないっていう設定になってます。あとはその代表者が勝手に他の人なりを自由に追加してってください。\\\\
+当日まで、いろいろ撮ってみると良いと思います。インタビューもあり、展示団体等の準備に密着してみるとかは面白いと思います。撮影経験を積んでおくという意味でも役に立ちます。\\
+問題は当日の撮影です。\\
+62回の問題点として、撮影者が少ない。いるが各々別の仕事が入っていてシフトを入れる余裕がない、ということがありました。というかそれがほぼ全てでした。\\
+61回はそれでいけてたんですが、それは幹部の仕事が少なかったから可能なことだったんですよね。\\
+確実に撮影しようと思ったら絶対に撮影専門部隊を作ることをオススメします。\\\\
+校内を回って写真撮っていく部隊ではなく、講堂・小講堂・外ステなどある程度決まった場所でカメラを管理します。んじゃあ楽じゃんと思うかもしれませんが、バッテリーをどのタイミングで交換するのかを考えないと当然死にます。\\
+講堂は一回席後方にコンセントがあるのでそこから繋げます。外ステはベランダから撮るなら外ステの対角の2回ベランダにコンセントがありますが、ベランダから撮るより前で撮る方が絶対に良いと思います。\\\\
+正直あんま需要ないんじゃね?と思ってもいましたが、YOUTUBEに挙げる挙げない関わらず良い機材で撮影してあげるというのは需要があります。なので頑張ってください。
+ \end{itembox}
 
 
   \section{HP局}
@@ -319,25 +337,275 @@ FTPサーバにファイルを送信したり取得するときは「FTPユー�
  基本的にHPの仕事がメインだと思うが自分の場合はそうではなかった。むしろ副業みたいなものだったので時間はあまり作れなかった。これによってHPは中途半端なところで終わってしまった。食品店舗は終了したのでCOMING SOONを表示してると思うが、マップや記事ページは終わってない。記事は投稿できる仕組みを作ったが、Firebase Realtime Databaseにデータ入力する必要があり時間がなくてほとんど投稿できなかった。これは猛省している。麻布（2020？）ではアカウント制にしており、幹部などが自由に書き込みできる。（自分の代はそうゆうのを逆手にとっていたずらする問題児がいたのでどちらにしろ実現できなかったが）その代の風紀を鑑みた上、人を絞るあるいは記事投稿班を作るなどしてやってみるのも面白いと思う。灘（2019）ではMarkdown記法をHTMLに変換するライブラリを使っていた。いちいちサイトを更新しなければいけないがいい考えである。\footnote{２０１９灘の文化祭「SAIL AWAY」のHPは高校生が作ったと思えない神サイトである。ぜひ一度見て欲しい。}
  \subsubsection{仕事を整理しよう}
  HP制作中は素材関連の連絡や修正の申し出、仕様変更の申し出などが多くあり、HPに掲載する情報を整理するだけで一苦労である。付箋を使ったタスクの管理は古いと思われがちだが、あれはすごい効果的だ。自分は自分の席が壁列だったので壁に付箋を貼っていた。それによって仕事が捗ったのは事実だ。PC上で管理できるが結局は開くのがめんどくさい、タスクの登録がめんどくさいなどで逆効果だった。ぜひ取り入れて欲しい。
+ 
+ \newpage
  \section{アプリ局(Android)}
+ \subsection{はじめに}
+ 引継書とは題しているがAndroid作る人は全員読んでおいて損はないのではないかと思われる(今年出してもらったプログラムの出来栄えを見る限り)。\\
+かなりメモっぽく書いているので注意。Discordで皆に連絡
+するときの感覚で書いていると思ってもらえると内容が入りやすいかもしれない。
+ \subsection{技術幹部になった人へ}
+ 個人的に技術幹部となった人に要求されることは高い技術力よりも\mark{仕事をミス無く丁寧に確実にこなすこと}なので注意(もちろん自分の担当する分野においてある程度の知識は持っていなければいけないけれど)。技術力があったとしても、
+ \begin{itemize}
+ \item 提出期限を守らない
+ \item ミスが多い
+ \item 連絡ができない
+ \end{itemize}
+ といった人は技術幹部に限った話ではないけれどお仕事にならなかったり、もしくは周りに迷惑を書けてしまい他の幹部に陰口を叩かれてしまったりする(後者はよく見た気がする)。\\
+くれぐれも技術力があるからといって他の部門の幹部などに対して調子に乗った言動をしたり高圧的になったりすることがないように(まぁこんなことはほぼなかったと思うけど)。
+ \subsection{全体として}
+  \subsubsection{制作の前準備}
+ 今回なら聖光祭は9月で、UIなどの案が挙がってくるのが8月であったけれど、アプリの試作自体は5月から始めていた。\\
+ 特に自分に作ることができるか不安な箇所を中心に自分で事前に試作をしておくとよい。
+ 矢向なら
+ \begin{itemize}
+  \item RecyclerViewの使い方
+  \item RecyclerViewを横に2つ、それを縦につなげていく方法
+  \item HTTP通信
+  \item Fragmentを画面に一部に収める(全画面に出さない)
+  \item DBの使い方
+  \item アプリアイコンの設定法
+ \end{itemize}
+ など
+ \subsubsection{実装方法の基本方針}
+ 同じ挙動にもいくつかの実装方法が当然考えられるわけだが、どの方法を使うかを選ぶときに重要なことを重要度順にあげていく。
+ \begin{enumerate}[No.1]
+  \item エラーが起こりづらいこと(起こらないこと)
+  \item 動作が軽いこと(=ユーザーが快適に使えること
+  \item コードが読みやすいこと(=保守性が高いこと)
+  \item 実装方法がオシャレであること
+ \end{enumerate}
+1と2は最優先事項。とくに1。カッコつけて新しいライブラリを使ってエラーが起こりました、ではお話にならない。また、この4点はお互いに関係があり、1つを守ることが他の2つを守ることにつながっていくので常に頭に入れておきたい。
+ \begin{itembox}[l]{余談}
+ 現在唯一人間を国際宇宙ステーションへ輸送することができるロシアの有人宇宙飛行船「ソユーズ」では、動作環境が宇宙空間であるために事故は絶対に起こってはならず、そのためソユーズを制御するコンピューターにはあえて新しいものではなく、動作が保証されたかなり旧式のものが使われてるそう(ソユーズに限った話ではないけれど)。つまるところアプリ開発においても古いライブラリなどを使えとは言わないけれど(というかむしろ古すぎると逆にエラーが起きることが多い)プログラムの安定性を最優先にしましょうということ。\\
+ \begin{center}
+ \includegraphics[scale = 0.1]{assets/soyuz.jpg}
+ \end{center}
+ \end{itembox}
+  \subsection{素材について}
+ 基本的にデザイン局の方と連携を取りながら行っていく。\\
+今回の場合はこちらが最初にデザイン案を作りそれをデザイン局の飼沼とブラッシュアップした。\\
  \subsection{各画面について}
+ 全体として今回矢向は李のアドバイスを勘違いしMainActivity以外全部Fragmentというあまり類を見ない設計にしてしまったので参考になならない箇所もあると思われる。
+ \subsubsection{ツールバー}
+ \begin{minipage}[b]{13.5cm}
+ Androidの機能も用いて作ることもできる。\\
+ だがしかしこれだと取り回しがあまりにも悪いので、右図のようにactivity\_main.xmlにて画面をLinearLayoutで分割し、上(赤い部分)にはツールバー、下(青い部分)をRelativeLayoutにしてFragmentContainerにし、ここだけでフラグメントを置き換えるようにするとフレキシブルなツールバーを作成できる。詳細は以下のリンクから。\\
+  \url{https://qiita.com/mi_iroha/items/c8b6a1a6262c77e28301}\\
+  この時普通のツールバーのメニューはどのように出すのかという疑問が出るかもしれない。結論としてはDialogFragmentを継承したダイアログを位置を右上などに指定して出す(指定方法は調べればすぐに分かるので割愛)。
+ \end{minipage}
+ \begin{minipage}[t]{3cm}
+ \includegraphics[width=3cm]{assets/ToolBar.png}
+ \end{minipage}\\\\
+ツールバーのonClickの実装を各Fragmentでしなおすことで(今回は各FragmentのinitToolBar()やonCreateViewにてその処理を行っている)各画面で違ったクリック処理を行うことができ、またその際に現在のFragmentのメンバ変数などにアクセスすることもできるようになる(匿名クラスを使えばより楽にonCreateView()内の変数にアクセスできる)。
+今回はActivityがひとつなのでこれだけで無事に作成することができたがActivityが複数ある場合はもう少し工夫が必要だと思われる。
+ \subsubsection{ホーム画面}
+ ImageViewおいてclickのListenerつけるのみ。難易度はかなり低い。
+ \subsubsection{展示一覧}
+ RecyclerViewを配置するだけではあるが、絞り込み機能があるため少し難易度が高い。\\
+ 全展示団体のデータをDB(と今回は混雑度のサーバー)から取得し表示する。\\
+ その際にRecyclerViewのAdapterに渡すListを作るとき、絞り込み条件に合致しないものはforループの最初にcontinue文で弾けばよい。
+ \subsubsection{食品一覧}
+ RecyclerViewを配置するだけ。メモ帳が理解できていればかなり難易度は低い。
+ 
  \subsubsection{マップ}
- まず地図の画像はパンフが出来上がったらその画像を使うとよい。出来上がるまでは途中経過の地図を使ってプログラムを書いてく。地図の画像、展示団体等の位置を識別するための画像、ピンの画像、タブレイアウトをおくためのFragment、タブレイアウト内に表示するためのFragment、タブレイアウトの機能を実装するためのAdapterはおそらく必要となる。加えて、地図の操作を行うためのカスタムビュー等も用意することになるだろう。
+ まず地図の画像はパンフが出来上がったらその画像を使うとよい。出来上がるまでは途中経過の地図を使ってプログラムを書いてく。地図の画像、展示団体等の位置を識別するための画像、ピンの画像、タブレイアウトをおくためのFragment、タブレイアウト内に表示するためのFragment、タブレイアウトの機能を実装するためのAdapterはおそらく必要となる。加えて、地図の操作を行うためのカスタムビュー等も用意することになるだろう。\\
+ 次に、各機能の詳細について書いていく。\\
+ タブで階数ごとに違うマップを出すようにする。タブレイアウトはここをみればわかると思うので詳細は省略する。\\
+マップのドラッグ、ズームについては画像をMatrixを使用して移動、拡大縮小するのがよい(画像の座標や、拡大率とかを保存しておくと後々楽になり、Matrixならそれらを保存してくれるから)。描画方法はimageViewを用いる方法とcanvasを使用する新しくViewを作って用いる方法などがあるが今年はimageViewを使用した。どちらもMatrixを使用して移動等が可能。ドラッグやズーム等の検知はGestureDetectorを使って検出した。ドラッグはonScroll、ズームはonScaleで係数を取得することが可能。地図の端に到達した判定は、どこを端と定義するかによるが、今年は「画像の端がスクリーンの真ん中を超える」という判定とした。地図の端をどう定義するかは、色々な外部のサービスを参考にすると良い。慣性は余裕があるならば実装するのが良いが、少し厄介であるため無理して実装しなくてもよい。今年は慣性をonFlingで取得しTimerで動かした。また、画像の端を超えたあとや、ズームで縮小しすぎたあとに戻す処理でもTimerを使用し、滑らかな動きを実装した。\\
+マップの操作云々を調べて自分なりの実装が難しいと感じたら李のQiita\footnote{\url{https://qiita.com/Cyber_Hacnosuke/items/b2a8724218d2f4a4c3c2}}を参考にしてください。\\
+「タップした場所がどこなのか」を判別する方法は、別途、各展示、食品で色分けされた画像を元に判別する。タップしたスクリーンの座標から、画像の位置座標と拡大率を用いてタップした画像の中の座標を算出し、色分けされた画像のその座標が何色かで判別する。今年は、\verb+ #FF00XX(XX / 2 = id) +が展示、\verb+ #00FFXX(XX / 5 = id) +が食品と決め、色識別用画像を作成した。画像を作るのは自分でやったが、信頼できるなら後輩に頼むと仕事が減る。色識別用画像を作る際、拡大縮小等でボケて、想定していなかった色が検出されないよう気をつけること。\\
+詳細画面のピンの座標はデータベースに0~1の範囲で、x,y座標それぞれの割合を記録しておき、表示する際その値から画像用の座標を計算しピンを指してる。この0~1の範囲の座標を計算するにあたり、スプレッドシートを使って計算するのがもっとも効率的と思われる。参考程度に今年使った自分用スプシを\footnote{\url{https://docs.google.com/spreadsheets/d/17zJ-jk277xVDzQYN9v_pF8ZatII3OxnX1dlLHyxBX6o/edit#gid=808228009}}置いておく。\\
+最後に、地図を表示するには、大きな地図の画像を用意する必要があるが、その際に重すぎて落ちないよう気をつけること。\\
+ \subsubsection{タイムテーブル}
+ 1イベントあたりのレイアウトを別途xmlで記述しておく。\\
+また、今回の場合は9:00の線と10:00のy座標から1時間あたりの座標変化数を取得しておく
+DBから表示すべき全イベントを取得し、それぞれのイベントごとにfor文を用いて先程のxmlファイルをLayoutInflatorでインフレートし、各イベントの開始/終了時間と先程の値を用いてそのViewのTop,Bottom,heightを計算し表示(ViewGroup.addView(View)みたいなのでできる)するとよい。\\
+Viewの生成はここを参照することを推奨する。
+ \subsubsection{トレジャーハント}
+ ここに関してはおそらく設計者が次回も(そもそも次回もトレハンをやるのかという問題があるが)ITECの人間ではないので少々我々プログラマサイドからではわかりにくいかもしれない。\\
+ いかに内容を噛み砕いて実装できるかが成功のカギとなる。\\
+ 実装自体の難易度はあまり高くない。
+ \subsubsection{聖光ラジオ}
+ HTTP通信で取得した内容をRecyclerViewで表示するのみ。\\
+ 応募に関しても、応募する内容をHTTP通信で送るのみのシンプルな処理。
+\subsection{各技術指導}
+ \subsubsection{HTTP通信}
+ 難易度はかなり高い。\\
+ この引継書もこれを書くために書いたと言っても過言ではない。\\
+ OkHttp3という外部ライブラリを使用した。\\
+ implementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.14.9'\\
+ Gradle(build.gradle(app))に上記の内容を書いておく。\\
+ プライバシーポリシーにもokHttp3使用の旨を書かなくてはいけない。\\
+ Android(というかGoogle)は画面の描画が遅れフリーズなどをしているようにユーザーに感じられてしまうのを防ぐため、通信処理をメインスレッドで行うとNetworkOnMainThreadExceptionという例外を投げるようになっている。\\
+ つまり通信処理はマルチスレッドで行わざるを得ない(こう書いてはいるが通信は別スレッドで行うのがセオリーなのでこれはおかしいことではない)。\\
+ JavaやKotlinでマルチスレッド処理を行うには、Threadクラス等を継承もしくはRunableインターフェースを実装したclassのrun()メソッドをオーバーライドし、その中にマルチスレッドで行いたい処理(今回なら通信処理)を書くことになる。\\
+ とはいっても今回出してもらったプログラムを見る限り半年でこれを自力で行えるレベルに到達するのは(勉強などを考えると)かなり厳しいと思われるのでFragmentと連携して通信内容を表示する雛形を載せておく\footnote{\url{https://qiita.com/Jellyfish4594/private/9709ad41d0828f917601}}。
+ \subsubsection{RecyclerView}
+ \begin{enumerate}
+ \item list\_item.xml
+ \item RecyclerViewHolder
+ \item (保持する値が複雑な場合は)RecyclerStructure
+ \item RecyclerAdapter
+ \item 表示する
+ \end{enumerate}
+ の順に作れば5~10分で作り終えることができる。\\
+ ここ\footnote{\url{https://qiita.com/Todate/items/297bc3e4d0f3d2477ed3}}の内容をほぼコピペで使用することができるが、Adapterのoverrideメソッドの引数に一部が本来はあっていはいけない?がついているため、そこだけエラーが出る(もとのメソッドの引数がnull許容型ではないからエラーとなる)。
+ \subsubsection{QRコード}
+ そこそこに難易度が高い。\\
+ これ\footnote{\url{https://github.com/SeikoStudentCouncil/SeikoFestaAndroidApp62nd/blob/master/app/src/main/java/jp/ac/seiko/itec/seikofestaapp62nd/fragments/treasurehunt/QRCodeFragment.kt}}をコピペするだけで大部分を完成させることができるが、下記のようにGradleに書かなければならないので注意(ZXingを入れる、OkHttp3と同様にプライバシーポリシーにも書く)。\\
+ implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
+ \subsubsection{Fragmentを一部に表示}
+ RelativeLayoutを配置しそれをFragmentContainerにすることでできる。
+ \subsubsection{GoogleMapを置く}
+ ここ\footnote{\url{https://developers.google.com/maps/documentation/android-sdk/start?hl=ja}}に従う。
+\subsection{リリースについて}
+\begin{itembox}[l]{Google開発者用アカウント}
+\color{red}
+mail: seikosougiken@gmail.com\\
+pass: gikenmember
+\end{itembox}
+これがないとリリースができず詰みとなってしまうので気をつける。
+\subsubsection{審査について}
+李のとき(第60回)は2\UTF{FF5E}3時間で終わったと聞いて油断していたが今回は現在審査に出して72時間ほど経つがいまだ終わっていない。2019年の9月あたりから審査が厳正化しているそうなので気をつけるように。今回もそうだが素材がなかなか来ないのでASAPを心がけるだけでよい。ちなみに審査はおそらくカルフォルニアで行われている。
+\subsubsection{審査時間の目安}
+初回審査...72時間程度=3営業日(遅い場合は問い合わせも手)
+それ以降のアプデ...1営業日(カリフォルニアの)
+\subsection{後輩の育成について}
+正直なところ、聞かれたらいくらでも教えてあげることはできるが\textbf{\gtfamily 体系的に教えてあげることができるのはせいぜい} 基本制御構文\footnote{if文やfor文などのこと}や変数などの
+\textbf{\gtfamily 全プログラミング言語に普遍的に存在する概念くらい}で、オブジェクト指向やアプリの本格的な作り方などの習得度合いは\textbf{\gtfamily 学ぶ本人の主体性}に依るところが多いと思われる\footnote{おそらくプログラミング系統だけではなくて動画やモデリングなどでもそう}。
+ここだけの話「もう来年以降の技術は知らん()」といった会話もよくあった。この手の技術の習得には自分で練習することが必要不可欠だし、ここあたりは勉強に通ずるところもある。よって教える側ができることは
+ \begin{itemize}
+ \item 質問には必ず答えてあげること
+ \item 自分が学ぶときにしてほしかったことをしてあげること
+ \end{itemize}
+の2点だと思う。
+逆に真面目にやりさえすればプログラミングスキルなんて\\
+文法+ライブラリの使用方法の知識\\
+にほかならないので習得は(オブジェクト指向などの一部の関門を除き)習得は容易だと思う。\\
+技術的な習得レベルの目安としては、最低限メモアプリを自力で作ることができなければアプリを「ちゃんと」任せるのは厳しいかもしれない、といった感じ。
+ \subsection{おまけ1:小技(よくあるちょっとしたエラー)}
+ \subsubsection{NullPointerException :\UTF{FF5E}Attempt to\UTF{FF5E}という例外が発生する}
+ 多くの場合findViewByIDをする際の引数のidが間違っている(findViewByIdしているviewの中に存在しないviewを探そうとしているためnullが返されてしまう)。\\
+xmlやktをコピペした際にidを変え忘れたり、xmlの場合はDesignタブでコピペしたidを意図したものに直そうとするとAndroidStudioがリファクタリングと勘違いしコピペ元とコピペ先両方のファイルのidを変えたりすることで起こる。findViewByIdは該当するviewが見つからないとnullを返す(らしい)ので代入先がnullableでなかったりする場合に起こる。
+ \subsubsection{宣言部参照}
+ メソッド名や変数名をctrlを押しながらクリックすることでその宣言部にジャンプすることができる。\\
+自分が書いたコードでなくても(例えばandroid.view.Viewクラスなどでも)可能。
+・使用箇所確認
+メソッドやクラス、変数の宣言部にてその名前をctrlを押しながらクリックするとそれが今開いているプロジェクトのどのファイルの何行目でどのような引数で使用しているかを一覧として表示することができる。
 
-次に、各機能の詳細について書いていく。
+\subsubsection{Database Inspector}
+アプリ実行中(DBを使用すれば)下のバーの「App Inspection」からDBの中身をExcel形式で見たり編集したりできる。また任意のSQL文を実行することもできる。デバッグに便利。\\
+実行している端末のAPIレベルが低すぎると使えない(確か26以上)。
+\subsubsection{Layout Manager}
+右下の縦のバーにある。アプリ実行中に使うと現在開いている画面がどのViewで構成されているかが分かる。面白いけれど個人的には役に立ったことがない。実行している端末のAPIレベルが低すぎると使えない(確か26以上)。
+\subsubsection{Profiler}
+下のバーにある。実行中に現在どれぐらいメモリやCPUのリソースを消費しているかが分かる。
+\subsubsection{OutOfMemory}
+DBの場合ちゃんとcursor.moveToNext()しているかを確認する。\\
+画像を扱っている場合dpi別に画像をリサイズしてdrawable-hdpiやdrawable-mdpiなどに分けて入れておくとAndroid側の処理の負担が大幅に軽減できる。リサイズ作業はpythonを使えると楽に済ますことができる。
+\subsubsection{context}
+多くの場合困ったときにはこれに必要なものが入っている。\\
+このクラス正体は、現在表示しているActivityの情報(ツールバーは表示する?画面のテーマは?など)が入っているもの。Fragmentからアクセスしたい場合はrequireContext()でできる(同様にrequireActivity()とかある)が、メソッドの中で使用しないとエラーが出る(onCreate()あたりが呼ばれないとcontextはまだnullであるから。どうしても使いたい場合はcontextを引数で渡す)。
+\subsubsection{PreferenceEditor}
+DBに入れるほどでもないがアプリが終了しても保存しておきたいデータを入れられる。
+しかしかなりの頻度で読み出しに失敗してしまい、我慢ができなくなった矢向はほぼ同じ機能をもったclassをjsonベースで作成しそれを使用した(ファイル読み書きはほぼ確実に行われる)。
+\subsubsection{使えると便利な言語}
+GAS(JavaScript)とpythonは書けることが望ましい。(英語は言うまでもなく読めたほうがよい)。
+\subsubsection{ConstraintLayout}
+なぜかL4で使う人が多く見受けられた。
+基本的にはFrameLayoutとLinearLayoutで全て済ませられると思われる。
+個人的にConstraintLayout使うのは初心者とすごい手練だけな気がするので、自分がよほどの上級者である自信がないのなら使用には気をつけることを推奨する。
+\subsubsection{信用できるサイト(よく見るサイト)}
+エラーで停滞しているときは矢向自身個人ブログなどもよく参照しているしよいと思うが、エラーというわけではないちょっとした調べ物のときに優先的に参考にするサイト
+\begin{enumerate}
+ \item Qiita
+ \item 侍エンジニア
+ \item teratail
+ \item techacademy
+ \item stack overflow
+ \item Google公式
+ \end{enumerate}
+\subsubsection{うまく実装できないとき}
+なるべく細かい機能に分割して1つ1つ別のプロジェクトで作り最後に統合する。例えばメモ帳ならDBだけ練習、RecyclerViewだけ練習、fragmentの遷移だけ練習、とするとよい。
+\subsubsection{エラーが治らないとき}
+Logをたくさん出すor上述のように別のプロジェクトで試してみる。
+\subsubsection{Fragmentが透けたり、Addしてるときに下のFragmentも反応しやがるとき}
+前者の場合はレイアウトファイルの一番上のFrameLayoutとかのbackgroundをcolorのwhiteにしてしまえばよい。\\
+後者の場合はその反応してしまうfragmentのレイアウトの一番上のFrameLayoutを事前にfindViewByIdしておき、addする瞬間にvisibilityをINVISIBLEに設定し、画面が復帰したときにVISIBLEにすればよい。ViewがINVISIBLEになるとユーザーからの操作を一切受け付けなくなる性質を利用する。publicメソッドにしておいて、FragmentTransaction.fragmentsからインスタンスを取得してそのメソッドを呼び出すことでできる。
+\subsubsection{DBについて}
+DatabaseOpenHelperは1つまでしか作れない(おそらく)。
+個人的にこの名前は良くないと思う。
+Helperとは書くけれどこれを使う以外の方法でDBにアクセスする現実的な方法はないと思われる。補助的な印象を受けるがしっかり主軸として運用することになる。
+\subsubsection{ImageViewにdrawableの画像を名前で指定して表示する}
+知らないと停滞することになる。矢向の記事\footnote{\url{https://qiita.com/Jellyfish4594/items/2ddf3d6f1bcef66fedf2}}(ほぼ李のノウハウ、最も李でなくても広く一般的に使われている方法だが意外と調べても出てこない)を参照のこと。 
+\subsection{おまけ2:矢向のブラウザのブックマークのAndroidフォルダにあるリンク}
+コピペしていくらでも使い回せるものなどが多いので見ておいて損はないかもしれない。
+(一部ただのGoogleドライブのリンクとかは消してある)
+\begin{itemize}
+\item お問い合わせ - Play Console ヘルプ\\
+\url{https://support.google.com/googleplay/android-developer/gethelp?hl=ja&visit_id=637678981545128687-2809304254&rd=1#}
+\item Android開発で困った時の問い合わせ先 | アプリ開発のお勉強！　アプリリ\\
+\url{https://bit.ly/3on3bmL}
+\item Shrinking your app with R8 (Android Dev Summit '19) - YouTube\footnote{\url{}{}}\\
+\url{https://www.youtube.com/watch?v=uQ_yK8kRCaA}
+\item Androidアプリの初回リリースを手動で公開する方法に関するメモ - AppSeedのアプリ開発ブログ\\
+\url{https://develop.hateblo.jp/entry/google-play-manual-release}
+\item Y.A.M の 雑記帳: 3月 2014\\
+\url{http://y-anz-m.blogspot.com/2014/03/}
+\item 大容量のビットマップを効率的に読み込む  |  Android デベロッパー  |  Android Developers\\
+\url{https://developer.android.com/topic/performance/graphics/load-bitmap?hl=ja}
+\item コピペしてすぐ使えるアラートダイアログ集 - Qiita\\
+\url{https://qiita.com/suzukihr/items/8973527ebb8bb35f6bb8}
+\item 【Android】 AppCompatActivity の ActionBar のタイトルを動的に変える: スタジオプリズム\UTF{3427}3ブログ\\
+\url{http://s-prism3.seesaa.net/article/438905821.html}
+\item 【Android】カスタムダイアログを作った。: Java知識ゼロ人間の生活\\
+\url{http://stren-blog.seesaa.net/article/367038846.html}
+\item アプリバーを使用する  |  Android デベロッパー  |  Android Developers\\
+\url{https://developer.android.com/guide/fragments/appbar?hl=ja}
+\item AndroidXに対応しようとしてハマった話 | 株式会社ブリッツゲート\\
+\url{https://blitzgate.co.jp/blog/2350/}
+\item 【Android】XMLファイルからViewを生成する - プログラマーのメモ書き\\
+\url{https://bit.ly/3wDqZq9}
+\item AndroidでSqliteデータベースを操作する - Kotlin編 - Qiita\\
+\url{https://qiita.com/NaoSekig/items/0d95d631378040c1961a}
+\item Android：TextView・Button等に角丸や枠をつける - asky\\
+\url{https://asky.hatenablog.com/entry/2016/05/04/194303}
+\item 【Android】selecterを使ってみる - It’s now or never\\
+\url{https://inon29.hateblo.jp/entry/2014/01/13/184153}
+\item GASをWeb公開して実行(doPostとdoGet) | アンクルエンジニアの気づき\\
+\url{https://uncle-atsushi.com/gas_first-execute_dopost-doget/}
+\item Android アプリ公開時に必要な画像リソースをサックっと用意する手順まとめ｜itog｜note\\
+\url{https://note.com/itog/n/n5253e8d28d2d}
+\item Android用画像読み込みライブラリ、Glideを使ってみよう！ | 株式会社ヌーラボ(Nulab inc.)\\
+\url{https://nulab.com/ja/blog/nulab/android-library-glide/}
+\item 【Kotlin】 Zxing QRコードリーダーをカスタマイズ - Qiita\\
+\url{https://qiita.com/Mosea/items/e9dae626713fe9950734}
+\item 【コピペで作る】kotlin QRコード導入手順5ステップ\\
+\url{https://shoheohtani.blogspot.com/2019/01/kotlin-qrcode-how-to.html}
+\item テキストから読み取った画像ファイル名を表示したいです。 - Yahoo!知恵袋\\
+\url{https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q11153402421}
+\item KotlinでAndroidのカメラ機能を利用する - Qiita\\
+\url{https://qiita.com/naoi/items/04e44308221f6eb73024}
+\item KotlinでGoogle Sheets API v4を使う | キャスレーコンサルティング株式会社\\
+\url{https://www.casleyconsulting.co.jp/blog/engineer/4798/}
+\item ビルド環境の設定
+\item 【Android】Fragmentを使うときのコツとか色々 - Qiita\\
+\url{https://docs.kii.com/ja/samples/push-notifications/push-notifications-android-fcm/configure-ide/}
+\item 【Kotlin】Bundleを使ったFragment間の値渡し - Qiita\\
+\url{https://qiita.com/HideMatsu/items/ddf640899cbe1b2027ed}
+\item Android はじめてのFragment - Qiita\\
+\url{https://qiita.com/orimomo/items/0472a52f90d14bef0c89}
+\item 文字列リソース  |  Android デベロッパー  |  Android Developers\\
+\url{https://developer.android.com/guide/topics/resources/string-resource?hl=ja}
+\item KotlinでRecyclerViewを使ったリスト表示を行う - Qiita\\
+\url{https://qiita.com/Todate/items/297bc3e4d0f3d2477ed3}
+\item KotlinでのFragment実装方法 生成と切り替え | Memento Mori Blog\\
+\url{https://memento-mori-blog.com/android-kotlin-fragment/}
+\end{itemize}
 
-タブで階数ごとに違うマップを出すようにする。タブレイアウトはここをみればわかると思うので詳細は省略する。
 
-マップのドラッグ、ズームについては画像をMatrixを使用して移動、拡大縮小するのがよい(画像の座標や、拡大率とかを保存しておくと後々楽になり、Matrixならそれらを保存してくれるから)。描画方法はimageViewを用いる方法とcanvasを使用する新しくViewを作って用いる方法などがあるが今年はimageViewを使用した。どちらもMatrixを使用して移動等が可能。ドラッグやズーム等の検知はGestureDetectorを使って検出した。ドラッグはonScroll、ズームはonScaleで係数を取得することが可能。地図の端に到達した判定は、どこを端と定義するかによるが、今年は「画像の端がスクリーンの真ん中を超える」という判定とした。地図の端をどう定義するかは、色々な外部のサービスを参考にすると良い。慣性は余裕があるならば実装するのが良いが、少し厄介であるため無理して実装しなくてもよい。今年は慣性をonFlingで取得しTimerで動かした。また、画像の端を超えたあとや、ズームで縮小しすぎたあとに戻す処理でもTimerを使用し、滑らかな動きを実装した。
-
-マップの操作云々を調べて自分なりの実装が難しいと感じたら李のQiita\footnote{\url{https://qiita.com/Cyber_Hacnosuke/items/b2a8724218d2f4a4c3c2}}を参考にしてください。
-
-「タップした場所がどこなのか」を判別する方法は、別途、各展示、食品で色分けされた画像を元に判別する。タップしたスクリーンの座標から、画像の位置座標と拡大率を用いてタップした画像の中の座標を算出し、色分けされた画像のその座標が何色かで判別する。今年は、\verb+ #FF00XX(XX / 2 = id) +が展示、\verb+ #00FFXX(XX / 5 = id) +が食品と決め、色識別用画像を作成した。画像を作るのは自分でやったが、信頼できるなら後輩に頼むと仕事が減る。色識別用画像を作る際、拡大縮小等でボケて、想定していなかった色が検出されないよう気をつけること。
-
-詳細画面のピンの座標はデータベースに0~1の範囲で、x,y座標それぞれの割合を記録しておき、表示する際その値から画像用の座標を計算しピンを指してる。この0~1の範囲の座標を計算するにあたり、スプレッドシートを使って計算するのがもっとも効率的と思われる。参考程度に今年使った自分用スプシを\footnote{\url{https://docs.google.com/spreadsheets/d/17zJ-jk277xVDzQYN9v_pF8ZatII3OxnX1dlLHyxBX6o/edit#gid=808228009}}置いておく。
-
-最後に、地図を表示するには、大きな地図の画像を用意する必要があるが、その際に重すぎて落ちないよう気をつけること。
-
+\newpage
 \section{音楽局}
 \subsection{引き継ぎにあたって}
 引き継ぎは、来年もやりたいようにやってほしいと思っているのであまり書くことはないのですが、技術部門で音楽を担当していた人としての認識、知ってほしい知識について少し書こうと思います。
