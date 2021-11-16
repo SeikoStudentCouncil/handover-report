@@ -15,6 +15,7 @@
 \usepackage{graphicx}
 \usepackage{enumerate}
 \usepackage{ulem}
+\usepackage{epic,eepic}
 
 \title{第62回聖光祭 技術部門 引き継ぎ書}
 \author{飼沼 隼 \\ 三枝 義啓 \and 浅井 祐一朗 \\ 矢向 俊貴 \and 李 博之 \\ 黒羽 }
@@ -1026,7 +1027,8 @@ B$\cdots$番号（0~5）0が代表者。
 \end{itemize}
 \subsubsection{失敗した理由}
  \begin{itemize}
-  \item スプレッドシートの「型」
+  \item スプレッドシートの「型」\\
+  StringをInt
  \end{itemize}
 \subsubsection{改善点}
 \subsection{入場システム}
@@ -1086,7 +1088,7 @@ B$\cdots$番号（0~5）0が代表者。
  \begin{enumerate}
   \item 下のタブバーで「受付」を選択
   \item QRコードリーダーが表示されるのでスキャンすると入場の可否が表示される。
- \end{enumerate}
+  \end{enumerate}
 \subsection{外務送付状の差込}\label{sec:外務送付状の差込}
 \section{体育祭}
 \subsection{名簿管理}
@@ -1104,6 +1106,46 @@ B$\cdots$番号（0~5）0が代表者。
 \section{APPENDIX}
 \subsection{Githubの使い方}
 \subsection{マークシートの作り方}
+\subsubsection{使用するアプリケーション}
+\begin{itemize}
+ \item マークシートDIY {\color{red}(必須)}\\
+ \includegraphics[width=5cm]{assets/answersheet-diy.png}\\
+ \url{https://apple.co/3DgrhWp}\\
+ マークシートを読み取るのに必要。
+ \item \TeX Shop (任意)\\
+ \includegraphics[width=5cm]{assets/TeX.png}\\
+ マークシート用紙を作るのに便利。\TeX が使えればなんでも良い。
+\end{itemize}
+ \subsubsection{マークシート用紙の作り方}
+ \url{http://www7a.biglobe.ne.jp/~ogihara/ja/Manual_0.7.1ja.pdf}を見れば全てわかる。\\
+ マークシートの四隅に位置決めマークが必要。そのうち左上のマークは他より大きい必要がある。\\
+ 以下は\TeX で用紙の作る方法を記す。\\
+ \begin{enumerate}
+  \item  マークする楕円と、用紙の四隅に位置決めマークを固定するためのパッケージをインポートする。\\
+  \textbackslash usepackage\{epic,eepic\}\\
+  \textbackslash usepackage\{fancyhdr\}
+  \item 位置決めマークを挿入\\
+   \textbackslash pagestyle\footnote{一ページのみマークシートにしたい場合は\textbackslash thispagestyle}\{fancy\}\\
+   \textbackslash renewcommand\{\textbackslash headrulewidth\}\{1pt\}\\
+   \textbackslash renewcommand\{\textbackslash footrulewidth\}\{0pt\}\\
+   \textbackslash lhead\{\textbackslash rule\{8mm\}\{8mm\} \{\textbackslash huge アンケートタイトル\}\}
+   \textbackslash rhead\{\textbackslash rule\{6mm\}\{6mm\}\}
+   \textbackslash lfoot\{\textbackslash rule\{6mm\}\{6mm\}\}
+   \textbackslash rfoot\{\textbackslash rule\{6mm\}\{6mm\}\}
+   \textbackslash chead\{\}
+   \textbackslash cfoot\{\}
+  \item マーク欄を追加\\
+  \begin{picture}(10,15) \put(3,3){\ellipse{10}{15}} \end{picture}と入力できる\\
+  \textbackslash begin\{picture\}(10,15)\\
+  \textbackslash put(3,3)\{\textbackslash ellipse\{10\}\{15\}\}\\
+  \textbackslash end\{picture\}
+  \item 3を繰り返して完成！
+ \end{enumerate}
+ \subsubsection{読み取り方}
+ \url{http://www7a.biglobe.ne.jp/~ogihara/ja/Manual_0.7.1ja.pdf}を参照。\\
 \subsection{\TeX の使い方}
+ ググればわかる。\\
+ \TeX Shopがおすすめ。\\
+ \includegraphics[width=5cm]{assets/TeX.png}\\
 \subsection{技術局名簿}
 \end{document}
