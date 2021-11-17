@@ -872,7 +872,7 @@ Helperとは書くけれどこれを使う以外の方法でDBにアクセスす
  62回担当者：飼沼、李
 
  \subsection{スローガン}
-
+ 
  \subsection{Tシャツ処理}
  62回担当者：飼沼、浅井
 
@@ -930,10 +930,7 @@ Helperとは書くけれどこれを使う以外の方法でDBにアクセスす
    \item 各部門名簿を作る\\
    QUERYのOR条件を使って所属名簿を絞り込み、各部門名簿を各部門ごとにつくる。コピペがんばれ！
   \end{itemize}
- 
- \subsection{入場システム}
- \subsection{オンライン食品予約システム}
- \subsection{講堂予約システム}
+
  \subsection{電子決済}
  今年度導入された電子決済では、Squareという企業の機器を用いている。\\
  クレジットカードから交通系ICまで幅広い決済方法に対応している。\\
@@ -982,6 +979,56 @@ Helperとは書くけれどこれを使う以外の方法でDBにアクセスす
    \item POSレジから「ピピッ」と決済音が鳴ったら決済完了。
   \end{enumerate}
  \end{itemize}
+ \subsubsection{必要なApp}
+ \begin{itemize}
+ \item Square POSレジ
+ \item 食品レジ(オリジナルApp)
+ \end{itemize}
+ \begin{itembox}[l]{【オリジナルAppが必要な理由】}
+  \begin{itemize}
+   \item 現金決済の対応\\
+   Square単体では現金決済対応していないが、APIを使用すれば現金決済をSquare上に反映することができる。
+   \item 店舗ごとのメニュー対応\\
+   Square単体では、同じ場所にある複数店舗に対し別々のメニューを提供することができないので、オリジナルAppを作ることで、店舗ごとにその店舗用のメニューを表示し、またメニューごとにどれだけ注文されたかのデータを記録することができる。
+  \end{itemize}
+ \end{itembox}
+ \subsubsection{食品決済アプリ}
+  \begin{enumerate}
+   \item 目的\\
+   食品などの支払いで電子マネーを使用できるようにするとともに、現金も含めた全ての支払いを管理する目的。
+   \item 必要物品
+   \begin{itemize}
+   \item iPad（各店舗につき1台）$\cdots$アプリケーション
+   \item Square Reader$\cdots$カードの読み取り用ハードウエア
+   \end{itemize}
+   \item マニュアル
+   \begin{enumerate}
+   \item 注文されている商品を入力する\\
+   表示されている商品が別店舗の場合は、左上の設定ボタンから店舗を変更できる。\\
+   \includegraphics[scale=0.2]{assets/square_top-interface.png}
+   \item 合計金額をお客様に伝えて、現金決済と電子決済のどちらにするか聞く\\
+   \includegraphics[scale=0.2]{assets/square_second-interface.png}
+   \item 右下のどちらかのボタンを押すと、Square POS レジアプリに飛ぶ\\
+   事前に伝えられたパスワードを入力する。\\
+   \includegraphics[scale=0.2]{assets/square_password-keypad.jpg}
+   \item 決済
+    \begin{enumerate}
+     \item 現金決済\\
+     お預かり金額を選ぶ。\\
+     選択肢にない場合は、「カスタム」を押して入力する。\\
+     \includegraphics[scale=0.2]{assets/square_e-payment_selection.jpg}\\
+     \includegraphics[scale=0.2]{assets/square_cash-payment-custom.jpg}
+     \item 電子決済\\
+     決済方法を聞いて選んで、カードリーダーにかざしてもらう。\\
+     画面をお客様に向ける必要はない。\\
+     決済が完了すると、元のアプリに戻る。\\
+     \includegraphics[scale=0.2]{assets/square_e-payment_selection.jpg}\\
+     \includegraphics[scale=0.2]{assets/square_e-payment_scan.jpg}
+    \end{enumerate}
+   \end{enumerate}
+  \end{enumerate}
+
+\newpage
 \subsection{QRコードシステム}
 入場システム、展示団体入退場管理システム、食品予約システム、講堂予約システムをまとめたシステム。
 \subsubsection{グループID}
@@ -1028,7 +1075,10 @@ B$\cdots$番号（0~5）0が代表者。
 \subsubsection{失敗した理由}
  \begin{itemize}
   \item スプレッドシートの「型」\\
-  StringをInt
+  スプレッドシートにもStringやIntといった型が存在する。聖光祭当日に、大下が三枝の許可を得て動作確認用のサンプルデータをiOS版のスプレッドシートAppで追加したところ、型が狂ってしまい、iPadアプリケーションが落ちてしまった。結局、スプレッドシートを復元しないと解決せず、失敗した。
+  \item ポケットWi-Fiの限界\\
+  
+  
  \end{itemize}
 \subsubsection{改善点}
 \subsection{入場システム}
@@ -1089,6 +1139,10 @@ B$\cdots$番号（0~5）0が代表者。
   \item 下のタブバーで「受付」を選択
   \item QRコードリーダーが表示されるのでスキャンすると入場の可否が表示される。
   \end{enumerate}
+ \subsubsection{仕組み}
+
+\subsection{オンライン食品予約システム}
+\subsection{講堂予約システム}
 \subsection{外務送付状の差込}\label{sec:外務送付状の差込}
 \section{体育祭}
 \subsection{名簿管理}
