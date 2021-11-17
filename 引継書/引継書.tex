@@ -1256,7 +1256,19 @@ B$\cdots$番号（0~5）0が代表者。
 \section{さいごに}
 \newpage
 \section{APPENDIX}
-\subsection{Githubの使い方}
+\subsection{【最重要】命名規則}
+命名規則まもらないやつはこの部門にいる価値ない。
+\subsubsection{三つの方式}\begin{table}[h]
+\begin{tabular}{|c|ccc|}
+\hline
+\textbf{命名規則方式} & \multicolumn{1}{c|}{\textbf{キャメルケース}} & \multicolumn{1}{c|}{\textbf{スネークケース}}  & \textbf{ケバブケース} \\ \hline
+\textbf{単語の1文字目} & \multicolumn{1}{c|}{大文字} & \multicolumn{2}{c|}{小文字} \\ \hline
+\textbf{単語の区切れ} & \multicolumn{1}{c|}{|null|}           & \multicolumn{1}{c|}{\verb{_}（アンダーバー）}      & \verb{-}（ハイフン）       \\ \hline
+\textbf{1文字目}    & \multicolumn{3}{c|}{小文字}                            \\ \hline
+\textbf{それ以外の文字} & \multicolumn{3}{c|}{小文字}                            \\ \hline
+\textbf{例}      & \multicolumn{1}{c|}{thisIsExample}    & \multicolumn{1}{c|}{this\_is\_example} & this-is-example \\ \hline
+\end{tabular}
+\end{table}\subsection{Githubの使い方}
 \subsubsection{専門用語}
 Githubは横文字を含め、さまざまな専門用語がある。専門用語を使えばかっこいい！とかではなく、専門用語以外で表現ができない上、説明がしにくいので書くことにする。
 \begin{itemize}
@@ -1270,6 +1282,8 @@ Gitサーバーに置かれてるレポジトリ。インターネット上に�
 レポジトリやBranch（後述）を更新する際に更新先にも更新があり更新内容が衝突すること。VSCodeやAtomというエディタ、Github上で解決できる。
 \item Pull（プル）\\
 リモートレポジトリの更新内容をローカルレポジトリに反映させる。
+\item fetch（フェッチ）\\
+リモートレポジトリの更新内容があるか確認する。ほぼプルと同じ。
 \item Commit（コミット）\\
 ファイルの編集内容をローカルレポジトリに追加する。作業がひと段落したらコミットする。
 \item Push（プッシュ）\\
@@ -1290,14 +1304,29 @@ Githubの機能の一つ。問題提起することができ、複数人で話�
 \subsubsection{Git周りのソフト}
 \subsubsubsection{GitとGithub}
 そもそもGitとGithubは違う。Gitはバージョン管理関係のコマンドソフトである。そしてそれをリモートで見れるようにしたのがGithubである。私たちがGitを見るのに必要なものの一つがGithubである。
-\subsubsubsection{GithubDesktop}
-ローカルレポジトリでのコミット、プッシュ、プル、プルリク、ブランチ
+\subsubsubsection{Github Desktop}
+ローカルレポジトリでのコミット、プッシュ、プル、プルリク、ブランチ生成をUIで行えるソフト。純正。コマンドでやるのにこだわる場合、開発ソフトにGit連携機能がある場合の除いて入れとこう。
 \subsubsection{Organization}
 生徒会としてGithubOrganizationを作った\footnote{https://github.com/SeikoStudentCouncil}。Organizationは複数のアカウントを所属させることができ、組織としてGitを使用できるというものである。管理者権限が欲しい場合は前年度局長または60227li@seiko.ac.jpに連絡すること。
 \subsubsubsection{メンバー}
 Githubアカウント作った後に管理者はPeopleタブ>Memberからユーザーネームを検索し招待する。招待はメールでくるので受理して参加する。この時Roleを決めることができる。Roleは役職のことでありOwnerとMemberの2種類がある。
 \subsubsubsection{チーム（Teams）}
 チームは...そのままの機能。アプリ局とHP局というチームを作った。チームごとに見れるレポジトリを設定できたりする。
+\subsubsection{レポジトリの作り方}
+調べろ。空リモートレポジトリを作り、プリジェクトファイルをPushすれば完成。
+\subsubsection{作業フローチャート}
+ \begin{enumerate}
+ \item 新機能や修正などのイシューを立てる（イシュータイトル：\verb|[イシュータイトル（英語）]|）
+ \item イシュー番号がついたブランチを切る（ブランチ名：\verb|feature/#[イシュー番号]_[イシュータイトル（小文字）]|）
+ \item リモートレポジトリをPush/Fetchする
+ \item 作業をする
+ \item ひと段落したらCommitする
+ \item 2, 3を繰り返す（数時間〜1日おき）
+ \item ある程度できたらPushする
+ \item 2~4を繰り返す（1日~3日おき）
+ \item 機能が実装できたら
+ \end{enumerate}
+
 \subsection{マークシートの作り方}
 \subsubsection{使用するアプリケーション}
 \begin{itemize}
