@@ -487,12 +487,15 @@ FTPサーバにファイルを送信したり取得するときは「FTPユー�
  \subsection{Tips（コーディング上の注意・小技）}
  \subsubsection{positionは使うな}
  positionはcssでオブジェクトの対外関係を設定できるパラメータである。が、これは書くな。領域が表示されないときに適当にいじってると階層関係がぐっちゃぐっちゃになる。また、position: absolute;を設定しないとできない、領域を重ねる必要があるUIをデザインしないこと。
- \section{アプリ局(Android)}
- \subsection{はじめに}
+ 
+ \newpage
+ \section{アプリ局}
+ \subsection{Android}
+ \subsubsection{はじめに}
  引継書とは題しているがAndroid作る人は全員読んでおいて損はないのではないかと思われる(今年出してもらったプログラムの出来栄えを見る限り)。\par
 かなりメモっぽく書いているので注意。Discordで皆に連絡
 するときの感覚で書いていると思ってもらえると内容が入りやすいかもしれない。
- \subsection{技術幹部になった人へ}
+ \subsubsection{技術幹部になった人へ}
  個人的に技術幹部となった人に要求されることは高い技術力よりも\mark{仕事をミス無く丁寧に確実にこなすこと}なので注意(もちろん自分の担当する分野においてある程度の知識は持っていなければいけないけれど)。技術力があったとしても、
  \begin{itemize}
  \item 提出期限を守らない
@@ -501,8 +504,8 @@ FTPサーバにファイルを送信したり取得するときは「FTPユー�
  \end{itemize}
  といった人は技術幹部に限った話ではないけれどお仕事にならなかったり、もしくは周りに迷惑を書けてしまい他の幹部に陰口を叩かれてしまったりする(後者はよく見た気がする)。\par
 くれぐれも技術力があるからといって他の部門の幹部などに対して調子に乗った言動をしたり高圧的になったりすることがないように(まぁこんなことはほぼなかったと思うけど)。
- \subsection{全体として}
-  \subsubsection{制作の前準備}
+ \subsubsection{全体として}
+  \subsubsubsection{制作の前準備}
  今回なら聖光祭は9月で、UIなどの案が挙がってくるのが8月であったけれど、アプリの試作自体は5月から始めていた。\par
  特に自分に作ることができるか不安な箇所を中心に自分で事前に試作をしておくとよい。
  矢向なら
@@ -515,7 +518,7 @@ FTPサーバにファイルを送信したり取得するときは「FTPユー�
   \item アプリアイコンの設定法
  \end{itemize}
  など
- \subsubsection{実装方法の基本方針}
+ \subsubsubsection{実装方法の基本方針}
  同じ挙動にもいくつかの実装方法が当然考えられるわけだが、どの方法を使うかを選ぶときに重要なことを重要度順にあげていく。
  \begin{enumerate}[No.1]
   \item エラーが起こりづらいこと(起こらないこと)
@@ -530,12 +533,12 @@ FTPサーバにファイルを送信したり取得するときは「FTPユー�
  \includegraphics[scale = 0.1]{assets/soyuz.jpg}
  \end{center}
  \end{itembox}
-  \subsection{素材について}
+  \subsubsection{素材について}
  基本的にデザイン局の方と連携を取りながら行っていく。\par
 今回の場合はこちらが最初にデザイン案を作りそれをデザイン局の飼沼とブラッシュアップした。\par
- \subsection{各画面について}
+ \subsubsection{各画面について}
  全体として今回矢向は李のアドバイスを勘違いしMainActivity以外全部Fragmentというあまり類を見ない設計にしてしまったので参考になならない箇所もあると思われる。
- \subsubsection{ツールバー}
+ \subsubsubsection{ツールバー}
  \begin{minipage}[b]{13.5cm}
  Androidの機能も用いて作ることもできる。\par
  だがしかしこれだと取り回しがあまりにも悪いので、右図のようにactivity\_main.xmlにて画面をLinearLayoutで分割し、上(赤い部分)にはツールバー、下(青い部分)をRelativeLayoutにしてFragmentContainerにし、ここだけでフラグメントを置き換えるようにするとフレキシブルなツールバーを作成できる。詳細は以下のリンクから。\par
@@ -547,16 +550,16 @@ FTPサーバにファイルを送信したり取得するときは「FTPユー�
  \end{minipage}\par\par
 ツールバーのonClickの実装を各Fragmentでしなおすことで(今回は各FragmentのinitToolBar()やonCreateViewにてその処理を行っている)各画面で違ったクリック処理を行うことができ、またその際に現在のFragmentのメンバ変数などにアクセスすることもできるようになる(匿名クラスを使えばより楽にonCreateView()内の変数にアクセスできる)。
 今回はActivityがひとつなのでこれだけで無事に作成することができたがActivityが複数ある場合はもう少し工夫が必要だと思われる。
- \subsubsection{ホーム画面}
+ \subsubsubsection{ホーム画面}
  ImageViewおいてclickのListenerつけるのみ。難易度はかなり低い。
- \subsubsection{展示一覧}
+ \subsubsubsection{展示一覧}
  RecyclerViewを配置するだけではあるが、絞り込み機能があるため少し難易度が高い。\par
  全展示団体のデータをDB(と今回は混雑度のサーバー)から取得し表示する。\par
  その際にRecyclerViewのAdapterに渡すListを作るとき、絞り込み条件に合致しないものはforループの最初にcontinue文で弾けばよい。
- \subsubsection{食品一覧}
+ \subsubsubsection{食品一覧}
  RecyclerViewを配置するだけ。メモ帳が理解できていればかなり難易度は低い。
 
- \subsubsection{マップ}
+ \subsubsubsection{マップ}
  まず地図の画像はパンフが出来上がったらその画像を使うとよい。出来上がるまでは途中経過の地図を使ってプログラムを書いてく。地図の画像、展示団体等の位置を識別するための画像、ピンの画像、タブレイアウトをおくためのFragment、タブレイアウト内に表示するためのFragment、タブレイアウトの機能を実装するためのAdapterはおそらく必要となる。加えて、地図の操作を行うためのカスタムビュー等も用意することになるだろう。\par
  次に、各機能の詳細について書いていく。\par
  タブで階数ごとに違うマップを出すようにする。タブレイアウトはここをみればわかると思うので詳細は省略する。\par
@@ -565,20 +568,20 @@ FTPサーバにファイルを送信したり取得するときは「FTPユー�
 「タップした場所がどこなのか」を判別する方法は、別途、各展示、食品で色分けされた画像を元に判別する。タップしたスクリーンの座標から、画像の位置座標と拡大率を用いてタップした画像の中の座標を算出し、色分けされた画像のその座標が何色かで判別する。今年は、\verb+ #FF00XX(XX / 2 = id) +が展示、\verb+ #00FFXX(XX / 5 = id) +が食品と決め、色識別用画像を作成した。画像を作るのは自分でやったが、信頼できるなら後輩に頼むと仕事が減る。色識別用画像を作る際、拡大縮小等でボケて、想定していなかった色が検出されないよう気をつけること。\par
 詳細画面のピンの座標はデータベースに0~1の範囲で、x,y座標それぞれの割合を記録しておき、表示する際その値から画像用の座標を計算しピンを指してる。この0~1の範囲の座標を計算するにあたり、スプレッドシートを使って計算するのがもっとも効率的と思われる。参考程度に今年使った自分用スプシを\footnote{\url{https://docs.google.com/spreadsheets/d/17zJ-jk277xVDzQYN9v_pF8ZatII3OxnX1dlLHyxBX6o/edit#gid=808228009}}置いておく。\par
 最後に、地図を表示するには、大きな地図の画像を用意する必要があるが、その際に重すぎて落ちないよう気をつけること。\par
- \subsubsection{タイムテーブル}
+ \subsubsubsection{タイムテーブル}
  1イベントあたりのレイアウトを別途xmlで記述しておく。\par
 また、今回の場合は9:00の線と10:00のy座標から1時間あたりの座標変化数を取得しておく
 DBから表示すべき全イベントを取得し、それぞれのイベントごとにfor文を用いて先程のxmlファイルをLayoutInflatorでインフレートし、各イベントの開始/終了時間と先程の値を用いてそのViewのTop,Bottom,heightを計算し表示(ViewGroup.addView(View)みたいなのでできる)するとよい。\par
 Viewの生成はここを参照することを推奨する。
- \subsubsection{トレジャーハント}
+ \subsubsubsection{トレジャーハント}
  ここに関してはおそらく設計者が次回も(そもそも次回もトレハンをやるのかという問題があるが)ITECの人間ではないので少々我々プログラマサイドからではわかりにくいかもしれない。\par
  いかに内容を噛み砕いて実装できるかが成功のカギとなる。\par
  実装自体の難易度はあまり高くない。
- \subsubsection{聖光ラジオ}
+ \subsubsubsection{聖光ラジオ}
  HTTP通信で取得した内容をRecyclerViewで表示するのみ。\par
  応募に関しても、応募する内容をHTTP通信で送るのみのシンプルな処理。
-\subsection{各技術指導}
- \subsubsection{HTTP通信}
+\subsubsection{各技術指導}
+ \subsubsubsection{HTTP通信}
  難易度はかなり高い。\par
  この引継書もこれを書くために書いたと言っても過言ではない。\par
  OkHttp3という外部ライブラリを使用した。\par
@@ -589,7 +592,7 @@ Viewの生成はここを参照することを推奨する。
  つまり通信処理はマルチスレッドで行わざるを得ない(こう書いてはいるが通信は別スレッドで行うのがセオリーなのでこれはおかしいことではない)。\par
  JavaやKotlinでマルチスレッド処理を行うには、Threadクラス等を継承もしくはRunableインターフェースを実装したclassのrun()メソッドをオーバーライドし、その中にマルチスレッドで行いたい処理(今回なら通信処理)を書くことになる。\par
  とはいっても今回出してもらったプログラムを見る限り半年でこれを自力で行えるレベルに到達するのは(勉強などを考えると)かなり厳しいと思われるのでFragmentと連携して通信内容を表示する雛形を載せておく\footnote{\url{https://qiita.com/Jellyfish4594/private/9709ad41d0828f917601}}。
- \subsubsection{RecyclerView}
+ \subsubsubsection{RecyclerView}
  \begin{enumerate}
  \item list\_item.xml
  \item RecyclerViewHolder
@@ -599,26 +602,26 @@ Viewの生成はここを参照することを推奨する。
  \end{enumerate}
  の順に作れば5~10分で作り終えることができる。\par
  ここ\footnote{\url{https://qiita.com/Todate/items/297bc3e4d0f3d2477ed3}}の内容をほぼコピペで使用することができるが、Adapterのoverrideメソッドの引数に一部が本来はあっていはいけない?がついているため、そこだけエラーが出る(もとのメソッドの引数がnull許容型ではないからエラーとなる)。
- \subsubsection{QRコード}
+ \subsubsubsection{QRコード}
  そこそこに難易度が高い。\par
  これ\footnote{\url{https://github.com/SeikoStudentCouncil/SeikoFestaAndroidApp62nd/blob/master/app/src/main/java/jp/ac/seiko/itec/seikofestaapp62nd/fragments/treasurehunt/QRCodeFragment.kt}}をコピペするだけで大部分を完成させることができるが、下記のようにGradleに書かなければならないので注意(ZXingを入れる、OkHttp3と同様にプライバシーポリシーにも書く)。\par
  implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
- \subsubsection{Fragmentを一部に表示}
+ \subsubsubsection{Fragmentを一部に表示}
  RelativeLayoutを配置しそれをFragmentContainerにすることでできる。
- \subsubsection{GoogleMapを置く}
+ \subsubsubsection{GoogleMapを置く}
  ここ\footnote{\url{https://developers.google.com/maps/documentation/android-sdk/start?hl=ja}}に従う。
-\subsection{リリースについて}
+\subsubsection{リリースについて}
 \begin{itembox}[l]{Google開発者用アカウント}
 \color{red}
 mail: seikosougiken@gmail.com\\
 \end{itembox}
 これがないとリリースができず詰みとなってしまうので気をつける。
-\subsubsection{審査について}
+\subsubsubsection{審査について}
 李のとき(第60回)は2\UTF{FF5E}3時間で終わったと聞いて油断していたが今回は現在審査に出して72時間ほど経つがいまだ終わっていない。2019年の9月あたりから審査が厳正化しているそうなので気をつけるように。今回もそうだが素材がなかなか来ないのでASAPを心がけるだけでよい。ちなみに審査はおそらくカルフォルニアで行われている。
-\subsubsection{審査時間の目安}
+\subsubsubsection{審査時間の目安}
 初回審査...72時間程度=3営業日(遅い場合は問い合わせも手)
 それ以降のアプデ...1営業日(カリフォルニアの)
-\subsection{後輩の育成について}
+\subsubsection{後輩の育成について}
 正直なところ、聞かれたらいくらでも教えてあげることはできるが\textbf{\gtfamily 体系的に教えてあげることができるのはせいぜい} 基本制御構文\footnote{if文やfor文などのこと}や変数などの
 \textbf{\gtfamily 全プログラミング言語に普遍的に存在する概念くらい}で、オブジェクト指向やアプリの本格的な作り方などの習得度合いは\textbf{\gtfamily 学ぶ本人の主体性}に依るところが多いと思われる\footnote{おそらくプログラミング系統だけではなくて動画やモデリングなどでもそう}。
 ここだけの話「もう来年以降の技術は知らん()」といった会話もよくあった。この手の技術の習得には自分で練習することが必要不可欠だし、ここあたりは勉強に通ずるところもある。よって教える側ができることは
@@ -631,39 +634,39 @@ mail: seikosougiken@gmail.com\\
 文法+ライブラリの使用方法の知識\par
 にほかならないので習得は(オブジェクト指向などの一部の関門を除き)習得は容易だと思う。\par
 技術的な習得レベルの目安としては、最低限メモアプリを自力で作ることができなければアプリを「ちゃんと」任せるのは厳しいかもしれない、といった感じ。
- \subsection{おまけ1:小技(よくあるちょっとしたエラー)}
- \subsubsection{NullPointerException :\UTF{FF5E}Attempt to\UTF{FF5E}という例外が発生する}
+ \subsubsection{おまけ1:小技(よくあるちょっとしたエラー)}
+ \subsubsubsection{NullPointerException :\UTF{FF5E}Attempt to\UTF{FF5E}という例外が発生する}
  多くの場合findViewByIDをする際の引数のidが間違っている(findViewByIdしているviewの中に存在しないviewを探そうとしているためnullが返されてしまう)。\par
 xmlやktをコピペした際にidを変え忘れたり、xmlの場合はDesignタブでコピペしたidを意図したものに直そうとするとAndroidStudioがリファクタリングと勘違いしコピペ元とコピペ先両方のファイルのidを変えたりすることで起こる。findViewByIdは該当するviewが見つからないとnullを返す(らしい)ので代入先がnullableでなかったりする場合に起こる。
- \subsubsection{宣言部参照}
+ \subsubsubsection{宣言部参照}
  メソッド名や変数名をctrlを押しながらクリックすることでその宣言部にジャンプすることができる。\par
 自分が書いたコードでなくても(例えばandroid.view.Viewクラスなどでも)可能。
 ・使用箇所確認
 メソッドやクラス、変数の宣言部にてその名前をctrlを押しながらクリックするとそれが今開いているプロジェクトのどのファイルの何行目でどのような引数で使用しているかを一覧として表示することができる。
 
-\subsubsection{Database Inspector}
+\subsubsubsection{Database Inspector}
 アプリ実行中(DBを使用すれば)下のバーの「App Inspection」からDBの中身をExcel形式で見たり編集したりできる。また任意のSQL文を実行することもできる。デバッグに便利。\par
 実行している端末のAPIレベルが低すぎると使えない(確か26以上)。
-\subsubsection{Layout Manager}
+\subsubsubsection{Layout Manager}
 右下の縦のバーにある。アプリ実行中に使うと現在開いている画面がどのViewで構成されているかが分かる。面白いけれど個人的には役に立ったことがない。実行している端末のAPIレベルが低すぎると使えない(確か26以上)。
-\subsubsection{Profiler}
+\subsubsubsection{Profiler}
 下のバーにある。実行中に現在どれぐらいメモリやCPUのリソースを消費しているかが分かる。
-\subsubsection{OutOfMemory}
+\subsubsubsection{OutOfMemory}
 DBの場合ちゃんとcursor.moveToNext()しているかを確認する。\par
 画像を扱っている場合dpi別に画像をリサイズしてdrawable-hdpiやdrawable-mdpiなどに分けて入れておくとAndroid側の処理の負担が大幅に軽減できる。リサイズ作業はpythonを使えると楽に済ますことができる。
-\subsubsection{context}
+\subsubsubsection{context}
 多くの場合困ったときにはこれに必要なものが入っている。\par
 このクラス正体は、現在表示しているActivityの情報(ツールバーは表示する?画面のテーマは?など)が入っているもの。Fragmentからアクセスしたい場合はrequireContext()でできる(同様にrequireActivity()とかある)が、メソッドの中で使用しないとエラーが出る(onCreate()あたりが呼ばれないとcontextはまだnullであるから。どうしても使いたい場合はcontextを引数で渡す)。
-\subsubsection{PreferenceEditor}
+\subsubsubsection{PreferenceEditor}
 DBに入れるほどでもないがアプリが終了しても保存しておきたいデータを入れられる。
 しかしかなりの頻度で読み出しに失敗してしまい、我慢ができなくなった矢向はほぼ同じ機能をもったclassをjsonベースで作成しそれを使用した(ファイル読み書きはほぼ確実に行われる)。
-\subsubsection{使えると便利な言語}
+\subsubsubsection{使えると便利な言語}
 GAS(JavaScript)とpythonは書けることが望ましい。(英語は言うまでもなく読めたほうがよい)。
-\subsubsection{ConstraintLayout}
+\subsubsubsection{ConstraintLayout}
 なぜかL4で使う人が多く見受けられた。
 基本的にはFrameLayoutとLinearLayoutで全て済ませられると思われる。
 個人的にConstraintLayout使うのは初心者とすごい手練だけな気がするので、自分がよほどの上級者である自信がないのなら使用には気をつけることを推奨する。
-\subsubsection{信用できるサイト(よく見るサイト)}
+\subsubsubsection{信用できるサイト(よく見るサイト)}
 エラーで停滞しているときは矢向自身個人ブログなどもよく参照しているしよいと思うが、エラーというわけではないちょっとした調べ物のときに優先的に参考にするサイト
 \begin{enumerate}
  \item Qiita
@@ -673,20 +676,20 @@ GAS(JavaScript)とpythonは書けることが望ましい。(英語は言うま�
  \item stack overflow
  \item Google公式
  \end{enumerate}
-\subsubsection{うまく実装できないとき}
+\subsubsubsection{うまく実装できないとき}
 なるべく細かい機能に分割して1つ1つ別のプロジェクトで作り最後に統合する。例えばメモ帳ならDBだけ練習、RecyclerViewだけ練習、fragmentの遷移だけ練習、とするとよい。
-\subsubsection{エラーが治らないとき}
+\subsubsubsection{エラーが治らないとき}
 Logをたくさん出すor上述のように別のプロジェクトで試してみる。
-\subsubsection{Fragmentが透けたり、Addしてるときに下のFragmentも反応しやがるとき}
+\subsubsubsection{Fragmentが透けたり、Addしてるときに下のFragmentも反応しやがるとき}
 前者の場合はレイアウトファイルの一番上のFrameLayoutとかのbackgroundをcolorのwhiteにしてしまえばよい。\\
 後者の場合はその反応してしまうfragmentのレイアウトの一番上のFrameLayoutを事前にfindViewByIdしておき、addする瞬間にvisibilityをINVISIBLEに設定し、画面が復帰したときにVISIBLEにすればよい。ViewがINVISIBLEになるとユーザーからの操作を一切受け付けなくなる性質を利用する。publicメソッドにしておいて、FragmentTransaction.fragmentsからインスタンスを取得してそのメソッドを呼び出すことでできる。
-\subsubsection{DBについて}
+\subsubsubsection{DBについて}
 DatabaseOpenHelperは1つまでしか作れない(おそらく)。
 個人的にこの名前は良くないと思う。
 Helperとは書くけれどこれを使う以外の方法でDBにアクセスする現実的な方法はないと思われる。補助的な印象を受けるがしっかり主軸として運用することになる。
-\subsubsection{ImageViewにdrawableの画像を名前で指定して表示する}
+\subsubsubsection{ImageViewにdrawableの画像を名前で指定して表示する}
 知らないと停滞することになる。矢向の記事\footnote{\url{https://qiita.com/Jellyfish4594/items/2ddf3d6f1bcef66fedf2}}(ほぼ李のノウハウ、最も李でなくても広く一般的に使われている方法だが意外と調べても出てこない)を参照のこと。
-\subsection{おまけ2:矢向のブラウザのブックマークのAndroidフォルダにあるリンク}
+\subsubsection{おまけ2:矢向のブラウザのブックマークのAndroidフォルダにあるリンク}
 コピペしていくらでも使い回せるものなどが多いので見ておいて損はないかもしれない。
 (一部ただのGoogleドライブのリンクとかは消してある)
 \begin{itemize}
@@ -750,6 +753,18 @@ Helperとは書くけれどこれを使う以外の方法でDBにアクセスす
 \item KotlinでのFragment実装方法 生成と切り替え | Memento Mori Blog\\
 \url{https://memento-mori-blog.com/android-kotlin-fragment/}
 \end{itemize}
+ \subsection{iOS}
+ 2019年以前はiOS開発者がAndroid開発者より圧倒的に多かったが、2021年はiOS開発者が圧倒的に少なく、三枝と李のたった二人でやっていた。
+  \subsubsection{言語}
+  第62回聖光祭ではiOSアプリ制作にSwift、またUIの作成にはSwiftUIを使用した。第60回以前の聖光祭アプリではSiwftとStoryboardという一般的なアプリの構成だったが、Sotryboardの扱いが大変なのに加え、アニメーションを強化したかったので、2019年に新しく登場したSwiftUIを使用した。
+  \subsubsubsection{Swiftの学び方}
+  \url{https://apple.co/3BVig3C}
+  \url{https://developer.apple.com/tutorials/swiftui}
+  \url{}
+  \subsubsubsection{SwiftUIの利点}
+  \subsubsubsection{SwiftUIの問題点}
+   たまにプレビューが機能しなかったり、重くてXcodeが間違ったコードをハイライトしてくれないと言った不具合があった。あとはSwiftUI自体がコードが複雑になって重くなると、正しいコードを書いているのにプレビューされなかったり、ビルドに失敗したりした。大抵の場合は``Clean build Folder''かXcode再起動で解決する。\\
+
 
 
 \newpage
@@ -788,18 +803,6 @@ Helperとは書くけれどこれを使う以外の方法でDBにアクセスす
 
 \subsection{-}
 今回は初年度ということもあり仕事がうまく振れないなど迷惑をかけましたが、来年からこの部署が聖光祭で大きく活躍してくれることを願っています。以下は、細々とした事項を羅列しますが、来年は来年として、また新しい形の聖光祭における音楽の役割が生まれることを期待しています。
-
- \section{アプリ局(iOS)}
- 2019年以前はiOS開発者がAndroid開発者より圧倒的に多かったが、2021年はiOS開発者が圧倒的に少なく、三枝と李のたった二人でやっていた。
-  \subsection{言語}
-  第62回聖光祭ではiOSアプリ制作にSwift、またUIの作成にはSwiftUIを使用した。第60回以前の聖光祭アプリではSiwftとStoryboardという一般的なアプリの構成だったが、Sotryboardの扱いが大変なのに加え、アニメーションを強化したかったので、2019年に新しく登場したSwiftUIを使用した。
-  \subsubsection{Swiftの学び方}
-  \url{https://apple.co/3BVig3C}
-  \url{https://developer.apple.com/tutorials/swiftui}
-  \url{}
-  \subsubsection{SwiftUIの利点}
-  \subsubsection{SwiftUIの問題点}
-   たまにプレビューが機能しなかったり、重くてXcodeが間違ったコードをハイライトしてくれないと言った不具合があった。あとはSwiftUI自体がコードが複雑になって重くなると、正しいコードを書いているのにプレビューされなかったり、ビルドに失敗したりした。大抵の場合は``Clean build Folder''かXcode再起動で解決する。\\
 
 
  \section{デザイン局}
