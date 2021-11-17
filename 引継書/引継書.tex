@@ -22,6 +22,7 @@
 \usepackage{pxjahyper}
 \usepackage{array}
 \usepackage{fvextra}
+\usepackage{longtable}
 
 \makeatletter
 \newcommand{\subsubsubsection}{\@startsection{paragraph}{4}{\z@}%
@@ -1281,7 +1282,112 @@ B$\cdots$番号（0~5）0が代表者。
 \textbf{例}      & \multicolumn{1}{c|}{\EscVerb{thisIsExample}}    & \multicolumn{1}{c|}{\EscVerb{this_is_example}} & \EscVerb{this-is-example} \\ \hline
 \end{tabular}
 \end{center}
-\end{table}\subsection{Githubの使い方}
+\end{table}
+
+\subsubsection{単語}
+変数名を\EscVerb{a}や\EscVerb{b}にした日にはお前の命はないと思え。
+
+\begin{center}
+\begin{longtable}{|c|c|l|l|}
+\hline
+\textbf{単語をつける場所} & \textbf{単語} & 意味                    & 例                   \\ \hline
+先頭            & is          & 期待する状態になっているか         & \EscVerb{isEnabled}       \\ \hline
+先頭            & can         & 期待する処理ができるか           & \EscVerb{canRemove}       \\ \hline
+先頭            & should      & 命令を実行するべきか            & \EscVerb{shouldMigrate}       \\ \hline
+先頭            & need        & 命令を実行する必要があるか         & \EscVerb{needFileCopy}       \\ \hline
+先頭            & has         & 期待するデータやプロパティを持っているか  & \EscVerb{hasConnection}       \\ \hline
+どこでも可                 & exists      & 期待するデータやプロパティが存在するか   & \EscVerb{exists(dir)}       \\ \hline
+どこでも可                 & contains    & 期待するデータやプロパティが含まれているか & \EscVerb{contains(item)}      \\ \hline
+先頭            & find        & 情報を検索する (発見可能前提)      & \EscVerb{findString}       \\ \hline
+先頭            & search      & 情報を探索する (発見不可前提)      & \EscVerb{searchString}       \\ \hline
+どこでも可                 & seek        & 連続した情報を順番に探査する        & \EscVerb{file.seek()}       \\ \hline
+どこでも可                 & extract     & 情報をある条件で抽出する          & \EscVerb{hash.extract()}      \\ \hline
+どこでも可                 & filter      & 情報をある条件で除外する          & \EscVerb{filter()}       \\ \hline
+どこでも可                 & replace     & 既存のデータを置き換える          & \EscVerb{String.replace()}    \\ \hline
+どこでも可                 & join        & 既存のデータを結合する           & \EscVerb{String.join()}       \\ \hline
+どこでも可                 & parse       & 既存のデータを解析する           & \EscVerb{String.Parse()}      \\ \hline
+先頭            & set [1]     & データを設定する              & \EscVerb{setProperty}       \\ \hline
+先頭            & add         & データやオブジェクトを追加する       & \EscVerb{addList}       \\ \hline
+先頭            & put         & データやオブジェクトを追加する       & \EscVerb{hash.put(key,value)} \\ \hline
+先頭            & insert      & データやオブジェクトを挿入する       & \EscVerb{insertQueue}       \\ \hline
+先頭            & append      & データやオブジェクトを末尾に追加する    & \EscVerb{appendQueue}       \\ \hline
+先頭            & push        & データやオブジェクトを先頭に追加する    & \EscVerb{pushQueue}       \\ \hline
+先頭            & prepend     & データやオブジェクトを先頭に追加する    & \EscVerb{prependQueue}       \\ \hline
+先頭            & register    & データやオブジェクトを登録する       & \EscVerb{registerStorage}     \\ \hline
+先頭            & create      & 新しいデータやファイルを作る        & \EscVerb{createAccount}       \\ \hline
+先頭            & new         & 新しいデータやファイルを作る        & \EscVerb{newAccount}       \\ \hline
+先頭            & make        & 既存データを加工してデータやファイルを作る & \EscVerb{makeFile}       \\ \hline
+先頭            & build       & 既存データからデータやファイルを組み立てる & \EscVerb{buildFile}       \\ \hline
+先頭            & from        & 既存データを流用してデータやファイルを作る & \EscVerb{fromConfigFile}      \\ \hline
+先頭            & generate    & 何かのルールに従ってデータやファイルを作る & \EscVerb{generateFile}       \\ \hline
+先頭            & update      & 既存のデータを最新化する          & \EscVerb{updateAccount}       \\ \hline
+先頭            & upgrade     & 既存のデータをより優れたものに交換する   & \EscVerb{upgradeAccount}      \\ \hline
+先頭            & apply       & 既存のデータを適用する           & \EscVerb{applyAccount}       \\ \hline
+先頭            & refresh     & 既存のデータを更新する           & \EscVerb{refreshAccount}      \\ \hline
+先頭            & changed     & 既存のデータを変更する           & \EscVerb{changedAccount}      \\ \hline
+先頭            & modified    & 既存のデータを修正する           & \EscVerb{modifiedAccount}     \\ \hline
+先頭            & revised     & 既存のデータを改版する           & \EscVerb{revisedAccount}     \\ \hline
+先頭            & enable      & 既存のデータを使用可能にする        & \EscVerb{enableAccount}       \\ \hline
+先頭            & disable     & 既存のデータを使用不可にする        & \EscVerb{disableAccount}      \\ \hline
+先頭            & fix         & 既存のデータの問題を解決する        & \EscVerb{fixAccount}       \\ \hline
+先頭            & repair      & 既存のデータを修理する           & \EscVerb{repairAccount}       \\ \hline
+先頭            & restore     & 既存のデータを復元する           & \EscVerb{restoreAccount}      \\ \hline
+先頭            & recover     & 既存のデータを復旧する           & \EscVerb{recoverAccount}      \\ \hline
+先頭            & edit        & 既存のデータを編集する           & \EscVerb{editAccount}       \\ \hline
+先頭            & adjust      & 既存のデータを調整する           & \EscVerb{adjustString}       \\ \hline
+先頭            & adapt       & 既存のデータを適合させる          & \EscVerb{adaptString}       \\ \hline
+先頭            & convert     & 既存のデータを変換する           & \EscVerb{convertString}       \\ \hline
+先頭            & to          & 既存のデータを変換する           & \EscVerb{toString}       \\ \hline
+先頭            & delete      & 既存のデータを削除する (復元不可)    & \EscVerb{deleteAccount}       \\ \hline
+先頭            & remove      & 既存のデータを除去する (復元可能)    & \EscVerb{removeAccount}       \\ \hline
+先頭            & trash       & 既存のデータを廃棄する (復元可能)    & \EscVerb{trashAccount}       \\ \hline
+先頭            & erase       & 既存のデータを消去する (書き直し可能)  & \EscVerb{eraseAccount}       \\ \hline
+先頭            & clear       & 既存のデータを初期化する          & \EscVerb{clearAccount}       \\ \hline
+先頭            & flush       & 既存のデータを初期化する          & \EscVerb{flushAccount}       \\ \hline
+先頭            & reset       & 既存のデータを初期化する          & \EscVerb{resetAccount}       \\ \hline
+先頭            & dispose     & 既存のデータを開放する (再利用可能)   & \EscVerb{disposeAccount}      \\ \hline
+先頭            & destroy     & 既存のデータを破棄する (再利用不可)   & \EscVerb{destroyAccount}     \\ \hline
+先頭            & unregister  & 登録済みのデータを解除する         & \EscVerb{unregisterStorage}   \\ \hline
+先頭            & unset       & 定義済みのデータを未定義にする       & \EscVerb{unsetAccount}       \\ \hline
+先頭            & pop         & 先頭のデータを取り出して取り除く      & \EscVerb{popQueue}       \\ \hline
+どこでも可                 & initialize  & 既存のデータを初期化する          & \EscVerb{initialize()}       \\ \hline
+先頭            & save        & 既存のデータを保存する           & \EscVerb{saveAccount}       \\ \hline
+先頭            & output      & 既存のデータを出力する           & \EscVerb{outputAccount}       \\ \hline
+先頭            & export      & 既存のデータを書き出す           & \EscVerb{exportAccount}       \\ \hline
+先頭            & write       & 既存のデータを書き込む           & \EscVerb{writeAccount}       \\ \hline
+先頭            & store       & 既存のデータを貯蔵する           & \EscVerb{storeAccount}       \\ \hline
+先頭            & send        & 既存のデータを送信する           & \EscVerb{sendAccount}       \\ \hline
+先頭            & commit      & 既存のデータを確定する           & \EscVerb{commitAccount}       \\ \hline
+先頭            & get [2]     & 既存のデータを取得する           & \EscVerb{getAccount}       \\ \hline
+先頭            & load        & 既存のデータを呼び出す           & \EscVerb{loadAccount}       \\ \hline
+先頭            & input       & 既存のデータを入力する           & \EscVerb{inputAccount}       \\ \hline
+先頭            & import      & 既存のデータを読み出す           & \EscVerb{importAccount}       \\ \hline
+先頭            & read        & 既存のデータを読み込む           & \EscVerb{readAccount}       \\ \hline
+先頭            & restore     & 既存のデータを復元する           & \EscVerb{restoreAccount}      \\ \hline
+先頭            & fetch       & 既存のデータを取得する           & \EscVerb{fetchAccount}       \\ \hline
+先頭            & check [3]   & 対象のデータがある条件に適合するか確認する & \EscVerb{checkAccount}       \\ \hline
+先頭            & test        & 対象のデータがあるルールを満たすか確認する & \EscVerb{testAccount}       \\ \hline
+先頭            & validate    & 対象のデータが正しいか検証する       & \EscVerb{validateAccount}    \\ \hline
+先頭            & compare     & 対象のデータを比較する           & \EscVerb{compareAccount}      \\ \hline
+先頭            & verify      & 対象のデータを照合する           & \EscVerb{verifyAccount}       \\ \hline
+先頭            & allow       & 対象に利用権限を与える           & \EscVerb{allowAccount}       \\ \hline
+先頭            & disallow    & 対象に利用権限を与えない          & \EscVerb{disallowAccount}     \\ \hline
+先頭            & accept      & 対象を承認する               & \EscVerb{acceptAccount}       \\ \hline
+先頭            & deny        & 対象を否認する               & \EscVerb{denyAccount}       \\ \hline
+先頭            & refuse      & 申請や要求を辞退する            & \EscVerb{refuseAccount}       \\ \hline
+先頭            & reject      & 申請や要求を拒否する            & \EscVerb{rejectAccount}       \\ \hline
+先頭            & grant       & 対象にある範囲の権限を与える        & \EscVerb{grantAccount}       \\ \hline
+先頭            & revoke      & 対象から権限を剥奪する           & \EscVerb{revokeAccount}       \\ \hline
+\end{longtable}
+\end{center}
+\subsubsection{命名の心得}
+\subsubsubsection{わかりやすく}
+当たり前だが、わかりやすく命名すること。これは他人のためじゃない。自分のためだ。昨日コード書いた自分と今日コード書いている自分は別人だ。
+\subsubsubsection{過不足なく}
+不足情報があると勘違いをして重大なミスにつながる。逆に情報量が多いと長くなる上、脳のメモリを占有してしまう。人間は判別できる文字列の長さに限界がある。これはすべて自分の首を占めることになる。
+\subsubsubsection{時間をかけない}
+これは単語テストや連想ゲームじゃない。プログラミングを4年もしていれば最適な単語が思いつくが、全員がそうとは限らない。そのときに無理して絞りだしたり長考するのはいい策ではない。命名は最重要事項ではあるがプログラミングの本質ではない。素直にDeepL翻訳を使うこと\footnote{最先端の深層学習を使っており、Google翻訳よりも正確な翻訳ソフト。英語の課題をこれでやってはいけない。}。
+\subsection{Githubの使い方}
 \subsubsection{専門用語}
 Githubは横文字を含め、さまざまな専門用語がある。専門用語を使えばかっこいい！とかではなく、専門用語以外で表現ができない上、説明がしにくいので書くことにする。
 \begin{itemize}
