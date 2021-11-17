@@ -16,6 +16,10 @@
 \usepackage{enumerate}
 \usepackage{ulem}
 \usepackage{epic,eepic}
+\usepackage{titlesec}
+\usepackage{lastpage}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
 
 \makeatletter
 \newcommand{\subsubsubsection}{\@startsection{paragraph}{4}{\z@}%
@@ -23,17 +27,18 @@
   {.1\Cvs \@plus.3\Cdp}%
   {\reset@font\textbf}
 }
+
 \makeatother
 \setcounter{secnumdepth}{4}
 
 \title{第62回聖光祭 技術部門 引き継ぎ書}
 \author{飼沼 隼 \\ 三枝 義啓 \and 浅井 祐一朗 \\ 矢向 俊貴 \and 李 博之 \\ 黒羽 }
-\date{2021年 10 月 9 日}
 
 \begin{document}
 
 \begin{center}
 
+\titleformat*{\section}{\gtfamily \Large}
 \newcommand{\impact}[1]{\textbf{\gtfamily #1}}
 
 \textbf {
@@ -54,6 +59,9 @@
 \clearpage
  \pagestyle{fancy}
 \lhead{\fontsize{8pt}{0pt}\selectfont 聖光祭実行委員会\\技術部門引継書 第１次中間報告}
+\lfoot{技術局}
+\rfoot{ITEC}
+\cfoot{\thepage/\pageref{LastPage}}
 \section{はじめに}
 \subsection{挨拶}
 こんばんは。第62回聖光祭技術部門長の飼沼隼\footnote{\url{60050kainuma@seiko.ac.jp}}です。この引継ぎ書では業務内容にとどまらず、細かいアドバイスや体験談も交えてできるだけこれ一枚で全てがわかるようにしていくのでぜひ熟読してください。さて、真面目な話は李が下に書いてくれていますので割愛するとして、みなさんには聖光祭を最大限楽しんでもらうべく必要なことを伝えておきたいと思います。一番大切なのは本気でやることです。僕らは初回の会議から一年半準備してきましたが、ずっと死にかけでした。61期の聖光祭は春開催で本当に大変だと思いますが、幹部全員が全速力でやらないと間に合わないですし、やりきった感皆無の聖光祭と青春になることを忠告しておきます。自分がやるだけでは全く足りないです。サボってる人にやらせるのもお互いがやり続けなければだめです。やる作業はひとつだけ、よくできるところを探して直す、これを繰り返すだけです。可能性は無限大です。期待してます！
@@ -566,7 +574,7 @@ FTPサーバにファイルを送信したり取得するときは「FTPユー�
 マップのドラッグ、ズームについては画像をMatrixを使用して移動、拡大縮小するのがよい(画像の座標や、拡大率とかを保存しておくと後々楽になり、Matrixならそれらを保存してくれるから)。描画方法はimageViewを用いる方法とcanvasを使用する新しくViewを作って用いる方法などがあるが今年はimageViewを使用した。どちらもMatrixを使用して移動等が可能。ドラッグやズーム等の検知はGestureDetectorを使って検出した。ドラッグはonScroll、ズームはonScaleで係数を取得することが可能。地図の端に到達した判定は、どこを端と定義するかによるが、今年は「画像の端がスクリーンの真ん中を超える」という判定とした。地図の端をどう定義するかは、色々な外部のサービスを参考にすると良い。慣性は余裕があるならば実装するのが良いが、少し厄介であるため無理して実装しなくてもよい。今年は慣性をonFlingで取得しTimerで動かした。また、画像の端を超えたあとや、ズームで縮小しすぎたあとに戻す処理でもTimerを使用し、滑らかな動きを実装した。\par
 マップの操作云々を調べて自分なりの実装が難しいと感じたら李のQiita\footnote{\url{https://qiita.com/Cyber_Hacnosuke/items/b2a8724218d2f4a4c3c2}}を参考にしてください。\par
 「タップした場所がどこなのか」を判別する方法は、別途、各展示、食品で色分けされた画像を元に判別する。タップしたスクリーンの座標から、画像の位置座標と拡大率を用いてタップした画像の中の座標を算出し、色分けされた画像のその座標が何色かで判別する。今年は、\verb+ #FF00XX(XX / 2 = id) +が展示、\verb+ #00FFXX(XX / 5 = id) +が食品と決め、色識別用画像を作成した。画像を作るのは自分でやったが、信頼できるなら後輩に頼むと仕事が減る。色識別用画像を作る際、拡大縮小等でボケて、想定していなかった色が検出されないよう気をつけること。\par
-詳細画面のピンの座標はデータベースに0~1の範囲で、x,y座標それぞれの割合を記録しておき、表示する際その値から画像用の座標を計算しピンを指してる。この0~1の範囲の座標を計算するにあたり、スプレッドシートを使って計算するのがもっとも効率的と思われる。参考程度に今年使った自分用スプシを\footnote{\url{https://docs.google.com/spreadsheets/d/17zJ-jk277xVDzQYN9v_pF8ZatII3OxnX1dlLHyxBX6o/edit#gid=808228009}}置いておく。\par
+詳細画面のピンの座標はデータベースに0~1の範囲で、x,y座標それぞれの割合を記録しておき、表示する際その値から画像用の座標を計算しピンを指してる。この0~1の範囲の座標を計算するにあたり、スプレッドシートを使って計算するのがもっとも効率的と思われる。参考程度に今年使った自分用スプシを\footnote{\url{https://bit.ly/3cm73ig}}置いておく。\par
 最後に、地図を表示するには、大きな地図の画像を用意する必要があるが、その際に重すぎて落ちないよう気をつけること。\par
  \subsubsubsection{タイムテーブル}
  1イベントあたりのレイアウトを別途xmlで記述しておく。\par
