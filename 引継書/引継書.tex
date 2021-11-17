@@ -20,6 +20,8 @@
 \usepackage{lastpage}
 \usepackage[dvipdfmx]{hyperref}
 \usepackage{pxjahyper}
+\usepackage{array}
+\usepackage{fvextra}
 
 \makeatletter
 \newcommand{\subsubsubsection}{\@startsection{paragraph}{4}{\z@}%
@@ -1266,16 +1268,19 @@ B$\cdots$番号（0~5）0が代表者。
 \section{APPENDIX}
 \subsection{【最重要】命名規則}
 命名規則まもらないやつはこの部門にいる価値ない。
-\subsubsection{三つの方式}\begin{table}[h]
-\begin{tabular}{|c|ccc|}
+\subsubsection{三つの方式}
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|c||ccc|}
 \hline
 \textbf{命名規則方式} & \multicolumn{1}{c|}{\textbf{キャメルケース}} & \multicolumn{1}{c|}{\textbf{スネークケース}}  & \textbf{ケバブケース} \\ \hline
 \textbf{単語の1文字目} & \multicolumn{1}{c|}{大文字} & \multicolumn{2}{c|}{小文字} \\ \hline
-\textbf{単語の区切れ} & \multicolumn{1}{c|}{|null|}           & \multicolumn{1}{c|}{\verb{_}（アンダーバー）}      & \verb{-}（ハイフン）       \\ \hline
+\textbf{単語の区切れ} & \multicolumn{1}{c|}{\EscVerb{null}}           & \multicolumn{1}{c|}{\EscVerb{_}（アンダーバー）}      & \EscVerb{-}（ハイフン）       \\ \hline
 \textbf{1文字目}    & \multicolumn{3}{c|}{小文字}                            \\ \hline
 \textbf{それ以外の文字} & \multicolumn{3}{c|}{小文字}                            \\ \hline
-\textbf{例}      & \multicolumn{1}{c|}{thisIsExample}    & \multicolumn{1}{c|}{this\_is\_example} & this-is-example \\ \hline
+\textbf{例}      & \multicolumn{1}{c|}{\EscVerb{thisIsExample}}    & \multicolumn{1}{c|}{\EscVerb{this_is_example}} & \EscVerb{this-is-example} \\ \hline
 \end{tabular}
+\end{center}
 \end{table}\subsection{Githubの使い方}
 \subsubsection{専門用語}
 Githubは横文字を含め、さまざまな専門用語がある。専門用語を使えばかっこいい！とかではなく、専門用語以外で表現ができない上、説明がしにくいので書くことにする。
