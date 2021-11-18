@@ -19,6 +19,8 @@
 \usepackage{lastpage}
 \usepackage[dvipdfmx]{hyperref}
 \usepackage{pxjahyper}
+\usepackage{calc}
+\usepackage{ifthen}
 \hypersetup{
  bookmarks=false,
  colorlinks=true,
@@ -41,12 +43,28 @@
 \setcounter{secnumdepth}{4}
 \setcounter{secnumdepth}{4}
 
-\title{第62回聖光祭 技術部門 引き継ぎ書}
-\author{飼沼 隼 \\ 三枝 義啓 \and 浅井 祐一朗 \\ 矢向 俊貴 \and 李 博之 \\ 黒羽 }
+\title{第62回聖光祭 技術部門 / 第36回体育祭 技術局 /\\ 第35期生徒会 技術局 引継書}
+\author{飼沼 隼\and 浅井 佑一朗\and 李 博之\and 三枝 義啓\and 矢向 俊貴\and 満田 真矢\and 黒羽 柊哉\and 鬼頭 健太\and 向山 雄登}
 
 \newcommand{\impact}[1]{\textbf{\gtfamily #1}}
 \newcommand{\mail}[2]{\href{#2}{#1}}
 \newcommand{\link}[2]{\href{#2}{#1}}
+
+\makeatletter
+\newlength{\wtarget}
+\newlength{\wactual}
+\newcommand*{\kintou}[2]{\kintouwidth{#1 zw}{#2}}
+\newcommand*{\kintouwidth}[2]{%
+    \setlength{\wtarget}{#1}%
+    \settowidth{\wactual}{#2}%
+    \ifthenelse{\lengthtest{\wtarget < \wactual}}{%
+        \setlength{\wtarget}{1pt * \real{\strip@pt\wtarget} / \real{\strip@pt\wactual}}%
+        \scalebox{\strip@pt\wtarget}[1]{#2}%
+    }{%
+        \makebox[\wtarget][s]{#2}%
+    }%
+}
+\makeatother
 
 \begin{document}
 
@@ -67,6 +85,31 @@
 \fontsize{12pt}{20pt}\selectfont \scalebox{1}[1.1]{総括篇}\\
 }
 \end{center}
+
+\pagebreak
+\maketitle
+\vspace{5mm}
+
+\begin{tabular}{ll}
+\kintouwidth{9cm}{第六十三回聖光祭技術部門幹部推薦内定}
+& \kintouwidth{2cm}{村山 太朗}　殿\\ & \kintouwidth{2cm}{紙田　大樹}　殿\\ & \kintouwidth{2cm}{河原 寿玖}　殿\\ \multicolumn{1}{r}{（動画局長）}&\kintouwidth{2cm}{浪越 秋帆}　殿\\\multicolumn{1}{r}{（デザイン局長）}& \kintouwidth{2cm}{杉山 朋洋}　殿\\\multicolumn{1}{r}{（アプリ局長）}& \kintouwidth{2cm}{鈴木 翔颯}　殿\\\multicolumn{1}{r}{（パンフ局長）}& \kintouwidth{2cm}{横溝 大介}　殿\\
+\kintouwidth{9cm}{第六十三回聖光祭実行委員会委員長内定}
+& \kintouwidth{2cm}{岩崎 詠司}　殿\\
+\kintouwidth{9cm}{第三十七回体育祭実行委員会委員長内定}
+& \kintouwidth{2cm}{小泉 裕雅}　殿\\
+\kintouwidth{9cm}{第三十六期生徒会　会長内定}
+& \kintouwidth{2cm}{近藤 亮介}　殿\\
+\kintouwidth{9cm}{　　　　　　　　副会長内定}
+& \kintouwidth{2cm}{合六 翔}　殿\\
+& \kintouwidth{2cm}{加賀美　敬介}　殿\\
+\kintouwidth{9cm}{第三十六期事務局局長内定}
+& \kintouwidth{2cm}{武谷　侑弥}　殿\\
+\kintouwidth{9cm}{第三十六期会計局局長内定}
+& \kintouwidth{2cm}{綾部 大朗}　殿\\
+\kintouwidth{9cm}{第三十六期監査委員会委員長内定}
+& \kintouwidth{2cm}{間 海翔}　殿\\
+\end{tabular}
+
 
 \pagebreak
 \setcounter{tocdepth}{5}
