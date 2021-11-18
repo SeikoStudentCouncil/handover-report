@@ -6,7 +6,6 @@
 \usepackage{fancyhdr}
 \usepackage[dvipdfmx]{graphicx}
 \usepackage[dvipdfmx]{color}
-\usepackage{color}
 \usepackage{url}
 \usepackage{ascmac}
 \usepackage {fancybox}
@@ -25,7 +24,7 @@
  colorlinks=true,
  linkcolor=black,
  citecolor=blue,
- filecolor=blue,
+ filecolor=black,
  urlcolor=blue
 }
 \usepackage{array}
@@ -45,12 +44,16 @@
 \title{第62回聖光祭 技術部門 引き継ぎ書}
 \author{飼沼 隼 \\ 三枝 義啓 \and 浅井 祐一朗 \\ 矢向 俊貴 \and 李 博之 \\ 黒羽 }
 
+\newcommand{\impact}[1]{\textbf{\gtfamily #1}}
+\newcommand{\mail}[2]{\href{#2}{#1}}
+\newcommand{\link}[2]{\href{#2}{#1}}
+
 \begin{document}
 
 \begin{center}
 
 \titleformat*{\section}{\gtfamily \Large}
-\newcommand{\impact}[1]{\textbf{\gtfamily #1}}
+
 
 \textbf {
 \vspace{8.5cm}
@@ -64,6 +67,7 @@
 \fontsize{12pt}{20pt}\selectfont \scalebox{1}[1.1]{総括篇}\\
 }
 \end{center}
+
 \pagebreak
 \setcounter{tocdepth}{5}
 \tableofcontents
@@ -75,14 +79,14 @@
 \cfoot{\thepage/\pageref{LastPage}}
 \section{はじめに}
 \subsection{挨拶}
-こんばんは。第62回聖光祭技術部門長の飼沼隼\footnote{\url{60050kainuma@seiko.ac.jp}}です。この引継ぎ書では業務内容にとどまらず、細かいアドバイスや体験談も交えてできるだけこれ一枚で全てがわかるようにしていくのでぜひ熟読してください。さて、真面目な話は李が下に書いてくれていますので割愛するとして、みなさんには聖光祭を最大限楽しんでもらうべく必要なことを伝えておきたいと思います。一番大切なのは本気でやることです。僕らは初回の会議から一年半準備してきましたが、ずっと死にかけでした。61期の聖光祭は春開催で本当に大変だと思いますが、幹部全員が全速力でやらないと間に合わないですし、やりきった感皆無の聖光祭と青春になることを忠告しておきます。自分がやるだけでは全く足りないです。サボってる人にやらせるのもお互いがやり続けなければだめです。やる作業はひとつだけ、よくできるところを探して直す、これを繰り返すだけです。可能性は無限大です。期待してます！
+こんばんは。第62回聖光祭技術部門長の\mail{飼沼隼}{60050kainuma@seiko.ac.jp} です。この引継ぎ書では業務内容にとどまらず、細かいアドバイスや体験談も交えてできるだけこれ一枚で全てがわかるようにしていくのでぜひ熟読してください。さて、真面目な話は李が下に書いてくれていますので割愛するとして、みなさんには聖光祭を最大限楽しんでもらうべく必要なことを伝えておきたいと思います。一番大切なのは本気でやることです。僕らは初回の会議から一年半準備してきましたが、ずっと死にかけでした。61期の聖光祭は春開催で本当に大変だと思いますが、幹部全員が全速力でやらないと間に合わないですし、やりきった感皆無の聖光祭と青春になることを忠告しておきます。自分がやるだけでは全く足りないです。サボってる人にやらせるのもお互いがやり続けなければだめです。やる作業はひとつだけ、よくできるところを探して直す、これを繰り返すだけです。可能性は無限大です。期待してます！
 \\
 
-これをお読みの方、こんにちは。第62回聖光祭技術副部門長の李博之\footnote{\url{60227li@seiko.ac.jp}}といいます。僕が代表してこの挨拶を書かせていただいていますが、もちろん本書はいろんな人が書いています。さて、本書は2021年10月2日〜同4日に開催された第62回聖光祭において技術部門がどのようなことを行なってきたか、そしてその反省をまとめた引き継ぎ書です。技術部門は他の部門と違い、毎回同じことをする部門ではありません。個人のスキルや人材の量と質に大きく作用されます。個人的にはみなさんができる範囲でベストを尽くして欲しいです。僕はこの時の聖光祭でアプリ局長、HP局長、副部門長などを兼任しており、アプリ局iOS班のリードプログラマでした。また、QRコードシステムと統一シフトを個人的に担当していました。忙しいことこの上ないです。そうゆう観点では人事もかなり重要になります。多忙なひとをできるだけ作らないようにしましょう。その人が足を引っ張ることになります。自分語りはこのくらいにしてそろそろ本題に移ろうと思います。この引き継ぎ書がどのくらい続くのかはわかりませんが、後輩の皆さんには絶大な期待と信頼を寄せています。この部門を仲間とともに立ち上げた身としてはできるだけみなさんの後悔がないようにすべてを終え、次に引き継いでもらいたいです。頑張って下さい。
+これをお読みの方、こんにちは。第62回聖光祭技術副部門長の\mail{李博之}{60227li@seiko.ac.jp}といいます。僕が代表してこの挨拶を書かせていただいていますが、もちろん本書はいろんな人が書いています。さて、本書は2021年10月2日〜同4日に開催された第62回聖光祭において技術部門がどのようなことを行なってきたか、そしてその反省をまとめた引き継ぎ書です。技術部門は他の部門と違い、毎回同じことをする部門ではありません。個人のスキルや人材の量と質に大きく作用されます。個人的にはみなさんができる範囲でベストを尽くして欲しいです。僕はこの時の聖光祭でアプリ局長、HP局長、副部門長などを兼任しており、アプリ局iOS班のリードプログラマでした。また、QRコードシステムと統一シフトを個人的に担当していました。忙しいことこの上ないです。そうゆう観点では人事もかなり重要になります。多忙なひとをできるだけ作らないようにしましょう。その人が足を引っ張ることになります。自分語りはこのくらいにしてそろそろ本題に移ろうと思います。この引き継ぎ書がどのくらい続くのかはわかりませんが、後輩の皆さんには絶大な期待と信頼を寄せています。この部門を仲間とともに立ち上げた身としてはできるだけみなさんの後悔がないようにすべてを終え、次に引き継いでもらいたいです。頑張って下さい。
 \subsection{本書の取り扱い}
 この引き継ぎ書は技術部門及び技術局発足年に書かれたものであり、基本的なことが多く乗っています。ですので、この引き継ぎ書は引き継ぐことをおすすめします。その年々によって修正や改変、追加などがあれば\TeX ファイルを直接編集するか、それを訂正する形で引き継ぎ書を書くのがいいと思います。また、その年あったことを体験談として書くのもいいと思うので別途準備した方が良さそうです。ですが、この引き継ぎ書で全てがわかる状態にするのであればリンクを貼り付けたりするのがいいと思います。
 \subsection{Githubと情報公開}
-今年から技術部門及び技術局でGithubOrganizationを運営し、全てのコードをGithubで管理することになりました。プログラマにとってコード整理やバージョン管理は重要な課題であり、聖光祭実行委員会と生徒会の透明化のため情報公開は必要だと考えています。Githubの使い方はAPPENDIXにて解説しています。管理者権限等が引き継がれなかった場合、先代の管理者または \url{60227li@seiko.ac.jp}までご連絡ください。
+今年から技術部門及び技術局でGitHubOrganizationを運営し、全てのコードをGithubで管理することになりました。プログラマにとってコード整理やバージョン管理は重要な課題であり、聖光祭実行委員会と生徒会の透明化のため情報公開は必要だと考えています。Githubの使い方はAPPENDIXにて解説しています。管理者権限等が引き継がれなかった場合、先代の管理者または {\ttfamily 60227li@seiko.ac.jp}までご連絡ください。
 \subsection{開催時期}
 今年2021年は新型コロナウイルス感染症（COVID-19）により開催時期は2021年10月2日〜同4日になりました。準備期間が長く、また夏休みを挟んだということを考慮して以下の引き継ぎをお読みください。
 
@@ -91,19 +95,19 @@
 \subsubsection{経緯}
 2013年、非公式のIT部門が執行部直属に非公式で爆誕。
 
-2014年、外務部門総合技術研究所が誕生。初代所長 綱井先輩\footnote{\url{53127tsunai@seiko.ac.jp}}。
+2014年、外務部門総合技術研究所が誕生。初代所長 \mail{綱井先輩}{53127tsunai@seiko.ac.jp}。
 
 2015年、第二代。少なくとも動画局は存在した。広報委員長\footnote{Twitter: \url{twitter.com/reifujii}}が在籍しており、機材を揃えていたと聞きます。
 
-2016年、第三代。動画作成局とアプリ局の二局が存在した。所長 光藤先輩\footnote{\url{55201mitsudo@seiko.ac.jp}}、動画作成局長は生徒会長の瓜坂先輩\footnote{\url{55031urisaka@seiko.ac.jp}}。
+2016年、第三代。動画作成局とアプリ局の二局が存在した。所長\mail{光藤先輩}{55201mitsudo@seiko.ac.jp}、動画作成局長は生徒会長の\mail{瓜坂先輩}{55031urisaka@seiko.ac.jp}。
 
 2017年、第四代。この頃の動画局は後者のCGモデル化などを行っていたが、資料は残っていないと思った方がいい。
 
-2018年、第五代。少なくともこの頃には革命が起きていた。傘下に動画局/アプリ局/HP局が存在。総技研は聖光祭の組織だったが、生徒会のサマースクールに際し動画を作るなど、非公式で活動していた。所長兼動画局長 香山先輩\footnote{\url{57084koyama@seiko.ac.jp}. 神。センスと動画のスキルはさることながら、後輩の代になっても差し入れをくれる神。元吹奏楽部Sax}、副所長 新城先輩\footnote{\url{57011araki@seiko.ac.jp}. 神。62回の聖光祭にもいらっしゃった。元コンピュータ部サブチーフ}の二人がピンクT。動画局は香山先輩、新城先輩、平野先輩\footnote{\url{57174hirano@seiko.ac.jp}. 神。社畜で、動画の担当数が異常。元コンピュータ部兼展示団体「総合技術研究所」チーフ} の三人＋僕ら60期という感じでした。アプリ局長 [WIP...]
+2018年、第五代。少なくともこの頃には革命が起きていた。傘下に動画局/アプリ局/HP局が存在。総技研は聖光祭の組織だったが、生徒会のサマースクールに際し動画を作るなど、非公式で活動していた。所長兼動画局長 \mail{香山先輩}{57084koyama@seiko.ac.jp}\footnote{神。センスと動画のスキルはさることながら、後輩の代になっても差し入れをくれる神。元吹奏楽部Sax}、副所長 \mail{新城先輩}{57011araki@seiko.ac.jp}\footnote{神。62回の聖光祭にもいらっしゃった。元コンピュータ部サブチーフ}の二人がピンクT。動画局は香山先輩、新城先輩、\mail{平野先輩}{57174hirano@seiko.ac.jp}\footnote{ 神。社畜で、動画の担当数が異常。元コンピュータ部兼展示団体「総合技術研究所」チーフ} の三人＋僕ら60期という感じでした。アプリ局長 [WIP...]
 
 2019年、第六代。58期は前年あまり働いている人がいないのにトップという感じで、カオス。パンフ局はてんてこまいで徹夜続きでした。
 
-2020年、第七代。聖光祭は一般開催では行われなかったが、優秀なエンジニアの所長 沖田先輩\footnote{\url{59039okita@seiko.ac.jp}}や超天才的なスキルとセンスを持ったパンフ局長兼デザイン副課長 柴田先輩\footnote{\url{59091shibataseiko.ac.jp}. 神。元弦オケVc.}など優秀な人材がいた。パンフ副局長兼総技研副所長兼動画局長は飼沼、アプリ局長（ただしみなし幹部）は李、デザイン課長は鈴木瑠之輔\footnote{\url{60111suzuki@seiko.ac.jp}}。
+2020年、第七代。聖光祭は一般開催では行われなかったが、優秀なエンジニアの所長 \mail{沖田先輩}{59039okita@seiko.ac.jp}や超天才的なスキルとセンスを持ったパンフ局長兼デザイン副課長\mail{柴田先輩}{59091shibataseiko.ac.jp}\footnote{神。元弦オケVc.}など優秀な人材がいた。パンフ副局長兼総技研副所長兼動画局長は飼沼、アプリ局長（ただしみなし幹部）は李、デザイン課長は\mail{鈴木瑠之輔}{60111suzuki@seiko.ac.jp}。
 
 2021年、第八代。部門独立に成功。
 
@@ -320,9 +324,9 @@
  \begin{itemize}
   \item iPad (第八世代)\\
   20台を学校が所有している。\\
-  使用する際は情報科の山口ゆり先生\footnote{\url{yuri.yamaguchi@seiko.ac.jp}}に頼むこと。
+  使用する際は情報科の\mail{山口ゆり先生}{yuri.yamaguchi@seiko.ac.jp}に頼むこと。
   \item RODE Wireless Go\UTF{2161}\\
-  ワイヤレスマイク。送信機二つと、受信機一つ、3.5mmイヤホンジャックケーブルが含まれる。使用する際は事務局長の野口先生\footnote{\url{noguchi@seiko.ac.jp}}まであらかじめメールで連絡し、事務室に取りに行くこと。返却する際もあらかじめメールが必要。
+  ワイヤレスマイク。送信機二つと、受信機一つ、3.5mmイヤホンジャックケーブルが含まれる。使用する際は事務局長の\mail{野口先生}{noguchi@seiko.ac.jp}まであらかじめメールで連絡し、事務室に取りに行くこと。返却する際もあらかじめメールが必要。
  \end{itemize}
 
  \subsection{ソフト引継}
@@ -390,19 +394,20 @@
 
 
 \subsubsection{食品部門}
+電子決済関係でサポートしてあげてほしい。iPadやSquareの使い方を教えるなど。
 
 
 \subsubsection{放送部門}
-
+放送部門長と仲良くなれば、聖光祭中に疲れが溜まったときに放送室に駆け込めるので、心がとても落ち着きます。
 
 \subsubsection{美化部門}
 
 
 \subsubsection{展示部門}
-
+展示団体の入場管理システムをやるのであれば、お世話になるだろう。
 
 \subsubsection{会計部門}
-
+電子決済関係でサポートしてあげてほしい。電子決済の手数料を伝え忘れないこと。
 
 \subsubsection{管理部門}
 
@@ -509,13 +514,13 @@ FTPサーバにファイルを送信したり取得するときは「FTPユー�
  \subsection{Tips（コーディング上の注意・小技）}
  \subsubsection{positionは使うな}
  positionはcssでオブジェクトの対外関係を設定できるパラメータである。が、これは書くな。領域が表示されないときに適当にいじってると階層関係がぐっちゃぐっちゃになる。また、position: absolute;を設定しないとできない、領域を重ねる必要があるUIをデザインしないこと。
+
  
  \subsubsection{JavascriptでUIを構成するな}
  Javascriptを使うことによって画面の大きさを取得し、それを踏まえて数値を設定できるのは確かだ。しかし、cssの適応からjsが動き出すまでかなりタイムラグがあるのでユーザー視点では画面の表示後、少しカクツクように見える。また、ぱっと見なのをしているか−−−具体的には何をどこに配置してるかがわかりずらい。じゃあどうすればいいのか。答えは簡単でjsを使わなければいけないほど複雑なUIを実装するのは−−−またはUIを実装するのにjsを使わないといけないほどのスキルしかないのであればこの仕事はあなたには無理だ。ということだ。もちろんスクロール位置を変えたり、classをトリガーで付与したり、時間差で剥奪するのはjsでしかできない上、視覚的に何をしているのかわかるのでそこでjsを使ってもらって構わない。
  
 \subsubsection{idをcssで使うな}
 これ読んでる人の中ではidは固有、classは種類と習った人が多いと思う。しかし、−−−これはあくまで僕の意見なのだが−−−idはjsに使い、classはcssに使うというふうに設定したほうがいいと思う。現に多くの企業のコーディング要項をみるとそのようになっている。しかし、jsで複数の要素に対して操作を行いたいという場合は結構ある。なのでjsでcssを使わざるを得ないのだ。ただ、idをjsで
- 
  
  \newpage
  \section{アプリ局}
@@ -593,9 +598,9 @@ FTPサーバにファイルを送信したり取得するときは「FTPユー�
  次に、各機能の詳細について書いていく。\par
  タブで階数ごとに違うマップを出すようにする。タブレイアウトはここをみればわかると思うので詳細は省略する。\par
 マップのドラッグ、ズームについては画像をMatrixを使用して移動、拡大縮小するのがよい(画像の座標や、拡大率とかを保存しておくと後々楽になり、Matrixならそれらを保存してくれるから)。描画方法はimageViewを用いる方法とcanvasを使用する新しくViewを作って用いる方法などがあるが今年はimageViewを使用した。どちらもMatrixを使用して移動等が可能。ドラッグやズーム等の検知はGestureDetectorを使って検出した。ドラッグはonScroll、ズームはonScaleで係数を取得することが可能。地図の端に到達した判定は、どこを端と定義するかによるが、今年は「画像の端がスクリーンの真ん中を超える」という判定とした。地図の端をどう定義するかは、色々な外部のサービスを参考にすると良い。慣性は余裕があるならば実装するのが良いが、少し厄介であるため無理して実装しなくてもよい。今年は慣性をonFlingで取得しTimerで動かした。また、画像の端を超えたあとや、ズームで縮小しすぎたあとに戻す処理でもTimerを使用し、滑らかな動きを実装した。\par
-マップの操作云々を調べて自分なりの実装が難しいと感じたら李のQiita\footnote{\url{https://qiita.com/Cyber_Hacnosuke/items/b2a8724218d2f4a4c3c2}}を参考にしてください。\par
+マップの操作云々を調べて自分なりの実装が難しいと感じたら\link{李のQiita}{https://qiita.com/Cyber_Hacnosuke/items/b2a8724218d2f4a4c3c2}を参考にしてください。\par
 「タップした場所がどこなのか」を判別する方法は、別途、各展示、食品で色分けされた画像を元に判別する。タップしたスクリーンの座標から、画像の位置座標と拡大率を用いてタップした画像の中の座標を算出し、色分けされた画像のその座標が何色かで判別する。今年は、\verb+ #FF00XX(XX / 2 = id) +が展示、\verb+ #00FFXX(XX / 5 = id) +が食品と決め、色識別用画像を作成した。画像を作るのは自分でやったが、信頼できるなら後輩に頼むと仕事が減る。色識別用画像を作る際、拡大縮小等でボケて、想定していなかった色が検出されないよう気をつけること。\par
-詳細画面のピンの座標はデータベースに0~1の範囲で、x,y座標それぞれの割合を記録しておき、表示する際その値から画像用の座標を計算しピンを指してる。この0~1の範囲の座標を計算するにあたり、スプレッドシートを使って計算するのがもっとも効率的と思われる。参考程度に今年使った自分用スプシを\footnote{\url{https://bit.ly/3cm73ig}}置いておく。\par
+詳細画面のピンの座標はデータベースに0~1の範囲で、x,y座標それぞれの割合を記録しておき、表示する際その値から画像用の座標を計算しピンを指してる。この0~1の範囲の座標を計算するにあたり、スプレッドシートを使って計算するのがもっとも効率的と思われる。参考程度に今年使った\link{自分用スプシ}{https://bit.ly/3cm73ig}を置いておく。\par
 最後に、地図を表示するには、大きな地図の画像を用意する必要があるが、その際に重すぎて落ちないよう気をつけること。\par
  \subsubsubsection{タイムテーブル}
  1イベントあたりのレイアウトを別途xmlで記述しておく。\par
@@ -620,7 +625,7 @@ Viewの生成はここを参照することを推奨する。
  Android(というかGoogle)は画面の描画が遅れフリーズなどをしているようにユーザーに感じられてしまうのを防ぐため、通信処理をメインスレッドで行うとNetworkOnMainThreadExceptionという例外を投げるようになっている。\par
  つまり通信処理はマルチスレッドで行わざるを得ない(こう書いてはいるが通信は別スレッドで行うのがセオリーなのでこれはおかしいことではない)。\par
  JavaやKotlinでマルチスレッド処理を行うには、Threadクラス等を継承もしくはRunableインターフェースを実装したclassのrun()メソッドをオーバーライドし、その中にマルチスレッドで行いたい処理(今回なら通信処理)を書くことになる。\par
- とはいっても今回出してもらったプログラムを見る限り半年でこれを自力で行えるレベルに到達するのは(勉強などを考えると)かなり厳しいと思われるのでFragmentと連携して通信内容を表示する雛形を載せておく\footnote{\url{https://qiita.com/Jellyfish4594/private/9709ad41d0828f917601}}。
+ とはいっても今回出してもらったプログラムを見る限り半年でこれを自力で行えるレベルに到達するのは(勉強などを考えると)かなり厳しいと思われるのでFragmentと連携して通信内容を表示する雛形を載せておく{\ttfamily \url{https://qiita.com/Jellyfish4594/private/9709ad41d0828f917601}}。
  \subsubsubsection{RecyclerView}
  \begin{enumerate}
  \item list\_item.xml
@@ -630,15 +635,15 @@ Viewの生成はここを参照することを推奨する。
  \item 表示する
  \end{enumerate}
  の順に作れば5~10分で作り終えることができる。\par
- ここ\footnote{\url{https://qiita.com/Todate/items/297bc3e4d0f3d2477ed3}}の内容をほぼコピペで使用することができるが、Adapterのoverrideメソッドの引数に一部が本来はあっていはいけない?がついているため、そこだけエラーが出る(もとのメソッドの引数がnull許容型ではないからエラーとなる)。
+ \link{ここ}{https://qiita.com/Todate/items/297bc3e4d0f3d2477ed3}の内容をほぼコピペで使用することができるが、Adapterのoverrideメソッドの引数に一部が本来はあっていはいけない?がついているため、そこだけエラーが出る(もとのメソッドの引数がnull許容型ではないからエラーとなる)。
  \subsubsubsection{QRコード}
  そこそこに難易度が高い。\par
- これ\footnote{\url{https://github.com/SeikoStudentCouncil/SeikoFestaAndroidApp62nd/blob/master/app/src/main/java/jp/ac/seiko/itec/seikofestaapp62nd/fragments/treasurehunt/QRCodeFragment.kt}}をコピペするだけで大部分を完成させることができるが、下記のようにGradleに書かなければならないので注意(ZXingを入れる、OkHttp3と同様にプライバシーポリシーにも書く)。\par
+ \link{これ}{https://github.com/SeikoStudentCouncil/SeikoFestaAndroidApp62nd/blob/master/app/src/main/java/jp/ac/seiko/itec/seikofestaapp62nd/fragments/treasurehunt/QRCodeFragment.kt}をコピペするだけで大部分を完成させることができるが、下記のようにGradleに書かなければならないので注意(ZXingを入れる、OkHttp3と同様にプライバシーポリシーにも書く)。\par
  implementation 'com.journeyapps:zxing-android-embedded:3.6.0'
  \subsubsubsection{Fragmentを一部に表示}
  RelativeLayoutを配置しそれをFragmentContainerにすることでできる。
  \subsubsubsection{GoogleMapを置く}
- ここ\footnote{\url{https://developers.google.com/maps/documentation/android-sdk/start?hl=ja}}に従う。
+ \link{ここ}{https://developers.google.com/maps/documentation/android-sdk/start?hl=ja}に従う。
 \subsubsection{リリースについて}
 \begin{itembox}[l]{Google開発者用アカウント}
 \color{red}
@@ -717,70 +722,41 @@ DatabaseOpenHelperは1つまでしか作れない(おそらく)。
 個人的にこの名前は良くないと思う。
 Helperとは書くけれどこれを使う以外の方法でDBにアクセスする現実的な方法はないと思われる。補助的な印象を受けるがしっかり主軸として運用することになる。
 \subsubsubsection{ImageViewにdrawableの画像を名前で指定して表示する}
-知らないと停滞することになる。矢向の記事\footnote{\url{https://qiita.com/Jellyfish4594/items/2ddf3d6f1bcef66fedf2}}(ほぼ李のノウハウ、最も李でなくても広く一般的に使われている方法だが意外と調べても出てこない)を参照のこと。
+知らないと停滞することになる。\link{矢向の記事}{https://qiita.com/Jellyfish4594/items/2ddf3d6f1bcef66fedf2}(ほぼ李のノウハウ、最も李でなくても広く一般的に使われている方法だが意外と調べても出てこない)を参照のこと。
 \subsubsection{おまけ2:矢向のブラウザのブックマークのAndroidフォルダにあるリンク}
 コピペしていくらでも使い回せるものなどが多いので見ておいて損はないかもしれない。
 (一部ただのGoogleドライブのリンクとかは消してある)
 \begin{itemize}
-\item お問い合わせ - Play Console ヘルプ\\
-\url{https://support.google.com/googleplay/android-developer/gethelp?hl=ja&visit_id=637678981545128687-2809304254&rd=1#}
-\item Android開発で困った時の問い合わせ先 | アプリ開発のお勉強！　アプリリ\\
-\url{https://bit.ly/3on3bmL}
-\item Shrinking your app with R8 (Android Dev Summit '19) - YouTube\footnote{\url{}{}}\\
-\url{https://www.youtube.com/watch?v=uQ_yK8kRCaA}
-\item Androidアプリの初回リリースを手動で公開する方法に関するメモ - AppSeedのアプリ開発ブログ\\
-\url{https://develop.hateblo.jp/entry/google-play-manual-release}
-\item Y.A.M の 雑記帳: 3月 2014\\
-\url{http://y-anz-m.blogspot.com/2014/03/}
-\item 大容量のビットマップを効率的に読み込む  |  Android デベロッパー  |  Android Developers\\
-\url{https://developer.android.com/topic/performance/graphics/load-bitmap?hl=ja}
-\item コピペしてすぐ使えるアラートダイアログ集 - Qiita\\
-\url{https://qiita.com/suzukihr/items/8973527ebb8bb35f6bb8}
-\item 【Android】 AppCompatActivity の ActionBar のタイトルを動的に変える: スタジオプリズム\UTF{3427}3ブログ\\
-\url{http://s-prism3.seesaa.net/article/438905821.html}
-\item 【Android】カスタムダイアログを作った。: Java知識ゼロ人間の生活\\
-\url{http://stren-blog.seesaa.net/article/367038846.html}
-\item アプリバーを使用する  |  Android デベロッパー  |  Android Developers\\
-\url{https://developer.android.com/guide/fragments/appbar?hl=ja}
-\item AndroidXに対応しようとしてハマった話 | 株式会社ブリッツゲート\\
-\url{https://blitzgate.co.jp/blog/2350/}
-\item 【Android】XMLファイルからViewを生成する - プログラマーのメモ書き\\
-\url{https://bit.ly/3wDqZq9}
-\item AndroidでSqliteデータベースを操作する - Kotlin編 - Qiita\\
-\url{https://qiita.com/NaoSekig/items/0d95d631378040c1961a}
-\item Android：TextView・Button等に角丸や枠をつける - asky\\
-\url{https://asky.hatenablog.com/entry/2016/05/04/194303}
-\item 【Android】selecterを使ってみる - It’s now or never\\
-\url{https://inon29.hateblo.jp/entry/2014/01/13/184153}
-\item GASをWeb公開して実行(doPostとdoGet) | アンクルエンジニアの気づき\\
-\url{https://uncle-atsushi.com/gas_first-execute_dopost-doget/}
-\item Android アプリ公開時に必要な画像リソースをサックっと用意する手順まとめ｜itog｜note\\
-\url{https://note.com/itog/n/n5253e8d28d2d}
-\item Android用画像読み込みライブラリ、Glideを使ってみよう！ | 株式会社ヌーラボ(Nulab inc.)\\
-\url{https://nulab.com/ja/blog/nulab/android-library-glide/}
-\item 【Kotlin】 Zxing QRコードリーダーをカスタマイズ - Qiita\\
-\url{https://qiita.com/Mosea/items/e9dae626713fe9950734}
-\item 【コピペで作る】kotlin QRコード導入手順5ステップ\\
-\url{https://shoheohtani.blogspot.com/2019/01/kotlin-qrcode-how-to.html}
-\item テキストから読み取った画像ファイル名を表示したいです。 - Yahoo!知恵袋\\
-\url{https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q11153402421}
-\item KotlinでAndroidのカメラ機能を利用する - Qiita\\
-\url{https://qiita.com/naoi/items/04e44308221f6eb73024}
-\item KotlinでGoogle Sheets API v4を使う | キャスレーコンサルティング株式会社\\
-\url{https://www.casleyconsulting.co.jp/blog/engineer/4798/}
-\item ビルド環境の設定
-\item 【Android】Fragmentを使うときのコツとか色々 - Qiita\\
-\url{https://docs.kii.com/ja/samples/push-notifications/push-notifications-android-fcm/configure-ide/}
-\item 【Kotlin】Bundleを使ったFragment間の値渡し - Qiita\\
-\url{https://qiita.com/HideMatsu/items/ddf640899cbe1b2027ed}
-\item Android はじめてのFragment - Qiita\\
-\url{https://qiita.com/orimomo/items/0472a52f90d14bef0c89}
-\item 文字列リソース  |  Android デベロッパー  |  Android Developers\\
-\url{https://developer.android.com/guide/topics/resources/string-resource?hl=ja}
-\item KotlinでRecyclerViewを使ったリスト表示を行う - Qiita\\
-\url{https://qiita.com/Todate/items/297bc3e4d0f3d2477ed3}
-\item KotlinでのFragment実装方法 生成と切り替え | Memento Mori Blog\\
-\url{https://memento-mori-blog.com/android-kotlin-fragment/}
+\item \link{お問い合わせ - Play Console ヘルプ}{https://support.google.com/googleplay/android-developer/gethelp?hl=ja\&visit\_id=637678981545128687-2809304254\&rd=1\#}
+\item \link{Android開発で困った時の問い合わせ先 | アプリ開発のお勉強！　アプリリ}{https://bit.ly/3on3bmL}
+\item \link{Shrinking your app with R8 (Android Dev Summit '19) - YouTube}{https://www.youtube.com/watch?v=uQ_yK8kRCaA}
+\item \link{Androidアプリの初回リリースを手動で公開する方法に関するメモ - AppSeedのアプリ開発ブログ}{https://develop.hateblo.jp/entry/google-play-manual-release}
+\item \link{Y.A.M の 雑記帳: 3月 2014}{http://y-anz-m.blogspot.com/2014/03/}
+\item \link{大容量のビットマップを効率的に読み込む  |  Android デベロッパー  |  Android Developers}{https://developer.android.com/topic/performance/graphics/load-bitmap?hl=ja}
+\item \link{コピペしてすぐ使えるアラートダイアログ集 - Qiita}{https://qiita.com/suzukihr/items/8973527ebb8bb35f6bb8}
+\item \link{【Android】 AppCompatActivity の ActionBar のタイトルを動的に変える: スタジオプリズム\UTF{3427}3ブログ}{http://s-prism3.seesaa.net/article/438905821.html}
+\item \link{【Android】カスタムダイアログを作った。: Java知識ゼロ人間の生活}{http://stren-blog.seesaa.net/article/367038846.html}
+\item \link{アプリバーを使用する  |  Android デベロッパー  |  Android Developers}{https://developer.android.com/guide/fragments/appbar?hl=ja}
+\item \link{AndroidXに対応しようとしてハマった話 | 株式会社ブリッツゲート}{https://blitzgate.co.jp/blog/2350/}
+\item \link{【Android】XMLファイルからViewを生成する - プログラマーのメモ書き}{https://bit.ly/3wDqZq9}
+\item \link{AndroidでSqliteデータベースを操作する - Kotlin編 - Qiita}{https://qiita.com/NaoSekig/items/0d95d631378040c1961a}
+\item \link{Android：TextView・Button等に角丸や枠をつける - asky}{https://asky.hatenablog.com/entry/2016/05/04/194303}
+\item \link{【Android】selecterを使ってみる - It’s now or never}{https://inon29.hateblo.jp/entry/2014/01/13/184153}
+\item \link{GASをWeb公開して実行(doPostとdoGet) | アンクルエンジニアの気づき}{https://uncle-atsushi.com/gas_first-execute_dopost-doget/}
+\item \link{Android アプリ公開時に必要な画像リソースをサックっと用意する手順まとめ｜itog｜note}{https://note.com/itog/n/n5253e8d28d2d}
+\item \link{Android用画像読み込みライブラリ、Glideを使ってみよう！ | 株式会社ヌーラボ(Nulab inc.)}{https://nulab.com/ja/blog/nulab/android-library-glide/}
+\item \link{【Kotlin】 Zxing QRコードリーダーをカスタマイズ - Qiita}{https://qiita.com/Mosea/items/e9dae626713fe9950734}
+\item \link{【コピペで作る】kotlin QRコード導入手順5ステップ}{https://shoheohtani.blogspot.com/2019/01/kotlin-qrcode-how-to.html}
+\item \link{テキストから読み取った画像ファイル名を表示したいです。 - Yahoo!知恵袋}{https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q11153402421}
+\item \link{KotlinでAndroidのカメラ機能を利用する - Qiita}{https://qiita.com/naoi/items/04e44308221f6eb73024}
+\item \link{KotlinでGoogle Sheets API v4を使う | キャスレーコンサルティング株式会社}{https://www.casleyconsulting.co.jp/blog/engineer/4798/}
+\item \link{ビルド環境の設定}{https://docs.kii.com/ja/samples/push-notifications/push-notifications-android-fcm/configure-ide/}
+\item \link{【Android】Fragmentを使うときのコツとか色々 - Qiita}{https://docs.kii.com/ja/samples/push-notifications/push-notifications-android-fcm/configure-ide/}
+\item \link{【Kotlin】Bundleを使ったFragment間の値渡し - Qiita}{https://qiita.com/HideMatsu/items/ddf640899cbe1b2027ed}
+\item \link{Android はじめてのFragment - Qiita}{https://qiita.com/orimomo/items/0472a52f90d14bef0c89}
+\item \link{文字列リソース  |  Android デベロッパー  |  Android Developers}{https://developer.android.com/guide/topics/resources/string-resource?hl=ja}
+\item \link{KotlinでRecyclerViewを使ったリスト表示を行う - Qiita}{https://qiita.com/Todate/items/297bc3e4d0f3d2477ed3}
+\item \link{KotlinでのFragment実装方法 生成と切り替え | Memento Mori Blog}{https://memento-mori-blog.com/android-kotlin-fragment/}
 \end{itemize}
  \subsection{iOS}
  2019年以前はiOS開発者がAndroid開発者より圧倒的に多かったが、2021年はiOS開発者が圧倒的に少なく、三枝と李のたった二人でやっていた。
@@ -789,7 +765,6 @@ Helperとは書くけれどこれを使う以外の方法でDBにアクセスす
   \subsubsubsection{Swiftの学び方}
   \url{https://apple.co/3BVig3C}
   \url{https://developer.apple.com/tutorials/swiftui}
-  \url{}
   \subsubsubsection{SwiftUIの利点}
   \subsubsubsection{SwiftUIの問題点}
    たまにプレビューが機能しなかったり、重くてXcodeが間違ったコードをハイライトしてくれないと言った不具合があった。あとはSwiftUI自体がコードが複雑になって重くなると、正しいコードを書いているのにプレビューされなかったり、ビルドに失敗したりした。大抵の場合は``Clean build Folder''かXcode再起動で解決する。\\
@@ -815,7 +790,7 @@ Helperとは書くけれどこれを使う以外の方法でDBにアクセスす
   \item 石桁真礼生 他『楽典 理論と実習』(1998)\\音大受験をするのでなければ内容を網羅する必要は全くないですが、そもそも音楽を学ぶにあたって必要な用語や論理が理論的に説明されている(ex.完全◯度と長◯度は何が違うのか？)ため、一読して損はないです。
   \item アルノルト・シェーンベルク『作曲の基礎技法』(1998)\\前提知識がある程度要求されるが、「作曲」という作業の骨組みをとるにあたって本当によくできた名著。前半だけでも読む価値あり。高い本なので言ってくれたら貸します。
   \item 清水響『コード理論大全』(2018)\\ナナメ読みしたことしかないですが、おそらくバークリーメソッドを基本にコード理論がよくまとまっている印象を受けました。ただこの分厚さなので、辞書くらいの気持ちで使うのが賢明だと思います。
-  \item これら参考書籍にどっぷり浸かる前に、soundquest\footnote{\url{https://soundquest.jp/category-archive-chord/}}
+  \item これら参考書籍にどっぷり浸かる前に、\link{soundquest}{https://soundquest.jp/category-archive-chord/}
   という音楽理論の講義に無料アクセスできるサイトがあるので、これを片っ端から読むのが案外近道だと思います。
   名曲を期待しています。
 \end{itemize}
@@ -900,14 +875,18 @@ Helperとは書くけれどこれを使う以外の方法でDBにアクセスす
 \end{itemize}
 
 \subsubsection{Touch Designerについて}
-用いる理由
+\subsubsubsection{概要}
+基本的にカメラで撮った映像をもとにエフェクトを生成する、メインとなって使用するソフト。事前に録画したものを流す場合は関係ないが、リアルタイムで行う場合、負荷に気を付けなければならない。設備によるラグのみならず、ソフトの負荷によるラグまで発生すると、出来栄えが落ちるため常に頭の片隅に入れておくとよい。
 
-映像をもとにエフェクトを生成する。
-\subsubsection{人の検出方法と検出した画像の使い方}
-人のいない背景の画像を保存しておき、その画像と現在の画像(人がいる画像)の差をとる。(ここで画面一杯がステージである方が望ましい)その差が取れた画像をガンマ値等を調整し、できるだけくっきりした形で抽出する。この際、背景の色と人の服の色が近いと検出されづらいので値の調節は細かくする。さらに、人を抽出する過程で、ノイズも取れてしまうことがある。その場合の対処法として、今回用いたのは、低解像度化し、さらにぼかすことで、ノイズのような小さいものは対してぼかされないが、人のような大きなものは大きくぼかされるようにし、そのぼかされた人の大まかな部分を検出した画像と、元のある程度ノイズの入っている画像との乗算をして、人物の輪郭の抽出をより高精度で行った。
+\subsubsubsection{採用した理由}
+TDはリアルタイムで画像処理ができ、無料であるという点で採用した。しかし、処理を作る機構がノードベースであるため、慣れていなければ複雑に感じる可能性がある。それでも、ノードベースであるため、視覚的にわかりやすく、整理がしやすいソフトではあるため、採用する価値は十分にあると思われる。
+
+\subsubsubsection{人の検出方法と検出した画像の使い方}
+人のいない背景の画像を保存しておき、その画像と現在の画像、つまり人がいる画像の差をとる。ここで画面一杯がステージである方が望ましい。その差が取れた画像をガンマ値等を調整し、できるだけくっきりした形で抽出する。この際、背景の色と人の服の色が近いと検出されづらいので値の調節は細かくする。さらに、人を抽出する過程で、ノイズも取れてしまうことがある。その場合の対処法として、今回用いたのは、低解像度化し、さらにぼかすことで、ノイズのような小さいものは対してぼかされないが、人のような大きなものは大きくぼかされるようにし、そのぼかされた人の大まかな部分を検出した画像と、元のある程度ノイズの入っている画像との乗算をして、人物の輪郭の抽出をより高精度で行った。
 人を検知した画像を作れたら、それに沿ったエフェクトを作っていく。今年は3dの平面化を行い、ワイヤーフレーム表示等をした。必ずしも3d化しなければいけないわけではないが、パーティクルを作る場合などには必要となってくる。3d化してエフェクトを作ること以外では、今年は、前の画像を薄めで残すような残像の処理を行い、それを変化する虹色で描写等をした。
 
-\subsubsection{具体的な手法(Touch Designerの場合)}
+
+\subsubsubsection{Touch Designerでの具体的な手法}
 \begin{itemize}
 \item 画像と画像の差をとる\\
 differenceTOPに誰もいない背景の静止画と人が動いている映像をつなぎ差をとる
@@ -921,8 +900,12 @@ traceSOPに人抽出画像を入れ、平面の3dモデルを作る。この時�
 feedbackTOPを用いて前フレームの画像を残す処理を行う。方法詳細は記述するのが難しいため、ここでは省くが(ネット上やYouTubeのチュートリアル動画等でわかりやすいのがいくつもある)、前フレームの画像にdisplaceTOPを用いて歪ませることで単調でない残像を作ることができる
 \end{itemize}
 
-\subsubsection{その他エフェクトアニメーションの作り方}
-製作当時Touch Designerでアニメーションをする方法は時間がなかったため調べることができなかったため、我流の方法で行った。まず映像のフレーム数をとり、それを条件分岐でアニメーションの区切りとなる部分で
+\subsubsection{事前練習で行うこと}
+事前練習では主に、設備や全体の流れの確認、実践するとどうなるかの情報収集を行う。講堂設備と自PCの接続は講堂担当の放送の者や教師に聞けばある程度分かるが自分もしっかり覚えておくようにする。いざ実際に行うことで、依頼側から、または逆にこちらからこうして欲しいなどといった意見を交換するという状況になると思われる。
+
+\subsubsection{当日行うこと}
+事前練習通り、講堂担当者と協力してPMを行う。録画を流す場合は特に、PMの始まり方と終わり方に注意すること。先にも述べた通り、録画であることを悟られることは極力なくしたいため、そう思わせる状況は避けるようする。基本的に始めるタイミングなどは放送と協力する。
+
 
 
 
@@ -931,6 +914,82 @@ feedbackTOPを用いて前フレームの画像を残す処理を行う。方法
 
  \subsection{コロナ対策}
 62回担当者：飼沼、深代 他
+
+\subsubsection{コロナ対策の重要性について} 文責：江崎（小委員会副議長） \vspace{2mm}
+
+来年もコロナ禍での聖光祭が予想される中、外部の人も招いてできるだけ従来と同じような開催を目指すならば、各部門でコロナ対策への意識を統一してある程度の対策を敷いておくことで、逆に活動の自由度が上がり、生徒の準備の幅もお客さんの安心感も増すと思われる。
+よってコロナ対策は必須！
+
+\subsubsection{コロナ対策の詰め方} 文責：飼沼（議長代行副議長） \vspace{2mm}
+
+学校側はコロナ対策にあまり積極的でない。特別にやりたいことがあれば交渉するか、無断 (やりすぎ注意) でやるべし。何回か関係部門の担当で集まって会議し、マニュアルの提出を重ねよう。会議では各部門の対策方針の整合性(ex.ライブやグラフィナでは客と演者の距離はどうなるか？待機列のビニールテープは何mごとか？)や必要な物品について確認しよう。議事録も取ること。
+
+\subsubsection{企画部門のコロナ対策について} 文責：江崎 \vspace{2mm}
+
+外ステージ企画やグラフィナでの最前列の客とステージの距離
+
+客席の消毒→今年は徹底できなかったけど、ステージ企画運営の部門員でそういう係作ってもいいと思う
+
+来年は食品などが拡大する可能性がある→中庭使用する部門全体で連携して飲食規制
+
+\subsubsection{食品部門のコロナ対策について} 文責：赤星（副議長代行委員） \vspace{2mm}
+
+来年の春は未だコロナの感染拡大が完全に収束していないだろう。元々必要不可欠である衛生管理とともに(の一環として)、これを徹底する必要がある。
+
+\subsubsubsection{当日までの対策}
+試作会では、当日と同じように生徒が調理する。当日を想定して、調理する時は店員に徹底させよう
+
+\subsubsubsection{当日の対策}
+中庭飲食スペース→美化部門、執行部などと話してアルコール置くなり消毒の巡回するなりしましょう。(食品から人出すのはきついかも)
+
+店舗側→間隔空けてテープを床に貼っても生徒・お客さんはちゃんと並びません^^
+
+ただ形だけでも間隔開けなど方がいいと思います
+
+店員にはいつも通り消毒、ビニール手袋などを徹底させませう
+
+\subsubsection{美化部門のコロナ対策について} 文責：加藤（副議長） \vspace{2mm}
+
+ごみ箱当番に関しては数分に一回ビニール手袋を替えることと適宜手指消毒を行うことで間に合うと思う
+
+巡回に関してだが、中庭の机などの公共物を消毒する役割が当てられることがあり(今年はそうした)、その場合巡回の人数を増やさないと巡回が過労死します
+
+\subsubsection{会計部門のコロナ対策について} 文責：松村（副議長代行） \vspace{2mm}
+\subsubsubsection{コロナ対策の予算について}
+今年のコロナ対策用の予算は予定を大幅に上回った額になり、各部門の隙間を埋め合わせるように予算の中に組み込んだ。来年以降は先生と相談して、パーテーションなども安く大量に購入できるルートを探して、支出を減らす工夫をしない限りは今年と同様の金額になり、採算が取れなくなってしまうだろう。計画的に。
+
+\subsubsubsection{当日の会計部門の対策}
+\begin{itemize}
+  \item パーテーション
+  \item 電子決済
+  \item 手袋（タブレット端末が扱えす、ほとんど使わず）
+  \item マスク着用
+  \item 受け渡し皿
+  \item アルコール消毒（タブレットと皿を）
+\end{itemize}
+
+\subsubsection{展示部門のコロナ対策について} 文責：辰巳（副議長） \vspace{2mm}
+
+展示団体に関してはコロナ対策資材として手袋、アルコール、ママレモン、ウェットティッシュ、パーテーションの配布を別途予算を組んで行い、技術部門と連携して各教室に入れる人数を制限する取り組みとして展示団体入退場システムを導入した。大賞系に関してはペンの消毒を定期的に行い、ペンの配布を行う部門員にはビニール手袋をつけて行うように徹底していた。後述するが、もしコロナ対策資材を購入するならば、1ヶ月前からやらないと大変なことになります。今年は団体への配布が当日までかかってしまったので、来年はそうならないように気をつけてください。
+
+\subsubsection{外務部門のコロナ対策について} 文責：小國（副議長代行委員） \vspace{2mm}
+
+受付でのアルコール（液が無くならないように注意すること）
+
+総合案内所と各階案内所のアルコール設置
+
+来場者が触れるChromebook(食品予約など)を設置する場合使用した後に画面orキーボードをウェットティッシュで拭く(案内所シフトの部門員)
+
+ストリートピアノは入口にアルコールを設置し、演奏中以外はドアを開けて換気する
+
+基本的にアルコールは速乾性のものを使う
+
+\subsubsection{物品の用意}
+物品の管理場所、配布方法やそれの人員調達は絶対に考えること。
+
+\subsubsection{パーテーション作成}
+ウェッ
+
 
  \subsection{グラフィナ}
 62回担当者：満田、三枝、飼沼 他
@@ -972,7 +1031,7 @@ feedbackTOPを用いて前フレームの画像を残す処理を行う。方法
 
 
  \subsection{スローガン}
- 
+
  \subsection{Tシャツ処理}
  62回担当者：飼沼、浅井
 
@@ -1204,8 +1263,8 @@ B$\cdots$番号（0~5）0が代表者。
   \item スプレッドシートの「型」\\
   スプレッドシートにもStringやIntといった型が存在する。聖光祭当日に、大下が三枝の許可を得て動作確認用のサンプルデータをiOS版のスプレッドシートAppで追加したところ、型が狂ってしまい、iPadアプリケーションが落ちてしまった。結局、スプレッドシートを復元しないと解決せず、失敗した。
   \item ポケットWi-Fiの限界\\
-  
-  
+
+
  \end{itemize}
 \subsubsection{改善点}
 \subsection{入場システム}
@@ -1405,18 +1464,18 @@ B$\cdots$番号（0~5）0が代表者。
 不足情報があると勘違いをして重大なミスにつながる。逆に情報量が多いと長くなる上、脳のメモリを占有してしまう。人間は判別できる文字列の長さに限界がある。これはすべて自分の首を占めることになる。
 \subsubsubsection{時間をかけない}
 これは単語テストや連想ゲームじゃない。プログラミングを4年もしていれば最適な単語が思いつくが、全員がそうとは限らない。そのときに無理して絞りだしたり長考するのはいい策ではない。命名は最重要事項ではあるがプログラミングの本質ではない。素直にDeepL翻訳を使うこと\footnote{最先端の深層学習を使っており、Google翻訳よりも正確な翻訳ソフト。英語の課題をこれでやってはいけない。}。
-\subsection{Githubの使い方}
+\subsection{GitHubの使い方}
 \subsubsection{専門用語}
-Githubは横文字を含め、さまざまな専門用語がある。専門用語を使えばかっこいい！とかではなく、専門用語以外で表現ができない上、説明がしにくいので書くことにする。
+GitHubは横文字を含め、さまざまな専門用語がある。専門用語を使えばかっこいい！とかではなく、専門用語以外で表現ができない上、説明がしにくいので書くことにする。
 \begin{itemize}
-\item Repogitory（リモートレポジトリ）\\
+\item Repository（リモートレポジトリ）\\
 プロジェクトの単位。1つのプロジェクト=1レポジトリ。
-\item Remote Repogitory（リモートレポジトリ）\\
-Gitサーバーに置かれてるレポジトリ。インターネット上にあるので複数人で共有できる。
-\item Local Repogitory（ローカルレポジトリ）\\
+\item Remote Repository（リモートレポジトリ）\\
+Gitサーバーに置かれるレポジトリ。インターネット上にあるので複数人で共有できる。
+\item Local Repository（ローカルレポジトリ）\\
 パソコン保存されているレポジトリ。パソコン上にしかないので主に自分用。
 \item Conflict（コンフリクト）\\
-レポジトリやBranch（後述）を更新する際に更新先にも更新があり更新内容が衝突すること。VSCodeやAtomというエディタ、Github上で解決できる。
+レポジトリやBranch（後述）を更新する際に更新先にも更新があり更新内容が衝突すること。VSCodeやAtomというエディタ、GitHub上で解決できる。
 \item Pull（プル）\\
 リモートレポジトリの更新内容をローカルレポジトリに反映させる。
 \item fetch（フェッチ）\\
@@ -1434,19 +1493,19 @@ Gitサーバーに置かれてるレポジトリ。インターネット上に�
 \item Merge（マージ）\\
 何か二つのものを結合するときに内部的に行われる処理。基本的にはプルリクの受理時のことを指す。この言葉の定義は人によって違うが、「プルリク送ったらマージするから」といった感じで使われる。
 \item Issue（イシュー）\\
-Githubの機能の一つ。問題提起することができ、複数人で話し合えるチャット形式の機能。何かを実装する際にその機能の内容や仕様をのせたイシューを立て、そのイシュー番号をブランチ名に記載する。こうすることでこの人が何やってるのか、この機能とはなんなのかを知ることができる。ちなみに「イシューを立てる」という言い方をする。詳しくは後述する。
+GitHubの機能の一つ。問題提起することができ、複数人で話し合えるチャット形式の機能。何かを実装する際にその機能の内容や仕様をのせたイシューを立て、そのイシュー番号をブランチ名に記載する。こうすることでこの人が何やってるのか、この機能とはなんなのかを知ることができる。ちなみに「イシューを立てる」という言い方をする。詳しくは後述する。
 \item Readme.md\\
-レポジトリの直下に置かれるファイル。このファイルの内容はMarkdownという形式で書かれ、このファイルがあるレポジトリはGithubでそれが説明文として下に出てくる。これは絶対書くこと。また、Markdownはプログラマにとって必要不可欠な記法でありそんな難しくないので習得しとくこと\footnote{プログラマ共有サイトQiita、Discord、SlackなどではMarkdownを使った投稿ができる。}。
+レポジトリの直下に置かれるファイル。このファイルの内容はMarkdownという形式で書かれ、このファイルがあるレポジトリはGitHubでそれが説明文として下に出てくる。これは絶対書くこと。また、Markdownはプログラマにとって必要不可欠な記法でありそんな難しくないので習得しとくこと\footnote{プログラマ共有サイトQiita、Discord、SlackなどではMarkdownを使った投稿ができる。}。
 \end{itemize}
 \subsubsection{Git周りのソフト}
-\subsubsubsection{GitとGithub}
-そもそもGitとGithubは違う。Gitはバージョン管理関係のコマンドソフトである。そしてそれをリモートで見れるようにしたのがGithubである。私たちがGitを見るのに必要なものの一つがGithubである。
-\subsubsubsection{Github Desktop}
-ローカルレポジトリでのコミット、プッシュ、プル、プルリク、ブランチ生成をUIで行えるソフト。純正。コマンドでやるのにこだわる場合、開発ソフトにGit連携機能がある場合の除いて入れとこう。
+\subsubsubsection{GitとGitHub}
+そもそもGitとGitHubは違う。Gitはバージョン管理関係のコマンドソフトである。そしてそれをリモートで見れるようにしたのがGitHubである。私たちがGitを見るのに必要なものの一つがGitHubである。
+\subsubsubsection{GitHub Desktop}
+ローカルレポジトリでのコミット、プッシュ、プル、プルリク、ブランチ生成をUIで行えるソフト。純正。コマンドでやるのにこだわる場合、開発ソフトにGit連携機能がある場合を除いて入れとこう。
 \subsubsection{Organization}
-生徒会としてGithubOrganizationを作った\footnote{https://github.com/SeikoStudentCouncil}。Organizationは複数のアカウントを所属させることができ、組織としてGitを使用できるというものである。管理者権限が欲しい場合は前年度局長または60227li@seiko.ac.jpに連絡すること。
+生徒会としてGitHubOrganizationを作った\footnote{https://github.com/SeikoStudentCouncil}。Organizationは複数のアカウントを所属させることができ、組織としてGitを使用できるというものである。管理者権限が欲しい場合は前年度局長または60227li@seiko.ac.jpに連絡すること。
 \subsubsubsection{メンバー}
-Githubアカウント作った後に管理者はPeopleタブ>Memberからユーザーネームを検索し招待する。招待はメールでくるので受理して参加する。この時Roleを決めることができる。Roleは役職のことでありOwnerとMemberの2種類がある。
+GitHubアカウント作った後に管理者はPeopleタブ>Memberからユーザーネームを検索し招待する。招待はメールでくるので受理して参加する。この時Roleを決めることができる。Roleは役職のことでありOwnerとMemberの2種類がある。
 \subsubsubsection{チーム（Teams）}
 チームは...そのままの機能。アプリ局とHP局というチームを作った。チームごとに見れるレポジトリを設定できたりする。
 \subsubsection{レポジトリの作り方}
