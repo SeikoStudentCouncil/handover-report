@@ -21,7 +21,7 @@
 \usepackage{pxjahyper}
 \usepackage{calc}
 \usepackage{ifthen}
-\usepackage{ruby}
+\usepackage{pxrubrica}
 \hypersetup{
  bookmarks=false,
  colorlinks=true,
@@ -830,8 +830,8 @@ Helperとは書くけれどこれを使う以外の方法でDBにアクセスす
   \subsubsection{言語}
   第62回聖光祭ではiOSアプリ制作にSwift、またUIの作成にはSwiftUIを使用した。第60回以前の聖光祭アプリではSiwftとStoryboardという一般的なアプリの構成だったが、Sotryboardの扱いが大変なのに加え、アニメーションを強化したかったので、2019年に新しく登場したSwiftUIを使用した。
   \subsubsubsection{Swiftの学び方}
-  \url{https://apple.co/3BVig3C}
-  \url{https://developer.apple.com/tutorials/swiftui}
+  \url{https://apple.co/3BVig3C}\\
+  \url{https://developer.apple.com/tutorials/swiftui}\\
   などを使って学習すること。今後バージョンも新しくなるので、都度新しいバージョンを参照すること。\\
   SwiftUIでつまずきがちなのが、\texttt{@State,@Binding,@StateObject,@ObservedObject,@EnvironmentObject}などのデーターフローである。\\
   \url{https://developer.apple.com/videos/play/wwdc2020/10040/}(動画・日本語字幕)\\
@@ -843,9 +843,9 @@ Helperとは書くけれどこれを使う以外の方法でDBにアクセスす
    たまにプレビューが機能しなかったり、重くてXcodeが間違ったコードをハイライトしてくれないと言った不具合があった。あとはSwiftUI自体がコードが複雑になって重くなると、正しいコードを書いているのにプレビューされなかったり、ビルドに失敗したりした。大抵の場合は``Clean build Folder''かXcode再起動で解決する。\\
   \subsubsection{Apple Developer Program}
   App StoreにアプリをリリースするにはApple Developer Programのライセンス契約が必要。個人契約、12,980円/年。予算で落ちるが、一人一ライセンスまで\footnote{昔はライセンスを共有することができ、同じAppを作っているメンバーであればライセンスが付与される使用だったが、最近変わった模様。}で、2~3アカウント落とすことを考えた方がいい。\\
-  法人契約もできるが、D-U-N-S番号が必要。学校にD-U-N-S番号を使わせてもらえないか交渉したところ、ダメとのこと。かなり前にも交渉した先輩がいたとも言われた。個人契約しかないだろう。
+  法人契約もできるが、\ruby[g]{D-U-N-S}{ダンズ}番号が必要。学校にD-U-N-S番号を使わせてもらえないか交渉したところ、ダメとのこと。かなり前にも交渉した先輩がいたとも言われた。個人契約しかないだろう。
   \subsubsection{AppStoreとリリース}
-  Apple Developer Programの会員
+  Apple Developer Programの会員であれば、Apple
 
 
 \newpage
@@ -1576,31 +1576,31 @@ B$\cdots$番号（0~5）0が代表者。
 \subsubsection{専門用語}
 GitHubは横文字を含め、さまざまな専門用語がある。専門用語を使えばかっこいい！とかではなく、専門用語以外で表現ができない上、説明がしにくいので書くことにする。
 \begin{itemize}
-\item \ruby{Repository}{レポジトリ}\\
+\item \ruby[g]{Repository}{レポジトリ}\\
 プロジェクトの単位。1つのプロジェクト=1レポジトリ。
-\item \ruby{Remote Repository}{リモートレポジトリ}\\
+\item \ruby[g]{Remote Repository}{リモートレポジトリ}\\
 Gitサーバーに置かれるレポジトリ。インターネット上にあるので複数人で共有できる。
-\item \ruby{Local Repository}{ローカルレポジトリ}\\
+\item \ruby[g]{Local Repository}{ローカルレポジトリ}\\
 パソコン保存されているレポジトリ。パソコン上にしかないので主に自分用。
-\item \ruby{Conflict}{コンフリクト}\\
+\item \ruby[g]{Conflict}{コンフリクト}\\
 レポジトリやBranch（後述）を更新する際に更新先にも更新があり更新内容が衝突すること。VSCodeやAtomというエディタ、GitHub上で解決できる。
-\item \ruby{Pull}{プル}\\
+\item \ruby[g]{Pull}{プル}\\
 リモートレポジトリの更新内容をローカルレポジトリに反映させる。
-\item \ruby{fetch}{フェッチ}\\
+\item \ruby[g]{fetch}{フェッチ}\\
 リモートレポジトリの更新内容があるか確認する。ほぼプルと同じ。
-\item \ruby{Commit}{コミット}\\
+\item \ruby[g]{Commit}{コミット}\\
 ファイルの編集内容をローカルレポジトリに追加する。作業がひと段落したらコミットする。
-\item \ruby{Push}{プッシュ}\\
+\item \ruby[g]{Push}{プッシュ}\\
 ローカルレポジトリの更新内容をリモートレポジトリに反映させる。
-\item \ruby{Fork}{フォーク}\\
+\item \ruby[g]{Fork}{フォーク}\\
 自分以外のリモートレポジトリをコピーし、自分のリモートレポジトリを生成する。
-\item \ruby{Branch}{ブランチ}\\
+\item \ruby[g]{Branch}{ブランチ}\\
 ソースコードの枝。あるバージョン（正確にはコミットから分岐したバージョン）を作る。ここに更新を行うことができ、時が来たらそれを元のブランチに結合して戻すことができる。もちろんブランチへの更新は元のブランチには影響はない。なお、この"元のブランチ"を「master」ブランチあるいは「main」ブランチという\footnote{2019〜2020年にmasterは奴隷制度を連想させるとしてデフォルトブランチがmainになっている。設定で変えられるらしいのでmasterになってる場合はmainにしとくことをお勧めする。}。ちなみに「ブランチを切る」という言い方をする。
-\item \ruby{Pull Request}{プルリク}\\
+\item \ruby[g]{Pull Request}{プルリク}\\
 ブランチの結合時及びForkされたレポジトリから元のレポジトリを更新するときに送るリクエスト。レポジトリの管理者が内容を精査し、認証することで初めて受理される。この時にコンフリクトが起きる可能性あり。
-\item \ruby{Merge}{マージ}\\
+\item \ruby[g]{Merge}{マージ}\\
 何か二つのものを結合するときに内部的に行われる処理。基本的にはプルリクの受理時のことを指す。この言葉の定義は人によって違うが、「プルリク送ったらマージするから」といった感じで使われる。
-\item \ruby{Issue}{イシュー}\\
+\item \ruby[g]{Issue}{イシュー}\\
 GitHubの機能の一つ。問題提起することができ、複数人で話し合えるチャット形式の機能。何かを実装する際にその機能の内容や仕様をのせたイシューを立て、そのイシュー番号をブランチ名に記載する。こうすることでこの人が何やってるのか、この機能とはなんなのかを知ることができる。ちなみに「イシューを立てる」という言い方をする。詳しくは後述する。
 \item Readme.md\\
 レポジトリの直下に置かれるファイル。このファイルの内容はMarkdownという形式で書かれ、このファイルがあるレポジトリはGitHubでそれが説明文として下に出てくる。これは絶対書くこと。また、Markdownはプログラマにとって必要不可欠な記法でありそんな難しくないので習得しとくこと\footnote{プログラマ共有サイトQiita、Discord、SlackなどではMarkdownを使った投稿ができる。}。
