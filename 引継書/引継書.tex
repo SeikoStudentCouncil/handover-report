@@ -733,7 +733,7 @@ mail: seikosougiken@gmail.com\\
 xmlやktをコピペした際にidを変え忘れたり、xmlの場合はDesignタブでコピペしたidを意図したものに直そうとするとAndroidStudioがリファクタリングと勘違いしコピペ元とコピペ先両方のファイルのidを変えたりすることで起こる。findViewByIdは該当するviewが見つからないとnullを返す(らしい)ので代入先がnullableでなかったりする場合に起こる。
  \subsubsubsection{宣言部参照}
  メソッド名や変数名をctrlを押しながらクリックすることでその宣言部にジャンプすることができる。\par
-自分が書いたコードでなくても(例えばandroid.view.Viewクラスなどでも)可能。
+自分が書いたコードでなくても(例えば\texttt{android.view.View}クラスなどでも)可能。
 ・使用箇所確認
 メソッドやクラス、変数の宣言部にてその名前をctrlを押しながらクリックするとそれが今開いているプロジェクトのどのファイルの何行目でどのような引数で使用しているかを一覧として表示することができる。
 
@@ -841,12 +841,19 @@ Helperとは書くけれどこれを使う以外の方法でDBにアクセスす
   UIと機能が一つのソースコードで作れるのが非常に楽。アニメーションをつけるのも楽。綺麗なUIを作るのも楽。ただしガチガチにUIをカスタマイズしたい場合は都度カスタマイズが必要。
   \subsubsubsection{SwiftUIの問題点}
    たまにプレビューが機能しなかったり、重くてXcodeが間違ったコードをハイライトしてくれないと言った不具合があった。あとはSwiftUI自体がコードが複雑になって重くなると、正しいコードを書いているのにプレビューされなかったり、ビルドに失敗したりした。大抵の場合は``Clean build Folder''かXcode再起動で解決する。\\
-  \subsubsection{Apple Developer Program}
+  \subsubsection{AppStoreと配信}
+   Apple Developer Programの会員であれば、AppStoreの配信権を獲得できる。
+  \subsubsubsection{Apple Developer Program}
   App StoreにアプリをリリースするにはApple Developer Programのライセンス契約が必要。個人契約、12,980円/年。予算で落ちるが、一人一ライセンスまで\footnote{昔はライセンスを共有することができ、同じAppを作っているメンバーであればライセンスが付与される使用だったが、最近変わった模様。}で、2~3アカウント落とすことを考えた方がいい。\\
   法人契約もできるが、\ruby[g]{D-U-N-S}{ダンズ}番号が必要。学校にD-U-N-S番号を使わせてもらえないか交渉したところ、ダメとのこと。かなり前にも交渉した先輩がいたとも言われた。個人契約しかないだろう。
-  \subsubsection{AppStoreとリリース}
-  Apple Developer Programの会員であれば、Apple
-
+  \subsubsubsection{TestFlight}
+  TestFlightはAppStoreにリリースしなくても、ベータ版としてアプリケーションを公開できるというもの。\\
+  聖光祭アプリなども聖光祭が始まる一ヶ月前くらいからTestFlightを始めると、バグ修正ができるのでいいと思う。2021年度は幹部のみに公開していたが、全校生徒に公開しても良いかもしれない。\\
+  小さい画面サイズのiPhoneや逆に大きい画面サイズのiPhoneだったりで予想していなかったUIが発生することがある。
+  TestFlightでは内部テストと外部テストの配信方法がある。
+  内部テストでは、所有するAppleIDで\texttt{developer.apple.com}にサインインし、Apple Develioerの利用規約に登録したことのあるアカウントのみしか招待することができない。\\
+  また\texttt{appstoreconnect.apple.comで}Appに対するアクセス権を付与し、TestFlightセクションでテスターとして追加する必要がある。\\
+  テスター用に専用アカウントを作成してアクセス権を与えるという方法もあるが、登録したメールアドレスで今後一切AppleIDが使えなくなってしまう。
 
 \newpage
 \section{音楽局}
