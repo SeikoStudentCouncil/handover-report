@@ -30,6 +30,7 @@
  filecolor=black,
  urlcolor=[rgb]{0,0.4,0.8}
 }
+\renewcommand{\bfdefault}{bx}
 \usepackage{array}
 \usepackage{fvextra}
 \usepackage{longtable}
@@ -62,7 +63,7 @@
 \author{飼沼 隼\and 浅井 佑一朗\and 李 博之\and 三枝 義啓\and 矢向 俊貴\and 満田 真矢\and 黒羽 柊哉\and 鬼頭 健太\and 向山 雄登}
 
 \newcommand{\impact}[1]{\textbf{\gtfamily #1}}
-\newcommand{\mail}[2]{\href{#2}{#1}}
+\newcommand{\mail}[2]{\href{mailto:#2}{#1}}
 \newcommand{\link}[2]{\href{#2}{#1}}
 
 \makeatletter
@@ -81,8 +82,16 @@
 }
 \makeatother
 
-\begin{document}
+ \pagestyle{fancy}
+\lhead{\fontsize{8pt}{0pt}\selectfont \hyperlink{top}{聖光祭実行委員会\\技術部門引継書 第１次中間報告}}
+\lfoot{技術局}
+\rfoot{ITEC}
+\cfoot{\thepage/\pageref{LastPage}}
 
+
+\begin{document}
+\thispagestyle{empty}
+\addtocounter{page}{-1}
 \begin{center}
 
 \titleformat*{\section}{\gtfamily \Large}
@@ -101,7 +110,9 @@
 }
 \end{center}
 
-\pagebreak
+\newpage
+
+
 \maketitle
 \vspace{5mm}
 
@@ -126,15 +137,11 @@
 \end{tabular}
 
 
-\pagebreak
+\newpage
 \setcounter{tocdepth}{5}
 \hypertarget{top}{\tableofcontents}
-\clearpage
- \pagestyle{fancy}
-\lhead{\fontsize{8pt}{0pt}\selectfont \hyperlink{top}{聖光祭実行委員会\\技術部門引継書 第１次中間報告}}
-\lfoot{技術局}
-\rfoot{ITEC}
-\cfoot{\thepage/\pageref{LastPage}}
+\newpage
+
 \section{はじめに}
 \subsection{挨拶}
 こんばんは。第62回聖光祭技術部門長の\mail{飼沼隼}{60050kainuma@seiko.ac.jp}です。聖光祭、体育祭、生徒会で死ぬほど色々やってました（それでいて演奏、ダンス、応援団とかやって自分の首を絞めてましたが）。技術の幹部はみんなそうだけど。この引継ぎ書では業務内容にとどまらず、細かいアドバイスや体験談も交えてできるだけこれ一枚で全てがわかるようにしていくのでぜひ熟読してください。さて、真面目な話は李が下に書いてくれていますので割愛するとして、みなさんには聖光祭を最大限楽しんでもらうべく必要なことを伝えておきたいと思います。一番大切なのは本気でやることです。僕らは初回の会議から一年半準備してきましたが、ずっと死にかけでした。61期の聖光祭は春開催で本当に大変だと思いますが、幹部全員が全速力でやらないと間に合わないですし、やりきった感皆無の聖光祭と青春になることを忠告しておきます。自分がやるだけでは全く足りないです。サボってる人にやらせるのもお互いがやり続けなければだめです。やる作業はひとつだけ、よくできるところを探して直す、これを繰り返すだけです。可能性は無限大です。期待してます！
