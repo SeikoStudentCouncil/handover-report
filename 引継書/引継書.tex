@@ -1512,6 +1512,39 @@ B$\cdots$番号（0~5）0が代表者。
  \subsubsection{シール印刷}
  本人確認後、人数を調整して印刷ボタンを押す。5~6秒まって印刷されない場合は幹部や担当を呼ぶ。1グループ分が一本のシールの束で印刷される。
 \subsection{展示団体入退場管理システム}
+\subsubsection{概要}
+お客様一人一人にIDを配るなら各教室の入場人数を測れるのではということで実装した。入場退場の人数を記録し、現在入場中の人を算出する。
+\subsubsection{必要物品}
+展示団体ごとに入口と出口にChromebookを配置。Chromebookは各団体の団体員に出させる。
+
+\subsubsection{構成}
+\begin{itemize}
+  \item Google Spread Sheet\\
+  DB。データを格納する。ここに展示団体IDと現在入場中の人数と累計入場人数が記録されている。
+   \item Google Apps Script\\
+   DBからデータの抽出と数字の増減を行う。
+   \item nuxt.js + scss + javascript\\
+   typescriptの導入を忘れてた。
+   \item jQuery\\
+   Ajax通信したいので入れた。
+   \item Firebase\\
+   作ったWebサイトをホストするためにFirebase Hostingを使った。
+  \end{itemize}
+
+\subsubsection{仕組み}
+URLのクエリで\verb|type=in|だったら入場。それ以外は退場モードになる。QRコードリーダーに個人IDを被せると通信し、入場可能か否かの結果が出る。以下は入場が許可されない事例。
+\begin{itemize}
+\item IDが無効な時
+\item 校門で入場してから3時間が経った時
+\item 展示団体の現在入場中の人数が最大収容人数を越している時
+\end{itemize}
+
+\subsubsection{入場許可}
+入場許可が降りなかったとしても入場するなと強制することはできないのであくまで"遠慮していだたく"形になることに留意すること。
+
+\subsubsection{課題}
+Chromebookの性能が悪いため、QRコードの読み取りに時間がかかる。『解決策は見当たらない。』\footnote{厨病激発ボーイ - れるりりfeat.鏡音レン}
+
 \subsection{講堂棟予約システム}
  \subsubsection{目的}
  グランドフィナーレなどの人気企画で、会場内が密になるのを避けるため、事前に座席を指定しておくことで、新型コロナウイルス感染防止を目指す。
