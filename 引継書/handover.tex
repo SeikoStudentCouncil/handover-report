@@ -1850,6 +1850,80 @@ Chromebookの性能が悪いため、QRコードの読み取りに時間がか�
 \subsubsubsection{自分なりの命名規則を作る}
 ここに示したのは方式と単語だけであり、細かい部分は自分で統一できてれば良い。
 \subsection{GitHubの使い方}
+\subsubsection{そもそもなぜGitHubを使うのか}
+みなさんはGitHubを使ってて\emph{なんでこんなめんどくさいことしなきゃいけないんだよ！！！！！！}
+\footnote{実際めちゃくちゃめんどくさい。なんでこんなことやんなきゃいけないんだよ。}
+って思ったことはありませんか？僕はあります。
+ここではまず最初にそもそもなぜGitHubを使うのかを説明したいと思います。
+\subsubsubsection{GitHubのメリット}
+GitHubを使う理由・使うときは主に3つあります。
+\begin{itemize}
+  \item みんなでコーディングするときにやりやすい。\\
+  これが一番大事です。
+  Git,GitHubは複数人のチームでプロジェクトを開発することを目的に作られています。
+  なので複数人でコーディングするときにいいことがあるような機能がいっぱいついています。
+  これより下はGitHubによって得られた副産物みたいなもんです。
+  \item インターネット上に公開できる。
+  \item GitHub Actionsを用いてBuildの成功・失敗に応じてmainにmergeできたり、そのままpublishできたりする。
+  \footnote{これは自慢ですが、\href{https://github.com/akimasa-l/hide4063}{俺のリポジトリ}で
+  GitHub Actionsでmasterにpush,mergeされたらfirebase hostingにpublishするものが動いてます。
+  手元でfirebase deployする必要がないのでめちゃくちゃ便利です。}
+  \item dependabotなどで依存関係のモジュールを自動でアップデートしてくれる。
+  \item 複数のパソコンで同じ進行状況を共有しながら開発できる。
+\end{itemize}
+などいっぱい機能があります！！！別に一人でコーディングするときでも便利なのでみんな使ってください！！
+\subsubsection{GitHub PROになる}
+\url{https://education.github.com}に行って聖光のメールアドレスを登録するとGitHub PROになれます。
+GitHub PROになると様々な恩恵が受けられるらしいですが、僕にはよくわかりません。
+とりあえず申請しとくといいと思います。
+申請はすべて英語なので英語が読めたほうがいいです。
+詳しくは\emph{GitHub Education}でググって見てください。
+\subsubsection{GitHubを使う上で一番気をつけなければならないこと}
+それはmaster(main) branchへの破壊的pushです。
+\footnote{諸説あります。}\footnote{一人でやってる分には全く構いません。}
+特に複数人で同じprojectをやっているときにmaster(main)を破壊されると周りの人からヤバイ目で見られるので気をつけましょう。
+master(main) branchを破壊しないためには
+\begin{itemize}
+  \item master(main) branch protectionを張る
+  \item 必ず自分のbranchを作成してから\footnote{これを\emph{branchを切る}って言うこともあります。}そこで作業をする。
+  \item GitHub Actionsとかを使ってbuildが成功したときに限ってmaster(main)にmergeする。
+\end{itemize}
+をすることが大事です。みんなもこれでmaster(main)破壊はしないようにね！！！
+\subsubsubsection{mainが更新されていて自分のbranchもそれに合わせて更新したいとき}
+\includegraphics[width=15cm]{assets/update-branch.png}\\
+GitHub Desktopでこんなかんじでmainと同じcommitまでできます！！
+注意としては編集を始める前にこれをしないとconflictが生じちゃうので編集を始める前にこれをしましょう。
+あとたまにテキストエディターで開いてるときだとできないこともあるのでテキストエディターを閉じているときにすると成功するかもしれません。
+\subsubsection{GitHubに上げるべきもの・上げないべきもの}
+GitHubにはコーディングの際に必要なものを上げるべきであるが、そのときに上げるべきもの、上げないべきものが存在する。
+\subsubsubsection{GitHubに上げるべきもの}
+GitHubに上げるべきものとして、
+\begin{itemize}
+  \item コード。\footnote{それはそう。}
+  \item 各環境で共通しているもの(依存関係を記しているものなど)
+  \item そのほかbuildに必要なもの
+  \item .gitignore\footnote{ローカルの中だけでgitに上げたくないものがあれば
+  .gitignoreの中に.gitignoreを入れることもありますが基本時にはcommitしたほうがいいでしょう。
+  }
+  \item LICENSE\footnote{基本的にはリポジトリを持っている人がイキって入れていることが多いです。特に意味はないと思います。}
+\end{itemize}
+があります。
+\subsubsubsection{GitHubに上げないべきもの}
+逆にGitHubに上げないべきものとして、
+\begin{itemize}
+  \item バイナリファイル(テキストエディタなどで読んでもぶわ～～～って謎の文字列が並んでて読めないやつ)
+  \footnote{画像ファイルなどのbuildに必要なやつは上げるべきです。
+  しかしGitHubには一つのcommitにつき100MBまでの制限があるためクソ高画質な画像ファイルは上げられないので気をつけてください。
+  できれば無限画質でかつファイルサイズが小さいsvgを使いましょう。
+  }
+  \item 依存環境などbuildによって生成される各環境によって生成されるものが異なると予想されるもの。
+  \footnote{node.jsにおけるnode\_modulesなどがこれに当たります。}
+  \item パスワードなどのプライベートなもの。
+\end{itemize}
+があります。
+これらをGitHubに上げないためにはcommitする前に\emph{.gitignore}
+にそれらのファイルを記入するとgitの管理下に置かれなくなります。
+誤ってcommitしちゃったときは\emph{git commit 取り消し}でググってください。
 \subsubsection{専門用語}
 GitHubは横文字を含め、さまざまな専門用語がある。専門用語を使えばかっこいい！とかではなく、専門用語以外で表現ができない上、説明がしにくいので書くことにする。
 \begin{itemize}
