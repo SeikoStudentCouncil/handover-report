@@ -1958,7 +1958,7 @@ Chromebookの性能が悪いため、QRコードの読み取りに時間がか�
  \subsubsection{セットアップ}\label{sec:iPadのセットアップ}
   \subsubsubsection{Apple Configurator2}
    セットアップに必須なアプリケーション。Mac専用。\\
-
+   かなりマニアックなアプリである。\\
    \url{https://apps.apple.com/jp/app/apple-configurator-2/id1037126344?mt=12}
   \subsubsubsection{Wi-Fi}
   生徒会のiPadやMacで設定されているstudentを使用してもいいが、回線速度や使えない時間帯があるという観点から、projectorC(5GHz)やprojectorE(2.4GHz)といったWi-Fiを使うようにした方が良い。\\
@@ -1980,25 +1980,32 @@ Chromebookの性能が悪いため、QRコードの読み取りに時間がか�
    \begin{enumerate}[手順1.]
     \item Apple Configurator2を起動
     \item セットアップするiPadをMacに接続
+    \item 「追加」からプロファイルを選択しインストール。
   \end{enumerate}
 
   \subsubsubsection{Apple School Manager}
   学校用のApple IDを管理するもの。\\
   聖光学院では2021年7月にiPadを購入した際に学校用Apple IDを取得した。\\
-  
-  \begin{enumerate}[手順1.]
-   \item 
-  \end{enumerate}
-
+  \url{school.apple.com}からアクセス可能。
   \subsubsubsection{Apple ID}
   iPadのApple IDはできれば全デバイスでバラバラの方がいい。\\
-  第62回聖光祭では他のiPadから別のiPadへのアクセスを防止するという理由で、別々のApple IDでログインしていたが、アクセスガイドを使って、ほとんどのiPadで一つのアプリケーションしか使えないようにする設定をしていたため、意味がなかった。電子決済用のiPad間だけでは別々のApple IDを設定しよう。
-
-  \subsubsubsection{アプリのインストール}
+  第62回聖光祭では他のiPadから別のiPadへのアクセスを防止するという理由で、別々のApple IDでログインしていたが、アクセスガイドを使って、ほとんどのiPadで一つのアプリケーションしか使えないようにする設定をしていたため、意味がなかった。いたずら防止のため、電子決済用のiPad間だけでは別々のApple IDを設定しよう。
+  \subsubsubsection{Appの購入}
+  Appのインストールの前に、ライセンスの購入を行う必要がある。\\
   \begin{enumerate}[手順1.]
+   \item Apple School Managerにサインイン
+   \item 「コンテンツ」セクションの「Appとブック」からアプリを選択
+   \item ロケーションを「聖光学院中学校高等学校」
+  \end{enumerate}
+  
+  \subsubsubsection{Appのインストール(割り当て)}
+  Apple School Managerから
+  \begin{enumerate}[手順1.]
+   \item a
    \item Apple Configurator2を起動する。
+   \item (初めての場合)メニューバーからアカウント＞サインインから教師用アカウントでサインイン、Select Locationで「聖光学院中学校高等学校」を選択。
    \item iPadを接続する。
-   \item iPadを選択して
+   \item iPadを選択して、「追加」からAppを選択して追加する。
   \end{enumerate}
 
   \subsubsubsection{アクセスガイド}
@@ -2021,13 +2028,13 @@ Chromebookの性能が悪いため、QRコードの読み取りに時間がか�
    \begin{itembox}[l]{【利用できるようにする機能をコントロールする】}
     機能を無効にしたり時間制限を設けたりするには、サイドボタンまたはホームボタンを 3 回押して、「オプション」をタップする。
     \begin{center}
-    \begin{tabular}{|c|l|}
-     スリープ／スリープ解除ボタン&スリープ／スリープ解除ボタンを無効にするには、\\このオプションをオフにする。\\ \hline
-     ボリュームボタン&デバイスの音量調節ボタンを無効にするには、\\このオプションをオフにする。\\ \hline
-     動作&デバイスが動きに反応しないように制限するには、\\このオプションをオフにする。\\たとえば、シェイクしても画面が反応しなくなり、\\デバイスの持ち方を変えても画面が回転しなくなりす。\\ \hline
-     キーボード&キーボードを無効にして表示されないようにする場合は、\\このオプションをオフにする。\\ \hline
-     タッチ&画面をタッチしてもデバイスが反応しないようにする場合は、\\このオプションをオフにする。\\ \hline
-     辞書検索&テキストを選択したときに「調べる」機能を使うには、\\このオプションをオンにする。\\ \hline
+    \begin{tabular}{|c|l|}\hline
+     スリープ／スリープ解除ボタン&スリープ／スリープ解除ボタンを無効にする\\ \hline
+     ボリュームボタン&デバイスの音量調節ボタンを無効にするには\\ \hline
+     動作&デバイスが動きに反応しないように制限する\footnote{たとえば、シェイクしても画面が反応しなくなり、デバイスの持ち方を変えても画面が回転しなくなる}\\ \hline
+     キーボード&キーボードを無効にして表示されないようにする\\ \hline
+     タッチ&画面をタッチしてもデバイスが反応しないようにする\\ \hline
+     辞書検索&テキストを選択したときに「調べる」機能を無効にする\\ \hline
     \end{tabular}
     \end{center}
    \end{itembox}
@@ -2036,6 +2043,7 @@ Chromebookの性能が悪いため、QRコードの読み取りに時間がか�
   \end{enumerate}
 
   \subsubsubsection{Apple Classroom}
+  Apple Classroomを使えば、Wi-Fi経由でリアルタイムでiPadを覗き見できる。ただし同じWi-Fiに接続されていることが必要。
   \begin{enumerate}[手順1.]
    \item a
   \end{enumerate}
