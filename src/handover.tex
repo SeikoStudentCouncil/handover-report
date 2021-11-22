@@ -466,7 +466,7 @@ AdobeAcrobatをご利用の方は左側に概要が出てきます。ぜひご�
 \end{itemize}
 
 
-\subsection{ハード機材引継}
+\subsection{ハードウエア}
 \subsubsection{生徒会管轄}
  現在生徒会で所有している機材は以下の通りである。
  \begin{itemize}
@@ -489,10 +489,10 @@ AdobeAcrobatをご利用の方は左側に概要が出てきます。ぜひご�
   20台を学校が所有している。\\
   使用する際は情報科の\mail{山口ゆり先生}{yuri.yamaguchi@seiko.ac.jp}に頼むこと。
   \item RODE Wireless Go\UTF{2161}\\
-  ワイヤレスマイク。送信機二つと、受信機一つ、3.5mmイヤホンジャックケーブルが含まれる。使用する際は事務局長の\mail{野口先生}{noguchi@seiko.ac.jp}まであらかじめメールで連絡し、事務室に取りに行くこと。返却する際もあらかじめメールが必要。
+  ワイヤレスマイク。送信機二つと、受信機一つ、3.5mmイヤホンジャックケーブル、ピンマイクが含まれる。使用する際は事務局長の\mail{野口先生}{noguchi@seiko.ac.jp}まであらかじめメールで連絡し、事務室に取りに行くこと。返却する際もあらかじめメールが必要。
  \end{itemize}
 
- \subsection{ソフト引継}
+ \subsection{ソフトウエア}
  \subsubsection{パスワード関連}
  各種パスワード等は村山、紙田、河原にスプレッドシートを共有します。
 
@@ -1412,7 +1412,6 @@ feedbackTOPを用いて前フレームの画像を残す処理を行う。方法
 
   \subsubsection{留意すべき点}
   どんなに説明しても理解できないチーフやせかしてもフォームを送ってこないチーフは残念ながらいる。いちいち突っかかったり、怒ったりしていてはメンタル的に耐えられない。なので、ある程度あきらめること。どちらにしろ、困るのはチーフの方なので無理な願いは無理と断って冷静に−ある意味では冷酷に対応しよう。統一シフトをやるかどうかに関わらず、シフト担当になったあなたの仕事は"完璧なシフトを完成させる"ことではなく"シフトの完成を監督する"ことである。
- \subsection{入場システム}
  \subsection{オンライン食品予約システム}\label{sec:オンライン食品予約システム}
  \subsubsection{概要}
  年々、食品店舗での混雑が問題視されている。そこで一部を予約制にし、予約をしたものを優先することで緩和を狙った。予約側と受取側に分けて説明する。
@@ -1436,7 +1435,6 @@ feedbackTOPを用いて前フレームの画像を残す処理を行う。方法
   \end{itemize}
  \subsubsection{展望}
  もし食品予約システムをやるなら、校内に設置するやり方は良くないと思うので各お客様のスマホからできるようにしてみても面白いと思う。予約完了時に適当な数字や英字を出してそれを掲示させればうまくいくんじゃないかと思う。しかし、ドタキャン対策が難しいのであらかじめ作るのではなく予約してしっかりした時間に来てくれた人は割引とか（あくまで老害の妄想である）という方法であればわんちゃんあると思う。
- \subsection{講堂予約システム}
  \subsection{電子決済}\label{sec:電子決済}
  今年度導入された電子決済では、Squareという企業の機器を用いている。\\
  クレジットカードから交通系ICまで幅広い決済方法に対応している。\\
@@ -1622,6 +1620,9 @@ B$\cdots$番号（0~5）0が代表者。
 お客様一人一人にIDを配るなら各教室の入場人数を測れるのではということで実装した。入場退場の人数を記録し、現在入場中の人を算出する。
 \subsubsection{必要物品}
 展示団体ごとに入口と出口にChromebookを配置。Chromebookは各団体の団体員に出させる。
+\subsubsection{セットアップ}
+iPadに関しては\ref{sec:iPadのセットアップ}参照。\\
+
 
 \subsubsection{構成}
 \begin{itemize}
@@ -1646,7 +1647,7 @@ URLのクエリで\verb|type=in|だったら入場。それ以外は退場モー
 \end{itemize}
 
 \subsubsection{入場許可}
-入場許可が降りなかったとしても入場するなと強制することはできないのであくまで"遠慮していだたく"形になることに留意すること。
+入場許可が降りなかったとしても入場するなと強制することはできないのであくまで``遠慮していだたく''形になることに留意すること。
 
 \subsubsection{課題}
 Chromebookの性能が悪いため、QRコードの読み取りに時間がかかる。『解決策は見当たらない。』\footnote{厨病激発ボーイ - れるりりfeat.鏡音レン}
@@ -1679,7 +1680,29 @@ Chromebookの性能が悪いため、QRコードの読み取りに時間がか�
   \item QRコードリーダーが表示されるのでスキャンすると入場の可否が表示される。
   \end{enumerate}
  \subsubsection{仕組み}
-
+ 
+ \subsection{iPad}
+ \subsubsection{仕様}
+ \subsubsection{周辺機器}
+  \subsubsubsection{充電ケーブル}
+  \subsubsubsection{ラック}
+ \subsubsection{セットアップ}\label{sec:iPadのセットアップ}
+  \subsubsubsection{Apple Configurator2}
+   セットアップに必須なアプリケーション。Mac専用。\\
+   
+   \url{https://apps.apple.com/jp/app/apple-configurator-2/id1037126344?mt=12}
+  \subsubsubsection{Wi-Fi}
+  生徒会のiPadやMacで設定されているstudentを使用してもいいが、回線速度や使えない時間帯があるという観点から、projectorC(5GHz)やprojectorE(2.4GHz)といったWi-Fiを使うようにした方が良い。\\
+  こういったWi-Fiを登録するには、Wi-Fiのパスワードが必要なわけだが、もちろん学校側はパスワードを教えたくないし、iPad20台全部に入力するのもめんどくさいので、こう言った時にプロファイルを使う。プロファイルの作り方は\ref{sec:プロファイルの作り方}、インストールの仕方は\ref{sec:プロファイルのインストール}参照。\\
+  また、studentのWi-FiやprojectorEは自動接続をオフに設定しておくことを推奨する。
+  \subsubsubsection{プロファイルの作り方}\label{sec:プロファイルの作り方}
+  \subsubsubsection{プロファイルのインストール}\label{sec:プロファイルのインストール}
+  \subsubsubsection{Apple ID}
+  \subsubsubsection{Apple School Manager}
+  \subsubsubsection{アプリのインストール}
+  \subsubsubsection{アクセスガイド}
+  \subsubsubsection{Apple Classroom}
+  
 \subsection{外務送付状の差込}\label{sec:外務送付状の差込}
 \section{体育祭}
 \subsection{名簿管理}
@@ -1691,7 +1714,6 @@ Chromebookの性能が悪いため、QRコードの読み取りに時間がか�
 スプレッドシートの値を持ってきてサイトに表示すれば良い。2日で実装できるのでそんな大変ではないはず。コロナによって2日間開催になった時に来ていない学年や保護者に向けた措置。あって困るものではない。スプレッドシートは記録課が作るのでそれに合わせて作る。初心者にやらせるとかなりいい勉強になる良教材。実装できないとなることはないだろう。
 \subsection{撮影}
 \subsection{動画局}
-
 
 \section{生徒会}
 \subsection{Across}
