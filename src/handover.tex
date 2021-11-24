@@ -125,11 +125,11 @@ lineskip=-0.5ex
 \vspace{8.5cm}
 \\
 \Ovalbox{\fontsize{36pt}{25pt}\selectfont \scalebox{1}[1.2]{超機密}}\\
-\fontsize{50pt}{57pt}\selectfont \scalebox{1}[1.1]{技術部門引継書}\\
-\fontsize{13pt}{30pt}\selectfont \scalebox{1}[1.1]{情報技術統括所 拡大幹部会議 | 聖光祭拡大実行会議}\\
-\fontsize{36pt}{35pt}\selectfont \scalebox{1}[1.1]{第１次中間報告}\\
+\fontsize{50pt}{57pt}\selectfont \scalebox{1}[1.1]{情報技術統括所引継書}\\
+\fontsize{11pt}{27pt}\selectfont \scalebox{1}[1.1]{情報技術統括所 拡大幹部会議｜聖光祭 拡大実行会議}\\
+\fontsize{36pt}{40pt}\selectfont \scalebox{1}[1.1]{第１次中間報告}\\
 \fontsize{13pt}{25pt}\selectfont \scalebox{1}[1.1]{情報技術統括所}\\
-\fontsize{13pt}{15pt}\selectfont \scalebox{1}[1.1]{二〇二一年度業務内容概要}\\
+\fontsize{13pt}{17pt}\selectfont \scalebox{1}[1.1]{2021年度業務内容概要}\\
 \fontsize{13pt}{20pt}\selectfont \scalebox{1}[1.1]{総括篇}\\
 }
 \end{center}
@@ -2205,7 +2205,7 @@ Discordでいうサーバー、Slackでいうワークスペース。テナン�
 \item ログイン\\
 ログインIDとパスワードでログインできる。ログインIDは\verb|[ユーザーID]@[テナント名]|で表される。
 \item グループ（チャンネル）\\
-DiscordやSlackでいうチャンネル。入ってる人で通話が可能。グループごとに設定が可能。以下はグループの設定項目。
+DiscordやSlackでいうチャンネル。入ってる人で通話が可能。グループごとに設定が可能。以下はグループの設定項目。グループに参加できる人を選んで設定する。
 \begin{itemize}
 \item グループID\\
 unique。なぜかユーザIDとは違い、全角可能。
@@ -2260,6 +2260,7 @@ DeepL一択。DeepLしか勝たん。
 \begin{itemize}
 \item ダブルクリックは効かない。
 \item ドラッグ\&ドロップが使えない。
+\item セッションを維持できる時間が短い。
 \end{itemize}
 
 \subsubsubsection{権限管理}
@@ -2271,9 +2272,10 @@ DeepL一択。DeepLしか勝たん。
 {デフォルト設定}
 ユーザのアプリの設定を固定したり、デフォルト設定を設定できる。主にPTT\footnote{Push-to-Talk。ボタンを押してる間だけ話せる。}に強制するためのものである。これについては後述する。
 
-\subsubsection{だれかが話し続けてしまう現象について}
-Buddycomでは誰かがボタンを押してしまい、単方向通話で誰も会話できないという現象（以下、本現象という）がかなり頻繁に起きる。
-\subsubsection{アカウント作成}
+
+\subsubsection{CSVによる一括操作について}
+50人以上のアカウントを手動で追加したり、
+
 \subsubsection{アーカイブ}
 アーカイブをすることを推奨する。管理コンソールのトーク履歴からチャンネルごとの
 \begin{itemize}
@@ -2285,6 +2287,19 @@ Buddycomでは誰かがボタンを押してしまい、単方向通話で誰も
 \end{itemize}
 の情報csv形式でダウンロードできるので、全体連絡と緊急連絡のアーカイブはしておくといい。ただし\impact{直近24時間のデータしか残らない}ので、毎日定時のアーカイブが必要。
 
+\subsubsection{だれかが話し続けてしまう現象について}
+Buddycomでは誰かがボタンを押してしまい、単方向通話で誰も会話できないという現象（以下、本現象という）がかなり頻繁に起きる。なお、本現象では「意図的ではない」場合にのみかぎって説明することにする。
+\subsubsubsection{原因}
+主に本現象はiOS版に多い。理由としては外部ボタンによる音楽の再生トリガーである。iOSでバッググラウンドサウンドを再生するにはAppleの再生機能を使うほかない。全ての再生はiOSの管理下に置かれるため、画面に一時停止/再生ボタンが表示されてしまう。buddycomはこの再生ボタンをトグルトリガーにしている。つまり、一時停止/再生ボタンを押すとPTTに設定しても勝手にトグル式の通信が開始されてしまうのである。
+\par
+つまるところ、以下の三つのジェスチャーリスナーが干渉しているのが原因。
+\begin{itemize}
+\item 外部ボタン長押しによるPTT（Buddycom）
+\item 外部ボタンによる音楽の一時停止/再生（iOS）
+\item 長押しによるSiriの起動（iOS）
+\end{itemize}
+ただし、一部のワイアレスイヤホンマイクや、適度な長押しによって反応する時もあるので一概にできないとは言えない。また、一部のAndroid端末でも同様の現象が報告されている。
+\subsubsubsection{対策}
 \section{さいごに}
 \subsection{李 博之より}
 ここまで読んでくれてありがとうございます。せっかくこんなに書いたので最後に少し自分語りときしょい駄文を連ねたいと思います。
