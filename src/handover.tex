@@ -25,6 +25,8 @@
 \usepackage{pxrubrica}
 \usepackage{pdfpages}
 \usepackage{here}
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
 \hypersetup{
  bookmarks=false,
  colorlinks=true,
@@ -2708,4 +2710,84 @@ GitHubアカウント作った後に管理者はPeopleタブ>Memberからユー�
   ここではTeXShopのインストールについて調べる。
   \subsubsubsection{書き方}
   この引き継ぎ書自体もそうだが、技術局ドライブに\TeX ファイルがいっぱいあるのでそれを参考にしてほしい。あとは大概Google検索で出てくる。
+  \subsection{SpreadSheet$\sqrt{大全}$}
+  ここはSpreadSheetの使い方を大全とはいかなくとも、全ての機能のうちその平方根\footnote{``知識は足し算ではなく掛け算だ''と誰かが言っていたため、もう半分学べば全てのことはできるだろうと言うこと。ちなみにスプレッドシートを完全に使いこなせる人はいないし、その必要はない。}ぐらいは解説しようというコーナーである。なるべく日本語を消して書くことにする。また、初心者用ではないのでわからない場合は$n$回読むこと。
+  \subsubsection{基本操作}
+  
+  % Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|
+>{\columncolor[HTML]{CCCCCC}}l |
+>{\columncolor[HTML]{FFF2CC}}l |
+>{\columncolor[HTML]{F3F3F3}}p{10cm} |}
+\hline
+\multicolumn{1}{|c|}{\cellcolor[HTML]{CCCCCC}\textbf{命令}} &
+  \multicolumn{1}{c|}{\cellcolor[HTML]{CCCCCC}\textbf{キー}} &
+  \multicolumn{1}{c|}{\cellcolor[HTML]{CCCCCC}\textbf{説明}} \\ \hline
+\textbf{保存} &
+  Ctrl + S &
+  保存をしないと変更した内容が記録されず消えてしまいます。スプレッドシートでは自動保存機能がありますが、他のソフト等では十分気を付けて下さい。合言葉は「5秒に1回Ctrl+S」です。 \\ \hline
+\textbf{コピー}             & Ctrl + C    & 選択したセル、文字をクリップボードにコピーします。クリップボードとはパソコンの中にある見えない領域です。そこに値を一時的に保存しています。 \\ \hline
+\textbf{切り取り} &
+  Ctrl + X &
+  選択したセル、文字をクリップボードに移動させます。コピーとは違ってもともとあった値は削除されます。ですが、スプレッドシートでは挙動が難しいので基本的にコピーして貼り付けてから削除をすることをお勧めします。 \\ \hline
+\textbf{貼り付け}            & Ctrl + V    & クリップボードから値を貼り付けます。クリップボードの中の値は保持されたままなのでクリップボードが上書きされるまで何回でも貼り付けできます。 \\ \hline
+\textbf{保持値のみ貼り付け} &
+  Ctrl + Shift + V &
+  コピーしたセルの保持値のみを貼り付けます。書式と数式は無視されます。書式が固められてるスプレッドシートではこれを使うようにしてください。 \\ \hline
+\textbf{検索}              & Ctrl + F    & キーワードで検索ができます。                                                        \\ \hline
+\textbf{検索と置換}           & Ctrl + H    & 検索のオプションを追加できたり、ヒットした部分を別の文字に置き換えることもできます。                            \\ \hline
+\textbf{すべて選択}           & Ctrl + A    & すべてを選択します。                                                            \\ \hline
+\textbf{元に戻す}            & Ctrl + Z    & 1つ前の状態に戻します。複数回使用することで何回でも前に戻せますが、限界はあります。                            \\ \hline
+\textbf{やり直し}            & Ctrl + Y    & 1つ後の状態にします。元に戻しすぎたときに元に戻すのを戻せます。                                      \\ \hline
+\textbf{編集}              & Enter       & セル選択状態でEnterを押すと                                                      \\ \hline
+\textbf{選択}              & Ctrl + 左    & Ctrlを押しながらセルをクリックするともともと選択されたセルや範囲に加えて選択されます。                         \\ \hline
+\textbf{範囲選択}            & Shift + 左   & Shiftを押しながらセルをクリックするともともと選択されたセルを始点、クリックされたセルを終点とした範囲が選択されます。         \\ \hline
+\textbf{\begin{tabular}[c]{@{}l@{}}セルを移動\\ （選択状態）\end{tabular}} &
+  ←↑→↓ &
+  矢印キーの方向に移動できます。Shiftを押しながら移動することで範囲選択をすることもできます。 \\ \hline
+\cellcolor[HTML]{CCCCCC} & Tab         & 右                                                                     \\ \cline{2-3} 
+\cellcolor[HTML]{CCCCCC} & Shift + Tab & 左                                                                     \\ \cline{2-3} 
+\cellcolor[HTML]{CCCCCC} & Enter       & 下                                                                     \\ \cline{2-3} 
+\multirow{-4}{*}{\cellcolor[HTML]{CCCCCC}\textbf{\begin{tabular}[c]{@{}l@{}}セルを移動\\ （入力状態）\end{tabular}}} &
+  Shift + Enter &
+  上 \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+  
+  \subsubsection{セル}
+  \subsubsubsection{セル座標}
+  横軸を列、縦軸を行と呼び、表記は$列:行$。左から3列目、上から4行目は$C:4$である。このような表記のことをセル座標ということにする。セル座標はセルの値を指すこともあるが、あくまでセルを表す。
+\\
+  また、あるセルAでそれと異なるセルBのセル座標を数式で指定した場合、AからBの相対位置が保存されるため、AFやコピーによってAのセルを変更すると以前の相対位置を保つようにBも変更される。
+  \subsubsubsection{セルの理解}
+  セルは三つに分けて考えると簡単。ちなみに専門用語ではないし、李の勝手な解釈。
+  \begin{itemize}
+  \item 入力値\\
+  ユーザが入力した純粋な文字列
+  \item 内部値（保持値）\\
+  入力値を演算した結果の値
+  \item 書式\\
+  セル及び内部値の表示を装飾する機能全般
+  \end{itemize}
+  ちなみに、スプレッドシート講座テキストというスプレッドシートに書いてあることから少し変更した。
+  \subsubsubsection{セルのコピペ}
+  セルを選択した状態でコピー（Ctrl［Command］ + C）または切り取り（Ctrl［Command］ + X）すると入力値及び書式がコピーされる。そのままペースト（Ctrl［Command］ + V）すると、入力値及び書式がペーストされる。値のみペースト（Ctrl［Command］ + Shift + V）すると内部値のみペーストされる。
+  \\
+  なお、入力値がペーストされその中に相対セル指定があった場合、以前の相対位置を保つように相対セル指定が変わる。
+  \subsubsection{ファイル}
+  \subsubsubsection{権限}
+  GoogleWorkspaceの権限はかなりめんどい。
+  \\
+  まず、
+  
+  
+    \subsection{Google Apps Script$\sqrt{大全}$}
+  ここはGoogleAppsScript（以下、GASとする）の使い方を大全とはいかなくとも、全ての機能のうちその平方根ぐらいは解説しようというコーナーである。なるべく日本語を消して書くことにする。また、初心者用ではないのでわからない場合は$n$回読むこと。
+  
   \end{document}
