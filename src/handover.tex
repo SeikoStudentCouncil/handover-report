@@ -2010,9 +2010,8 @@ Chromebookの性能が悪いため、QRコードの読み取りに時間がか�
    \item 入手を押す
   \end{enumerate}
   \subsubsubsection{Appのインストール(割り当て)}
-  Apple School Managerから十分なライセンスがあることを
+  Apple School Managerから十分なライセンスがあることを確認すること。
   \begin{enumerate}[手順1.]
-   \item a
    \item Apple Configurator2を起動する。
    \item (初めての場合)メニューバーからアカウント＞サインインから教師用アカウントでサインイン、Select Locationで「聖光学院中学校高等学校」を選択。
    \item iPadを接続する。
@@ -2020,7 +2019,7 @@ Chromebookの性能が悪いため、QRコードの読み取りに時間がか�
   \end{enumerate}
   \subsubsubsection{TestFlight}
   オリジナルAppをiPadに入れるためには、TestFlight Appが必要。このアプリは本来、アプリのベータ版を配信するときに使われるものだが、iPadで利用するのには\impact{教員用Apple IDでApp Storeにログインする必要がある}\footnote{デバイスの「設定」AppでログインしているApple IDとは別。iPadセットアップ時にログインするApple IDと同じデフォルトで設定されている。App Store App上でそのApple IDからログアウトしてサインインしなおせば、デバイスのApple IDとは別のApple IDでログインできる。}\\
-  \ref{sec:TestFlight}参照。
+  TestFlightへのアップロードに関しては\ref{sec:TestFlight}参照。
   \subsubsubsection{アクセスガイド}
   iPadにある1つのAppしか使えないように制限するモードである。\\
   電子決済をしない全てのiPadで設定すべきである。
@@ -2058,7 +2057,16 @@ Chromebookの性能が悪いため、QRコードの読み取りに時間がか�
   \subsubsubsection{Apple Classroom}
   Apple Classroomを使えば、Wi-Fi経由でリアルタイムでiPadを覗き見できる。ただし同じWi-Fiに接続されていることが必要。
   \begin{enumerate}[手順1.]
-   \item a
+   \item 管理するMacまたはiPadに「\link{クラスルーム}{https://apple.co/3DShnKU}」をインストールして開く。
+   \item 「教師の情報」に名前を入力して写真を追加する。
+   \item ＋を選択して新しいクラスを作成し、クラスに名前を付け、クラスのカラーとシンボルを選択する。
+   \item 「生徒に参加を依頼」を選択して、生徒を招待できるようにする。
+   \item 生徒として追加するiPadで「設定」を開く
+   \item 左のメニューに「クラスルーム」が表示されるので\footnote{表示されない場合は、同じWi-Fiに接続されているか確認すること}、「＜クラス名＞を追加」を選択して、生徒の情報と、管理する端末に表示されている確認コードを入力する。
+   \item 「追加」を選択すると、設定が完了し、管理する端末に生徒の情報が表示される。
+   \item 「教師に許可する操作」の「Appとデバイスのロック」「AirPlay及び画面の閲覧」を「常に」設定。
+   \item それぞれのiPadで以上を繰り返す。
+   \item 管理する端末で「追加」を選択して、クラスルームに生徒が追加された。
   \end{enumerate}
 
 \subsection{外務送付状の差込}\label{sec:外務送付状の差込}
@@ -2110,8 +2118,9 @@ function createNewDocument(id, range, sdid) {
 
 スプレッドシートの値を持ってきてサイトに表示すれば良い。2日で実装できるのでそんな大変ではないはず。コロナによって2日間開催になった時に来ていない学年や保護者に向けた措置。あって困るものではない。スプレッドシートは記録課が作るのでそれに合わせて作る。初心者にやらせるとかなりいい勉強になる良教材。実装できないとなることはないだろう。
 \subsection{撮影}
+広報委員会で撮影隊が結成されていないのであれば、動画局が代わりに撮影スタッフを募集すること。撮影と言っても写真がメインで良い。
 \subsection{動画局}
-
+ダンス動画の編集をしろみたいな流れがあったが、編集は頼まれた時のみやればいいと思う。
 \section{生徒会}
 \subsection{Across}
 58期の代は洗足学園など他校の生徒会とともに学生団体「Across」が結成されていた。ただ、59に引き継がれた後パンデミックの間に有耶無耶に。僕（飼沼）はAcross Business Plan Contest 特別講演会ポスターの代金を踏み倒されているので、経理が判明したら連絡をください。
@@ -2693,9 +2702,10 @@ GitHubアカウント作った後に管理者はPeopleタブ>Memberからユー�
  \subsubsection{\TeX}
   \subsubsubsection{\TeX とは}
   PDFを作るためのプログラミング言語みたいなもの。\\
-  \TeX を使うには専用のアプリケーションが必要だが、代表的なものとして、TeXShopやAtomがある。
+  \TeX を使うには専用のアプリケーションが必要だが、代表的なものとしてTeXShop\footnote{三枝と李が使用}やAtom\footnote{飼沼が使用}がある。
   \subsubsubsection{インストール}
   \TeX はインストールが一番大変。ここさえ乗り越えれば大丈夫。
+  ここではTeXShopのインストールについて調べる。
   \subsubsubsection{書き方}
   この引き継ぎ書自体もそうだが、技術局ドライブに\TeX ファイルがいっぱいあるのでそれを参考にしてほしい。あとは大概Google検索で出てくる。
   \end{document}
