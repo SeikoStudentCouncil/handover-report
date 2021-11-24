@@ -33,7 +33,6 @@
  filecolor=black,
  urlcolor=[rgb]{0,0.4,0.8}
 }
-\renewcommand{\bfdefault}{bx}
 \usepackage{array}
 \usepackage{fvextra}
 \usepackage{longtable}
@@ -1253,7 +1252,7 @@ Helperとは書くけれどこれを使う以外の方法でDBにアクセスす
   \subsubsubsection{Apple Developer Program}
   App StoreにアプリをリリースするにはApple Developer Programのライセンス契約が必要。個人契約、12,980円/年。予算で落ちるが、一人一ライセンスまで\footnote{昔はライセンスを共有することができ、同じAppを作っているメンバーであればライセンスが付与される使用だったが、最近変わった模様。}で、2~3アカウント落とすことを考えた方がいい。\\
   法人契約もできるが、\ruby[g]{D-U-N-S}{ダンズ}番号が必要。学校にD-U-N-S番号を使わせてもらえないか交渉したところ、ダメとのこと。かなり前にも交渉した先輩がいたとも言われた。個人契約しかないだろう。
-  \subsubsubsection{TestFlight}
+  \subsubsubsection{TestFlight}\label{sec:TestFlight}
   TestFlightはAppStoreにリリースしなくても、ベータ版としてアプリケーションを公開できるというもの。\\
   聖光祭アプリなども聖光祭が始まる一ヶ月前くらいからTestFlightを始めると、バグ修正ができるのでいいと思う。2021年度は幹部のみに公開していたが、全校生徒に公開しても良いかもしれない。\\
   小さい画面サイズのiPhoneや逆に大きい画面サイズのiPhoneだったりで予想していなかったUIが発生することがある。
@@ -1986,6 +1985,8 @@ Chromebookの性能が悪いため、QRコードの読み取りに時間がか�
   \subsubsubsection{Apple School Manager}
   学校用のApple IDを管理するもの。\\
   聖光学院では2021年7月にiPadを購入した際に学校用Apple IDを取得した。\\
+  Apple School Managerを使えば、Appの購入と割り当てができる。
+  Apple School Managerにログインするためには、\impact{教師アカウントが必要}なので、
   \url{school.apple.com}からアクセス可能。
   \subsubsubsection{Apple ID}
   iPadのApple IDはできれば全デバイスでバラバラの方がいい。\\
@@ -1995,7 +1996,9 @@ Chromebookの性能が悪いため、QRコードの読み取りに時間がか�
   \begin{enumerate}[手順1.]
    \item Apple School Managerにサインイン
    \item 「コンテンツ」セクションの「Appとブック」からアプリを選択
-   \item ロケーションを「聖光学院中学校高等学校」
+   \item ロケーションで「聖光学院中学校高等学校」を選択
+   \item 必要な数量を入力
+   \item 入手を押す
   \end{enumerate}
   \subsubsubsection{Appのインストール(割り当て)}
   Apple School Managerから十分なライセンスがあることを
@@ -2006,7 +2009,9 @@ Chromebookの性能が悪いため、QRコードの読み取りに時間がか�
    \item iPadを接続する。
    \item iPadを選択して、「追加」からAppを選択して追加する。
   \end{enumerate}
-
+  \subsubsubsection{TestFlight}
+  オリジナルAppをiPadに入れるためには、TestFlight Appが必要。このアプリは本来、アプリのベータ版を配信するときに使われるものだが、iPadで利用するのには\impact{教員用Apple IDでApp Storeにログインする必要がある}\footnote{デバイスの「設定」AppでログインしているApple IDとは別。iPadセットアップ時にログインするApple IDと同じデフォルトで設定されている。App Store App上でそのApple IDからログアウトしてサインインしなおせば、デバイスのApple IDとは別のApple IDでログインできる。}\\
+  \ref{sec:TestFlight}参照。
   \subsubsubsection{アクセスガイド}
   iPadにある1つのAppしか使えないように制限するモードである。\\
   電子決済をしない全てのiPadで設定すべきである。
