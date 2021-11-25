@@ -112,7 +112,7 @@ lineskip=-0.5ex
  \pagestyle{fancy}
 \lhead{\fontsize{8pt}{0pt}\selectfont \hyperlink{top}{聖光祭実行委員会\\技術部門引継書 第１次中間報告}}
 \lfoot{技術局}
-\rfoot{ITEC}
+\rfoot{\copyright ITEC 2021}
 \cfoot{\thepage/\pageref{LastPage}}
 
 
@@ -2716,7 +2716,8 @@ GitHubアカウント作った後に管理者はPeopleタブ>Memberからユー�
   \end{lstlisting}
   パスワードが必要。\footnote{このとき、セキュリティ上の理由により、打ち込んだパスワードは画面に一切表示されない。パスワード文字数が見えてしまうのを防ぐため、****のようなマスク文字も表示されない。まるでキーボードが効いていないかのように見えるが、入力はされているので、そのままパスワードを最後まで打ち込んで、returnキーを押す。なお、sudoは管理者権限を用いて実行するためのコマンドです。一度実行すると、それからしばらくの間はパスワードなしでsudoを連続実行できます。}
   \subsubsubsection{ヒラギノフォントの準備}
-  続いて、MacOSに標準で用意されているヒラギノフォントを\TeX で使用するため、次の一連のコマンドを実行する。一行ずつ順番に実行すること。
+  続いて、MacOSに標準で用意されているヒラギノフォントを\TeX で使用するため、次ページのコマンドを実行する。一行ずつ順番に実行すること。
+  \newpage
   \begin{lstlisting}
 sudo mkdir -p /usr/local/texlive/texmf-local/fonts/opentype/screen/hiragino
 cd /usr/local/texlive/texmf-local/fonts/opentype/screen/hiragino
