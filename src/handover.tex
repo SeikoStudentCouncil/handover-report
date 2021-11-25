@@ -58,7 +58,9 @@ lineskip=-0.5ex
 }
 
 \makeatletter
-
+\titleformat*{\section}{\huge \gtfamily \bfseries}
+\titleformat*{\subsection}{\Large \gtfamily \bfseries}
+\titleformat*{\subsubsection}{\large \bfseries}
 \renewcommand{\labelitemii}{○}
 \renewcommand{\thefootnote}{※$\!\!\arabic{footnote}$}
 \newcommand{\subsubsubsection}{\@startsection{paragraph}{4}{\z@}%
@@ -2053,9 +2055,9 @@ Chromebookの性能が悪いため、QRコードの読み取りに時間がか�
   \end{enumerate}
 
   \subsubsubsection{Apple Classroom}
-  Apple Classroomを使えば、Wi-Fi経由でリアルタイムでiPadを覗き見できる。ただし同じWi-Fiに接続されていることが必要。
+  Apple Classroomを使えば、Wi-Fi経由でリアルタイムでiPadを監視したり、ロックできる。ただし同じWi-Fiに接続されていることが必要。
   \begin{enumerate}[手順1.]
-   \item 管理するMacまたはiPadに「\link{クラスルーム}{https://apple.co/3DShnKU}」をインストールして開く。
+   \item 管理するMacまたはiPadに\link{クラスルーム}{https://apple.co/3DShnKU}をインストールして開く。
    \item 「教師の情報」に名前を入力して写真を追加する。
    \item ＋を選択して新しいクラスを作成し、クラスに名前を付け、クラスのカラーとシンボルを選択する。
    \item 「生徒に参加を依頼」を選択して、生徒を招待できるようにする。
@@ -2138,7 +2140,7 @@ function createNewDocument(id, range, sdid) {
 \subsubsection{清掃}
 たまに中のものを全て出して掃除しよう。汚すぎ
 \subsubsection{鍵}
-生徒会長と事務局長飲み持ち出し権限がある。聖光祭中は実行委員長と副実行1が権限持ちだった。早く来すぎて開けれないとかはよくあったので、生徒会長に相談するといいと思う。紛失するなよ絶対。
+生徒会長と事務局長のみ持ち出し権限がある。聖光祭中は実行委員長と副実行1が権限持ちだった。早く来すぎて開けれないとかはよくあったので、生徒会長に相談するといいと思う。紛失するなよ絶対。
 \subsubsection{PC}
 事務局PCと技術局PCがある。生徒会長/事務局長/技術局長以外使用禁止にしよう。それ以外の人が使うときは許可もらってからがいいと思う。
 \subsubsection{その他}
@@ -2371,7 +2373,7 @@ Buddycomでは誰かがボタンを押してしまい、単方向通話で誰も
 
 この引継書を全て読むこと。そして、\.そ\.の\.全\.て\.を\.疑\.え。
 
-\section{APPENDIX}
+\section{\textit{APPENDIX}}
 \subsection{【最重要】命名規則}\label{sec:命名規則}
 命名規則まもらないやつはこの部門にいる価値ない。
 \subsubsection{三つの方式}
