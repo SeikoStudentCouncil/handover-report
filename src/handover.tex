@@ -58,17 +58,18 @@ lineskip=-0.5ex
 }
 
 \makeatletter
-\titleformat*{\section}{\Huge \gtfamily \bfseries}
-\titleformat*{\subsection}{\huge \gtfamily \bfseries}
-\titleformat*{\subsubsection}{\Large \bfseries}
+
 \renewcommand{\labelitemii}{○}
 \renewcommand{\thefootnote}{※$\!\!\arabic{footnote}$}
   \newcommand{\subsubsubsection}{\@startsection{paragraph}{4}{\z@}%
     {1.0\Cvs \@plus.5\Cdp \@minus.2\Cdp}%
     {.1\Cvs \@plus.3\Cdp}%
-    {\reset@font}
+    {\large \bfseries}
   }
   \makeatother
+\titleformat*{\section}{\LARGE \gtfamily \bfseries}
+\titleformat*{\subsection}{\Large \gtfamily \bfseries}
+\titleformat*{\subsubsection}{\Large \bfseries}
 \setcounter{secnumdepth}{4}
 \newcommand{\sectionbreak}{\clearpage}
 \makeatletter
@@ -2378,14 +2379,14 @@ Buddycomでは誰かがボタンを押してしまい、単方向通話で誰も
 \subsubsection{三つの方式}
 \begin{table}[h]
 \begin{center}
-\begin{tabular}{|c||ccc|}
+\begin{tabular}{|c||cccc|}
 \hline
-\textbf{命名規則方式} & \multicolumn{1}{c|}{\textbf{キャメルケース}} & \multicolumn{1}{c|}{\textbf{スネークケース}}  & \textbf{ケバブケース} \\ \hline
-\textbf{単語の1文字目} & \multicolumn{1}{c|}{大文字} & \multicolumn{2}{c|}{小文字} \\ \hline
-\textbf{単語の区切れ} & \multicolumn{1}{c|}{\EscVerb{null}}           & \multicolumn{1}{c|}{\EscVerb{_}（アンダーバー）}      & \EscVerb{-}（ハイフン）       \\ \hline
-\textbf{1文字目}    & \multicolumn{3}{c|}{小文字}                            \\ \hline
-\textbf{それ以外の文字} & \multicolumn{3}{c|}{小文字}                            \\ \hline
-\textbf{例}      & \multicolumn{1}{c|}{\EscVerb{thisIsExample}}    & \multicolumn{1}{c|}{\EscVerb{this_is_example}} & \EscVerb{this-is-example} \\ \hline
+\textbf{命名規則方式} & \multicolumn{1}{c|}{\textbf{キャメルケース}} & \textbf{パスカルケース} & \multicolumn{1}{c|}{\textbf{スネークケース}}  & \textbf{ケバブケース} \\ \hline
+\textbf{単語の1文字目} & \multicolumn{2}{c|}{大文字} & \multicolumn{2}{c|}{小文字} \\ \hline
+\textbf{単語の区切れ} & \multicolumn{2}{c|}{\EscVerb{null}}           & \multicolumn{1}{c|}{\EscVerb{_}（アンダーバー）}      & \EscVerb{-}（ハイフン）       \\ \hline
+\textbf{1文字目}    & \multicolumn{1}{c|}{大文字} & \multicolumn{3}{c|}{小文字}                            \\ \hline
+\textbf{それ以外の文字} & \multicolumn{4}{c|}{小文字}                            \\ \hline
+\textbf{例}      & \multicolumn{1}{c|}{\EscVerb{ThisIsExample}} & \multicolumn{1}{c|}{\EscVerb{thisIsExample}}    & \multicolumn{1}{c|}{\EscVerb{this_is_example}} & \EscVerb{this-is-example} \\ \hline
 \end{tabular}
 \end{center}
 \end{table}
@@ -2519,6 +2520,46 @@ GitHubを使う理由・使うときは主に3つあります。
   \item 複数のパソコンで同じ進行状況を共有しながら開発できる。
 \end{itemize}
 などいっぱい機能があります！！！別に一人でコーディングするときでも便利なのでみんな使ってください！！
+
+
+\subsubsection{専門用語}
+GitHubは横文字を含め、さまざまな専門用語がある。専門用語を使えばかっこいい！とかではなく、専門用語以外で表現ができない上、説明がしにくいので書くことにする。
+\begin{itemize}
+\item \ruby[g]{Repository}{レポジトリ}\\
+プロジェクトの単位。1つのプロジェクト=1レポジトリ。
+\item \ruby[g]{Remote Repository}{リモートレポジトリ}\\
+Gitサーバーに置かれるレポジトリ。インターネット上にあるので複数人で共有できる。
+\item \ruby[g]{Local Repository}{ローカルレポジトリ}\\
+パソコン保存されているレポジトリ。パソコン上にしかないので主に自分用。
+\item \ruby[g]{Conflict}{コンフリクト}\\
+レポジトリやBranch（後述）を更新する際に更新先にも更新があり更新内容が衝突すること。VSCodeやAtomというエディタ、GitHub上で解決できる。
+\item \ruby[g]{Pull}{プル}\\
+リモートレポジトリの更新内容をローカルレポジトリに反映させる。
+\item \ruby[g]{Fetch}{フェッチ}\\
+リモートレポジトリの更新内容があるか確認する。ほぼプルと同じ。
+\item \ruby[g]{Commit}{コミット}\\
+ファイルの編集内容をローカルレポジトリに追加する。作業がひと段落したらコミットする。
+\item \ruby[g]{Push}{プッシュ}\\
+ローカルレポジトリの更新内容をリモートレポジトリに反映させる。
+\item \ruby[g]{Fork}{フォーク}\\
+自分以外のリモートレポジトリをコピーし、自分のリモートレポジトリを生成する。
+\item \ruby[g]{Branch}{ブランチ}\\
+ソースコードの枝。あるバージョン（正確にはコミットから分岐したバージョン）を作る。ここに更新を行うことができ、時が来たらそれを元のブランチに結合して戻すことができる。もちろんブランチへの更新は元のブランチには影響はない。なお、この"元のブランチ"を「master」ブランチあるいは「main」ブランチという\footnote{2019〜2020年にmasterは奴隷制度を連想させるとしてデフォルトブランチがmainになっている。設定で変えられるらしいのでmasterになってる場合はmainにしとくことをお勧めする。}。ちなみに「ブランチを切る」という言い方をする。
+\item \ruby[g]{Pull Request}{プルリク}\\
+ブランチの結合時及びForkされたレポジトリから元のレポジトリを更新するときに送るリクエスト。レポジトリの管理者が内容を精査し、認証することで初めて受理される。この時にコンフリクトが起きる可能性あり。
+\item \ruby[g]{Merge}{マージ}\\
+何か二つのものを結合するときに内部的に行われる処理。基本的にはプルリクの受理時のことを指す。この言葉の定義は人によって違うが、「プルリク送ったらマージするから」といった感じで使われる。
+\item \ruby[g]{Issue}{イシュー}\\
+GitHubの機能の一つ。問題提起することができ、複数人で話し合えるチャット形式の機能。何かを実装する際にその機能の内容や仕様をのせたイシューを立て、そのイシュー番号をブランチ名に記載する。こうすることでこの人が何やってるのか、この機能とはなんなのかを知ることができる。ちなみに「イシューを立てる」という言い方をする。詳しくは後述する。
+\item \ruby[g]{Close}{クローズ}\\
+プルリク、ブランチ、イシューを終了するという意味。
+\item \ruby[g]{Readme.md}{リードミー}\\
+レポジトリの直下に置かれるファイル。このファイルの内容はMarkdownという形式で書かれ、このファイルがあるレポジトリはGitHubでそれが説明文として下に出てくる。これは絶対書くこと。また、Markdownはプログラマにとって必要不可欠な記法でありそんな難しくないので習得しとくこと\footnote{プログラマ共有サイトQiita、Discord、SlackなどではMarkdownを使った投稿ができる。}。
+\item \ruby[g]{.gitignore}{イグノア}\\
+{\bf\ref{sec:gitignore}参照}
+\end{itemize}
+
+
 \subsubsection{GitHub PROになる}
 \url{https://education.github.com}に行って聖光のメールアドレスを登録するとGitHub PROになれます。
 GitHub PROになると様々な恩恵が受けられるらしいですが、僕にはよくわかりません。
@@ -2570,44 +2611,7 @@ GitHubに上げるべきものとして、
 があります。
 これらをGitHubに上げないためにはcommitする前に\emph{.gitignore}
 にそれらのファイルを記入するとgitの管理下に置かれなくなります。
-誤ってcommitしちゃったときは\emph{git commit 取り消し}でググってください。
-\subsubsection{専門用語}
-GitHubは横文字を含め、さまざまな専門用語がある。専門用語を使えばかっこいい！とかではなく、専門用語以外で表現ができない上、説明がしにくいので書くことにする。
-\begin{itemize}
-\item \ruby[g]{Repository}{レポジトリ}\\
-プロジェクトの単位。1つのプロジェクト=1レポジトリ。
-\item \ruby[g]{Remote Repository}{リモートレポジトリ}\\
-Gitサーバーに置かれるレポジトリ。インターネット上にあるので複数人で共有できる。
-\item \ruby[g]{Local Repository}{ローカルレポジトリ}\\
-パソコン保存されているレポジトリ。パソコン上にしかないので主に自分用。
-\item \ruby[g]{Conflict}{コンフリクト}\\
-レポジトリやBranch（後述）を更新する際に更新先にも更新があり更新内容が衝突すること。VSCodeやAtomというエディタ、GitHub上で解決できる。
-\item \ruby[g]{Pull}{プル}\\
-リモートレポジトリの更新内容をローカルレポジトリに反映させる。
-\item \ruby[g]{Fetch}{フェッチ}\\
-リモートレポジトリの更新内容があるか確認する。ほぼプルと同じ。
-\item \ruby[g]{Commit}{コミット}\\
-ファイルの編集内容をローカルレポジトリに追加する。作業がひと段落したらコミットする。
-\item \ruby[g]{Push}{プッシュ}\\
-ローカルレポジトリの更新内容をリモートレポジトリに反映させる。
-\item \ruby[g]{Fork}{フォーク}\\
-自分以外のリモートレポジトリをコピーし、自分のリモートレポジトリを生成する。
-\item \ruby[g]{Branch}{ブランチ}\\
-ソースコードの枝。あるバージョン（正確にはコミットから分岐したバージョン）を作る。ここに更新を行うことができ、時が来たらそれを元のブランチに結合して戻すことができる。もちろんブランチへの更新は元のブランチには影響はない。なお、この"元のブランチ"を「master」ブランチあるいは「main」ブランチという\footnote{2019〜2020年にmasterは奴隷制度を連想させるとしてデフォルトブランチがmainになっている。設定で変えられるらしいのでmasterになってる場合はmainにしとくことをお勧めする。}。ちなみに「ブランチを切る」という言い方をする。
-\item \ruby[g]{Pull Request}{プルリク}\\
-ブランチの結合時及びForkされたレポジトリから元のレポジトリを更新するときに送るリクエスト。レポジトリの管理者が内容を精査し、認証することで初めて受理される。この時にコンフリクトが起きる可能性あり。
-\item \ruby[g]{Merge}{マージ}\\
-何か二つのものを結合するときに内部的に行われる処理。基本的にはプルリクの受理時のことを指す。この言葉の定義は人によって違うが、「プルリク送ったらマージするから」といった感じで使われる。
-\item \ruby[g]{Issue}{イシュー}\\
-GitHubの機能の一つ。問題提起することができ、複数人で話し合えるチャット形式の機能。何かを実装する際にその機能の内容や仕様をのせたイシューを立て、そのイシュー番号をブランチ名に記載する。こうすることでこの人が何やってるのか、この機能とはなんなのかを知ることができる。ちなみに「イシューを立てる」という言い方をする。詳しくは後述する。
-\item \ruby[g]{Close}{クローズ}\\
-プルリク、ブランチ、イシューを終了するという意味。
-\item \ruby[g]{Readme.md}{リードミー}\\
-レポジトリの直下に置かれるファイル。このファイルの内容はMarkdownという形式で書かれ、このファイルがあるレポジトリはGitHubでそれが説明文として下に出てくる。これは絶対書くこと。また、Markdownはプログラマにとって必要不可欠な記法でありそんな難しくないので習得しとくこと\footnote{プログラマ共有サイトQiita、Discord、SlackなどではMarkdownを使った投稿ができる。}。
-\item \ruby[g]{.gitignore}{イグノア}\\
-{\bf\ref{sec:gitignore}参照}
-\end{itemize}
-\subsubsection{Git周りのソフト}
+誤ってcommitしちゃったときは\emph{git commit 取り消し}でググってください。\subsubsection{Git周りのソフト}
 \subsubsubsection{GitとGitHub}
 そもそもGitとGitHubは違う。Gitはバージョン管理関係のコマンドソフトである。そしてそれをリモートで見れるようにしたのがGitHubである。私たちがGitHubを見るのに必要なものの一つがGitである。
 \subsubsubsection{GitHub Desktop}
@@ -2639,7 +2643,7 @@ GitHubアカウント作った後に管理者はPeopleタブ>Memberからユー�
  \end{enumerate}
  もし、管理者が自分であってもなるべくこのフローチャートを崩さずにコーディングする。自分のコードをコードレビューしてもしょうがないのでここら辺は即マージで構わない。
  \subsubsection{コミットメッセージ（Commit Summery）}
- コミットのSummaryは以下の書式は\verb|[commitType] summary|とする。summary はコミットの内容を簡潔に英語でかく（ただし動詞で、1文字目UpperCase、原形＝命令形文法）。そして、commitTypeは以下から選ぶ。
+ コミットのSummaryは以下の書式は\verb|[commitType] summary|とする。summary はコミットの内容を簡潔に英語でかく（ただし動詞で、パスカルケース、原形＝命令形文法）。そして、commitTypeは以下から選ぶ。
 
 \begin{itemize}
 \item fix：バグ修正　
@@ -2769,6 +2773,7 @@ sudo kanji-config-updmap-sys hiragino-pron
   ここはSpreadSheetの使い方を大全とはいかなくとも、全ての機能のうちその平方根\footnote{``知識は足し算ではなく掛け算だ''と誰かが言っていたため、もう半分学べば全てのことはできるだろうと言うこと。ちなみにスプレッドシートを完全に使いこなせる人はいないし、その必要はない。}ぐらいは解説しようというコーナーである。なるべく日本語を消して書くことにする。また、初心者用ではないのでわからない場合は$n$回読むこと。以下、スプレッドシートファイルをgsh、スプレッドシート内のシートのことをgssと書くことにする。
   \subsubsection{基本操作}
   
+  {\small
 \begin{center}
 \begin{tabular}{|
 >{\columncolor[HTML]{CCCCCC}}l |
@@ -2807,6 +2812,7 @@ sudo kanji-config-updmap-sys hiragino-pron
   上 \\ \hline
 \end{tabular}
 \end{center}
+}
   \subsubsection{セル}
   \subsubsubsection{セル座標}
   横軸を列、縦軸を行と呼び、表記は$列:行$。左から3列目、上から4行目は$C:4$である。このような表記のことをセル座標ということにする。セル座標はセルの値を指すこともあるが、あくまでセルを表す。
@@ -2851,7 +2857,7 @@ sudo kanji-config-updmap-sys hiragino-pron
  編集できる
  \end{itemize}
  \end{itemize}
- 招待共有ではGmailアカウント一個ごとに招待や権限設定を行える。権限設定は上記の「何を」の部分と完全に一致するが、あなたがオーナー権限の場合はオーナーを移譲できる。（後述）なお、招待共有とリンク共有がある個人について同時に設定されていた場合、場合、閲覧者<閲覧者（コメント可）<編集者<オーナーの順で優先されるので"みんな編集OKだけどいつは閲覧だけ"という設定はできない。
+ 招待共有ではGmailアカウント一個ごとに招待や権限設定を行える。権限設定は上記の「何を」の部分と完全に一致するが、あなたがオーナー権限の場合はオーナーを移譲できる。（後述）なお、招待共有とリンク共有がある個人について同時に設定されていた場合、場合、閲覧者\verb|<| 閲覧者（コメント可）\verb|<| 編集者\verb|<| オーナーの順で優先されるので"みんな編集OKだけどいつは閲覧だけ"という設定はできない。
  \\
  
  また招待共有をする際、相手側にメールを送るかどうかを設定できる。送る場合は文章も送ることができる。相手側に知らせるために送る方がいいだろう。リンク共有はあたりまえだが、メールを送ることはできない。
@@ -2894,7 +2900,10 @@ sudo kanji-config-updmap-sys hiragino-pron
  いろんな角度に設定することができる。数字で回転度数も設定できる。
  \item リンクを挿入\\
  Ctrl［Command］ + K。セル内の文字にリンクを挿入できる。
- 
+  \item フォント\\
+  フォントを変えることができる。とりあえずNoto Sans使っとけ。
+  \item 表示書式\\
+  書式の中でもっとも大切な要素。あとで別途取り上げる。
  \end{itemize}
  
  \subsubsubsection{セルに関する書式}
@@ -2916,9 +2925,54 @@ sudo kanji-config-updmap-sys hiragino-pron
    \item 塗りつぶしの色\\
  背景色を変えることができる。
   \end{itemize}
+  \subsubsubsection{その他の書式}
+  \begin{itemize}
+  \item 条件つき書式\\
+  条件をもとに書式を変えることができる。例えば、「空白のセルの背景を変える」ことができる。ここで長々と説明するより、体験した方が早い。
+  \end{itemize}
+  
 
-  
-    \subsection{Google Apps Script$\sqrt{大全}$}
-  ここはGoogleAppsScript（以下、GASとする）の使い方を大全とはいかなくとも、全ての機能のうちその平方根ぐらいは解説しようというコーナーである。なるべく日本語を消して書くことにする。また、初心者用ではないのでわからない場合は$n$回読むこと。
-  
-  \end{document}
+\newpage  
+\subsection{GoogleAppsScript$\sqrt{大全}$}
+ここはGoogleAppsScript（以下、GASとする）の使い方を大全とはいかなくとも、全ての機能のうちその平方根ぐらいは解説しようというコーナーである。初心者用ではないのでわからない場合は$n$回読むこと。
+\subsubsection{概要}
+GASはGoogleWorkspaceをはじめとしたGoogleサービス、そしてHTMLやデータの基本処理を行うことを目的としたアプリケーション開発プラットフォームである。開発は全てブラウザで完結しており、Googleアカウントと結び付けられたProjectファイルにクライアント環境を選ばずアクセスができる。
+\subsubsection{できること}
+以下はGAS公式リファレンスに載っている、GASができることのリストを意訳したものである。
+\begin{itemize}
+\item Googleドキュメント、スプレッドシート、フォームにカスタムメニューやダイアログ、サイドバーなどの新機能を追加する。
+\item Googleスプレッドシートにカスタム関数とマクロを追加する。
+\item Googleサイトに埋め込まれたウェブアプリを公開する
+\item AdSense、アナリティクス、カレンダー、ドライブ、Gmail、マップなどの他のGoogleサービスと連携する
+\item Googleドキュメント、スプレッドシート、スライド、フォームのアドオンを開発及び公開する
+\item AndroidアプリをAndroidアドオンとしてビルドし、クライアントでのGoogleドキュメント、スプレッドシートの情報を扱う
+\item チャットbotを制作し、Googleチャットのワークフローを合理化する
+\end{itemize}
+\subsubsection{エディタ}
+GASは2020年ぐらい\footnote{覚えてない。}にブラウザエディタを刷新しており、旧エディタでしか使えない機能などがあるかわり、新機能が追加されたりなど、かなり互換性が悪い。少し古い記事では旧エディタで作業をおこなっていたりするのでこの点に留意すること。なお、旧エディタと新エディタは切り替えが可能。
+\subsubsection{開発言語}
+GASはJavascriptを用いた開発が主流である。しかし、htmlファイルをサポートしており、GASでWebサイトを作る際はこれを使用する。
+\subsubsection{GASの基本事項}
+\subsubsubsection{GASの開き方}
+GoogleAppsScriptと調べてもすぐにはエディタにたどり着けない。スプレッドシートから飛ぶやりかたを紹介されがちだが、面倒なので\url{https://script.google.com/u/0/home}からアクセスし、ブックマークに登録しとく方がいいだろう。
+\subsubsubsection{GCPとの連携}
+GoogleCloudPlatformというサービスがGoogleにはあり、GoogleにおいてのすべてのCloudサービスと連携が取れる。私も詳しくは理解していないが、Googleが提供しているクラウドコンピューティングサービスの総称ということらしい。開発中、ログを出したりそれを検証したりすると思うが、通常ではそれはできない。\footnote{前までは見ることができた。}GASプロジェクトとGCPを紐付けし、GCP内のログエクスプローラーを利用しなければならない。GCPとの連携方法は以下を参照。
+
+ \begin{enumerate}
+ \item GCPを開く
+ \item 左上のプロジェクト名から新しいプロジェクトを押下
+ \item プロジェクト名、組織（seiko.ac.jpでOK）、場所を設定して作成
+ \item しばらくするとプロジェクトの作成が完了するので左上のハンバーガーメニューを選択
+ \item APIとサービス \verb|>| OAuth同意画面へ
+ \item UserTypeを内部（もし外部向けだった場合は外部）に設定し作成
+ \item 必要な情報を入力。なお、必須項目だけでよい
+ \item スコープは必要ない
+ \item ダッシュボードにもどり、ハンバーガーメニューからホームへ
+ \item プロジェクト番号をGASの設定のGCPの項目に入力
+ \item 紐付け完了の通知が来たら終わり
+ \end{enumerate}
+ これはログエクスプローラーを使用するのに必要最低限の設定であり、GCPの別のサービスを利用する際はスコープなどを設定する必要が出てくることに注意。
+ \\
+ 
+ログエクスプローラーではクエリ言語を用いて、流れてくるすべてのログから必要なログを絞り込む必要がある。UIでサポートしてくれるのでクエリをクリアして必要な条件を選ぶだけで大丈夫。
+\end{document}
