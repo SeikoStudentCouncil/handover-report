@@ -124,15 +124,25 @@ lineskip=-0.5ex
 
 
 \textbf {
-\vspace{8.5cm}
+\vspace{8.3cm}
 \\
-\Ovalbox{\fontsize{36pt}{25pt}\selectfont \scalebox{1}[1.2]{超機密}}\\
-\fontsize{50pt}{57pt}\selectfont \scalebox{1}[1.1]{情報技術統括所引継書}\\
-\fontsize{11pt}{27pt}\selectfont \scalebox{1}[1.1]{情報技術統括所 拡大幹部会議｜聖光祭 拡大実行会議}\\
-\fontsize{36pt}{40pt}\selectfont \scalebox{1}[1.1]{第１次中間報告}\\
-\fontsize{13pt}{25pt}\selectfont \scalebox{1}[1.1]{情報技術統括所}\\
-\fontsize{13pt}{17pt}\selectfont \scalebox{1}[1.1]{2021年度業務内容概要}\\
-\fontsize{13pt}{20pt}\selectfont \scalebox{1}[1.1]{総括篇}\\
+\cornersize{.2} 
+\fboxrule=2\fboxrule
+\Ovalbox{\fontsize{40pt}{27pt}\selectfont \scalebox{0.8}[1.3]{超機密}}\\
+\vspace{1mm}
+\fontsize{55pt}{60pt}\selectfont \scalebox{0.8}[1.3]{情報技術統括所引継書}\\
+\vspace{1mm}
+\fontsize{34pt}{50pt}\selectfont \scalebox{0.8}[1.3]{第３７次中間報告}\\
+\vspace{1mm}
+}
+\textgt{
+\fontsize{18pt}{25pt}\selectfont \scalebox{0.8}[1.1]{\sffamily \UTF{00DC}bertragung der Direktion Informationstechnologie}\\
+\fontsize{18pt}{20pt}\selectfont \scalebox{0.8}[1.1]{\sffamily \underline{37} .Zwischenbericht}\\
+}
+\textbf {
+\fontsize{13pt}{27pt}\selectfont \scalebox{0.9}[1.1]{情報技術統括所}\\
+\fontsize{13pt}{15pt}\selectfont \scalebox{0.9}[1.1]{2021年度業務内容概要}\\
+\fontsize{13pt}{18pt}\selectfont \scalebox{0.9}[1.1]{総括篇}\\
 }
 \end{center}
 
@@ -2732,8 +2742,7 @@ GitHubアカウント作った後に管理者はPeopleタブ>Memberからユー�
   \multicolumn{1}{c|}{\cellcolor[HTML]{CCCCCC}\textbf{キー}} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{CCCCCC}\textbf{説明}} \\ \hline
 \textbf{保存} &
-  Ctrl + S &
-  保存をしないと変更した内容が記録されず消えてしまいます。スプレッドシートでは自動保存機能がありますが、他のソフト等では十分気を付けて下さい。合言葉は「5秒に1回Ctrl+S」です。 \\ \hline
+  Ctrl + S &保存をしないと変更した内容が記録されず消えてしまいます。スプレッドシートでは自動保存機能がありますが、他のソフト等では十分気を付けて下さい。合言葉は「5秒に1回Ctrl+S」です。 \\ \hline
 \textbf{コピー}             & Ctrl + C    & 選択したセル、文字をクリップボードにコピーします。クリップボードとはパソコンの中にある見えない領域です。そこに値を一時的に保存しています。 \\ \hline
 \textbf{切り取り} &
   Ctrl + X &
@@ -2781,9 +2790,8 @@ GitHubアカウント作った後に管理者はPeopleタブ>Memberからユー�
   セルを選択した状態でコピー（Ctrl［Command］ + C）または切り取り（Ctrl［Command］ + X）すると入力値及び書式がコピーされる。そのままペースト（Ctrl［Command］ + V）すると、入力値及び書式がペーストされる。値のみペースト（Ctrl［Command］ + Shift + V）すると内部値のみペーストされる。
   \\
   なお、入力値がペーストされその中に相対セル指定があった場合、以前の相対位置を保つように相対セル指定が変わる。
-  \subsubsection{ファイル}
   \subsubsection{権限}
-  \subsubsection{野良スプレッドシートの場合}
+  \subsubsubsection{野良スプレッドシートの場合}
   どこの共有ドライブにも所属していない（つまりマイドライブにある）gshを野良gshと呼ぶことにする。
  共有設定には大きく分けて二種類あり、リンク共有と招待共有である。リンク共有はリンクを用いた共有方法で、URLを別の手段で送信したり掲示したりするときに使用する。リンク共有の場合は不特定多数の人がアクセスできる可能性があるので条件で権限を付与できる。「誰」がgshで「何を」できるかを設定することができる。
  \begin{itemize}
@@ -2813,8 +2821,65 @@ GitHubアカウント作った後に管理者はPeopleタブ>Memberからユー�
  \\
  
  そして、これは一度も使ったことないどころかこのコーナーを書くためにgshの機能をぽちぽちしてたときに見つけたのだが、共有設定の右上の歯車で、閲覧者によるgshのダウンロードやコピー、印刷を防ぐ設定をすることができるらしい。
- \subsubsection{共有ドライブに入っている場合}
+ \subsubsubsection{共有ドライブに入っている場合}
  共有ドライブに所属している場合、基本的に野良と変わりはないが、「招待共有に所属フォルダーの権限が引き継がれる」という違いがある。このgshが所属しているフォルダーに設定された権限はデフォルトとして、最初から招待共有されている。これによってデフォルトで権限を持っているユーザはメンバー、新しく追加した人はゲストと呼称される。メンバーを削除することや編集することはできない。ゲストとして新しく招待した人は編集もできる。正直このくそ仕様を早く変えてもらいたいが、だったらショートカット使えと言われそう。\footnote{ショートカットも結構クソなのでできるだけ使いたくない。}
+ 
+ \subsubsection{書式}
+ \subsubsubsection{文字に関する書式}
+ \begin{itemize}
+ \item テキストの色\\
+ 文字の色を変える。一部だけ変えることもできる。
+ \item 太字\\
+ Ctrl［Command］ + B。太文字にすることができる。一部だけ変えることもできる。
+ \item 斜体\\
+ Ctrl［Command］ + I。イタリック体にすることができる。一部だけ変えることもできる。
+ \item 下線\\
+ Ctrl［Command］ + U。下線をつけることができる。一部だけ変えることもできる。メニューにないので表示形式タブから設定すること。
+ \item 取り消し線\\
+ Ctrl［Command］ + Shift + X。取り消し線をつけることができる。一部だけ変えることもできる。
+ \item フォントサイズ\\
+ 文字の大きさを変えることができる。単位はpt。
+  \item 水平方向の配置\\
+ 左、中央、右寄せができる。
+ \item 垂直方向の配置\\
+ 上、中央、下寄せができる。
+ \item テキストを折り返す\\
+ テキストがセルを越したときにどう表示するかを選べる。
+ \begin{itemize}
+ \item はみ出す\\
+ セルを超えて表示する。
+ \item 折り返す\\
+ セル内で折り返す。
+ \item 切り詰める\\
+ セルを超えた文字は表示しない。
+ \end{itemize}
+ \item テキストの回転\\
+ いろんな角度に設定することができる。数字で回転度数も設定できる。
+ \item リンクを挿入\\
+ Ctrl［Command］ + K。セル内の文字にリンクを挿入できる。
+ 
+ \end{itemize}
+ 
+ \subsubsubsection{セルに関する書式}
+ \begin{itemize}
+ \item セルを結合\\
+ セルを結合できる。その際、結合方式を選ぶことができる。
+ \begin{itemize}
+ \item すべて結合\\
+ 選択した範囲をすべて結合
+ \item 縦方向に結合\\
+ 選択した範囲のうち、縦方向にだけ結合する。
+  \item 横方向に結合\\
+ 選択した範囲のうち、横方向にだけ結合する。
+  \item 結合を解除\\
+ すべての結合を解除。
+ \end{itemize}
+ \item コメントを挿入\\
+  Ctrl［Command］ + Alt［Option］ + M。セルにコメントを付けられる。後述。
+   \item 塗りつぶしの色\\
+ 背景色を変えることができる。
+  \end{itemize}
+
   
     \subsection{Google Apps Script$\sqrt{大全}$}
   ここはGoogleAppsScript（以下、GASとする）の使い方を大全とはいかなくとも、全ての機能のうちその平方根ぐらいは解説しようというコーナーである。なるべく日本語を消して書くことにする。また、初心者用ではないのでわからない場合は$n$回読むこと。
