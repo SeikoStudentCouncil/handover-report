@@ -3078,10 +3078,28 @@ GoogleCloudPlatformというサービスがGoogleにはあり、Googleにおい�
 なにはともあれ、スプレッドシートを取得しないと始まらない。
 \lstset{language=JavaScript}
 \begin{lstlisting}
+// スプレッドシートと紐付けされたプロジェクトで使用可
 var ss = SpreadsheetApp.getActiveSpreadsheet();
+// GoogleDriveフォルダ内をぶん回すときに重宝
 var ss = SpreadsheetApp.open(/* ファイル */);
-var ss = SpreadsheetApp.openById(/* スプレッドシートのID */);
-var ss = SpreadsheetApp.openByUrl(/* スプレッドシートのURL */);
+// IDでひらく
+var ss = SpreadsheetApp.openById(/* スプレッドシートのID（文字列） */);
+// URLでひらく
+var ss = SpreadsheetApp.openByUrl(/* スプレッドシートのURL（文字列） */);
+\end{lstlisting}
+
+\subparagraph{シートの取得}
+スプレッドシートの中のシートを取得する
+\begin{lstlisting}
+// スプレッドシートと紐付けされたプロジェクトで使用可
+var sh = SpreadsheetApp.getActiveSheet();
+
+// スプレッドシートからシート一覧を取得
+var sheets = ss.getSheets();
+// リスト構造になっているのでforで回そう
+
+// シートを名前から取得する
+var sh = ss.getSheetByName(/* シートの名前（文字列） */)
 \end{lstlisting}
 
 \end{document}
