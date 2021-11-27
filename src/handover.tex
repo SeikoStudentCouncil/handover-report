@@ -2810,7 +2810,7 @@ sudo ln -s "/System/Library/Fonts/ヒラギノ角ゴ ProN W6.otf" HiraKakuProN-W
 sudo ln -s "/Library/Fonts/ヒラギノ角ゴ StdN W8.otf" HiraKakuStdN-W8.otf
 \end{lstlisting}
   \subsubsubsection{游フォントの準備}
-  OSX 10.9 Mavericks以降では，字游工房の高品質な游フォント(游明朝体・游ゴシック体)も用意されている。10.9以降のOSXをお使いの場合は，これも\TeX から使えるようにしておきましょう。次の一連のコマンドを実行してください。
+  OSX 10.9 Mavericks以降では，字游工房の高品質な游フォント(游明朝体・游ゴシック体)も用意されている。これも\TeX から使えるようにしておく。次の一連のコマンドを実行する。
   \begin{lstlisting}
 sudo mkdir -p /usr/local/texlive/texmf-local/fonts/opentype/jiyukobo/yu
 cd /usr/local/texlive/texmf-local/fonts/opentype/jiyukobo/yu
@@ -2820,7 +2820,7 @@ sudo ln -s "/Library/Fonts/Yu Gothic Medium.otf" YuGo-Medium.otf
 sudo ln -s "/Library/Fonts/Yu Gothic Bold.otf" YuGo-Bold.otf
   \end{lstlisting}
   \subsubsubsection{仕上げ}
-  仕上げに，次のコマンドを実行する。デフォルトでヒラギノフォントが埋め込まれた PDFが作成されるようになる。
+  仕上げに、次のコマンドを実行する。デフォルトでヒラギノフォントが埋め込まれた PDFが作成されるようになる。
   \begin{lstlisting}
 sudo mktexlsr
 sudo kanji-config-updmap-sys hiragino-pron
@@ -2830,7 +2830,33 @@ sudo kanji-config-updmap-sys hiragino-pron
   kanji-config-updmap-sys status
   \end{lstlisting}
   を実行して、現在使用可能なフォント設定を確認できる。
-  \subsubsubsection{TeXShop の日本語設定}
+  \subsubsubsection{TeXShopの日本語設定}
+  TeXShopを開いて、メニューから「環境設定」を開く。\\
+  設定画面が現れるので左下の「設定プロファイル」をクリックする。\\
+  Unicode を活用できるup\LaTeX を使用する場合は\texttt{upTeX(ptex2pdf)}を，従来の p\LaTeX を使用する場合は\texttt{pTeX(ptex2pdf)}というプロファイルを選択する。\footnote{この引き継ぎ書は後者を使っている。基本的には後者での設定を推奨する}\\
+  プロファイル変更を終えたら、OKボタンを押して環境設定を確定させ、TeXShop を終了する。
+  その後，ターミナルで次のコマンドを実行しておきましょう。\footnote{1行目は、古いOS X において，行番号がスクロールしないOS側のバグに対処するための対症療法を停止させる措置。最近のMac OSではこのバグが修正されていますので，この対症療法は不要。対症療法が残っていると，スクロール速度が遅くなる原因となる。\\2行目は、スクロール時に上下端で大きく跳ね返るバウンスエフェクトを停止させる措置。3行目は、プレビューウィンドウのPDFが一部の環境でぼやけて見えてしまうのを防止する措置。}
+  \begin{lstlisting}
+defaults write TeXShop FixLineNumberScroll NO
+defaults write TeXShop SourceScrollElasticity NO
+defaults write TeXShop FixPreviewBlur YES
+  \end{lstlisting}
+  あとはTeXShopを再起動すれば準備完了。
+  \subsubsection{推奨設定}
+  以下は全てTeXShopの環境設定のウィンドウからできる。
+  \subsubsubsection{エディターのフォント}
+  上部の「書類」タブの「フォント」からエディターのフォントをヒラギノ角ゴシックなどの日本語に最適なゴシックフォントを設定する。
+  \subsubsubsection{新しいファイルの自動作成}
+  上部の「書類」タブの「起動時に」の「新しいファイルを作成する」のチェックボックスをはずす。
+  \subsubsubsection{ソースコードとプレビューの統合}
+  上部の「プレビュー」タブの「ソースとプレビューの開き方」で設定できる。
+  \subsubsubsection{キーバインド}
+  \TeX で文章を書くときに必須の設定。\\
+  これを設定するだけで作業効率が格段に上がる。\\
+  上部の「エディタ」タブの「エディタ」の「キーバインド」にチェックをつける。\\
+  「キーバインド」はショートカットのようなもので、自分の好みの設定できる。カスタマイズはTeXShopのメニューバーの「ソース」＞「キーバインドファイルの編集」を押すとキーバインド一覧が表示されるので、好きなように追加したり削除したりしてカスタマイズできる。
+  \subsubsubsection{スペルチェック}
+  上部の「書類」タブの「スペルチェック」の「\TeX コマンドを対象外にする」と「特定のコマンド引数を対象外にする」のチェックボックスをつけてオンにする。
   \subsubsection{書き方}
   この引き継ぎ書自体もそうだが、技術局ドライブに\TeX ファイルがいっぱいあるのでそれを参考にしてほしい。あとは大概Google検索で出てくる。
   \subsection{SpreadSheet$\sqrt{大全}$}
@@ -2995,7 +3021,17 @@ sudo kanji-config-updmap-sys hiragino-pron
   条件をもとに書式を変えることができる。例えば、「空白のセルの背景を変える」ことができる。ここで長々と説明するより、体験した方が早い。
   \end{itemize}
 \subsection{Brother Print SDK}
-第62回聖光祭で購入したBrotherのラベルプリンタQL-810WにiPadで接続する  
+第62回聖光祭で購入したBrotherのラベルプリンタQL-810WにiPadで接続する方法と、SDKを使ってオリジナルのiPad Appから印刷できるようにする。\\
+公式ドキュメントが分かりづらい\& 日本企業のくせにほとんど翻訳されていないので、以下に記す。
+ \subsubsection{導入}
+  \subsubsubsection{ダウンロード}
+  まずはSDKのダウンロードといきたいところだが、Brother Japanの開発者向けホームページの\link{``モバイルSDKとは？''}{https://support.brother.co.jp/j/s/es/dev/ja/mobilesdk/index.html?c=jp&lang=ja&navi=offall&comple=on&redirect=on}にあるダウンロードをクリックすると謎のサインインを要求される。 \\
+  一方、なぜだかわからないが、Brother(US)の同じホームページ\link{``What is a Mobile SDK?''}{https://support.brother.com/g/s/es/dev/en/mobilesdk/index.html?c=eu_ot&lang=en&navi=offall&comple=on&redirect=on}で\link{``Mobile SDK Download''}{https://support.brother.com/g/s/es/dev/en/mobilesdk/download/index.html?c=eu_ot&lang=en&navi=offall&comple=on&redirect=on}をクリックすると普通にダウンロードページが表示されるので、``Brother Print SDK for iPhone/iPad''をダウンロードする。\\
+  生徒会が所有しているQL-810Wは海外向けモデルなので海外版を使っても問題ない。
+ \subsubsubsection{プロジェクトにSDKを追加する}
+  
+  
+  
 
 \newpage  
 \subsection{GoogleAppsScript$\sqrt{大全}$}
