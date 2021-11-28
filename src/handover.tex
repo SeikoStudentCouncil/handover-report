@@ -3020,7 +3020,7 @@ defaults write TeXShop FixPreviewBlur YES
   \item 条件つき書式\\
   条件をもとに書式を変えることができる。例えば、「空白のセルの背景を変える」ことができる。ここで長々と説明するより、体験した方が早い。
   \end{itemize}
-\subsection{Brother Print SDK}
+\subsection{Brother Print SDK}\label{sec:Brother Print SDK}
 第62回聖光祭で購入したBrotherのラベルプリンタQL-810WにiPadで接続する方法と、SDKを使ってオリジナルのiPad Appから印刷できるようにする。\\
 公式ドキュメントが分かりづらい\& 日本企業のくせにほとんど翻訳されていないので、以下に記す。
  \subsubsection{導入}
@@ -3039,8 +3039,21 @@ defaults write TeXShop FixPreviewBlur YES
   \item \EscVerb{_ipp._tcp}
   \end{itemize}
   の3つを設定する。
-  
-  
+  \subsubsubsection{Product Plan IDの取得}
+  MFi 対応プリンター向けアプリケーションをApp Storeで公開する場合、Product Plan ID (PPID) を取得する必要があります。 PPID を取得するためには\link{MFi対応プリンター向けアプリケーション認証プロセス}{https://online.brother.co.jp/dev/MFiTop.aspx}を参照。
+  \subsubsubsection{App Storeへリリースする際の注意点}
+  \texttt{BRLMPrinterKit.framework}を含んだアプリケーションをApp Store (TestFlight)へ公開する場合には、 下記コマンドを実行してシミュレータ用のアーキテクチャ（i386, x86_64）をFrameworkから除外する必要がある。\\
+  下記コマンド（ディレクトリ）とは``BRLMPrinterKit.framework''を内包しているフォルダのパスを意味する。
+  \begin{lstlisting}
+$ lipo -remove i386 （ディレクトリ）/BRLMPrinterKit.framework/BRLMPrinterKit -o （ディレクトリ）/BRLMPrinterKit.framework/BRLMPrinterKit
+$ lipo -remove x86_64 （ディレクトリ）/BRLMPrinterKit.framework/BRLMPrinterKit -o （ディレクトリ）]/BRLMPrinterKit.framework/BRLMPrinterKit
+  \end{lstlisting}
+  また、下記コマンドを実行することで、シミュレータ用のアーキテクチャ（i386, x86_64）が除外されていることを確認できる。
+  \begin{lstlisting}
+$ lipo -info [your current directory]/BRLMPrinterKit.framework/BRLMPrinterKit
+  \end{lstlisting}
+  \subsubsubsection{Xcode 12で発生するビルドエラー解消}
+  ``BRLMPrinterKit.framework''を含んだアプリケーションをXcode 12以上を使ってビルドするとき、下記のようなエラーメッセージが表示されてビルドに失敗する場合、エラーを解消できる方法を記す。
 
 \newpage  
 \subsection{GoogleAppsScript$\sqrt{大全}$}
