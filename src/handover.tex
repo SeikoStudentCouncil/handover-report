@@ -31,6 +31,37 @@
 \usepackage{color}
 
 
+\lstdefinelanguage{swift}{
+  morekeywords={
+func,if,then,else,for,in,while,do,switch,case,default,where,break,continue,fallthrough,return,
+typealias,struct,class,enum,protocol,var,func,let,get,set,willSet,didSet,inout,init,deinit,extension,subscript,prefix,operator,infix,postfix,precedence,associativity,left,right,none,convenience,dynamic,
+final,lazy,mutating,nonmutating,optional,override,required,static,unowned,safe,weak,internal,
+    private,public,is,as,self,unsafe,dynamicType,true,false,nil,Type,Protocol,
+  },
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]"
+}
+
+\definecolor{keyword}{HTML}{BA2CA3}
+\definecolor{string}{HTML}{D12F1B}
+\definecolor{comment}{HTML}{008400}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
 \hypersetup{
  bookmarks=false,
  colorlinks=true,
@@ -45,11 +76,11 @@
 \usepackage{longtable}
 \lstset{
 basicstyle={\ttfamily},
-identifierstyle={\small},
-commentstyle={\smallitshape},
-keywordstyle={\small\bfseries},
-ndkeywordstyle={\small},
-stringstyle={\small\ttfamily},
+basicstyle=\ttfamily\small,
+keywordstyle=\color{keyword},
+stringstyle=\color{string},
+commentstyle=\color{comment},
+showstringspaces=false,
 frame={tb},
 breaklines=true,
 columns=[l]{fullflexible},
@@ -3062,19 +3093,74 @@ defaults write TeXShop FixPreviewBlur YES
   \subsubsubsection{Product Plan IDの取得}
   MFi 対応プリンター向けアプリケーションをApp Storeで公開する場合、Product Plan ID (PPID) を取得する必要があります。 PPID を取得するためには\link{MFi対応プリンター向けアプリケーション認証プロセス}{https://online.brother.co.jp/dev/MFiTop.aspx}を参照。
   \subsubsubsection{App Storeへリリースする際の注意点}
-  \texttt{BRLMPrinterKit.framework}を含んだアプリケーションをApp Store (TestFlight)へ公開する場合には、 下記コマンドを実行してシミュレータ用のアーキテクチャ（i386, x86\_64）をFrameworkから除外する必要がある。\\
+  \texttt{BRLMPrinterKit.framework}を含んだアプリケーションをApp Store (TestFlight)へ公開する場合には、 下記コマンドを実行してシミュレータ用のアーキテクチャ（\verb|i386|,\verb|x86_64|）をFrameworkから除外する必要がある。\\
   下記コマンド（ディレクトリ）とは``BRLMPrinterKit.framework''を内包しているフォルダのパスを意味する。
   \begin{lstlisting}
 $ lipo -remove i386 （ディレクトリ）/BRLMPrinterKit.framework/BRLMPrinterKit -o （ディレクトリ）/BRLMPrinterKit.framework/BRLMPrinterKit
 $ lipo -remove x86_64 （ディレクトリ）/BRLMPrinterKit.framework/BRLMPrinterKit -o （ディレクトリ）]/BRLMPrinterKit.framework/BRLMPrinterKit
   \end{lstlisting}
-  また、下記コマンドを実行することで、シミュレータ用のアーキテクチャ（i386, x86\_64）が除外されていることを確認できる。
+  また、下記コマンドを実行することで、シミュレータ用のアーキテクチャ（\verb|i386|,\verb|x86_64|）が除外されていることを確認できる。
   \begin{lstlisting}
 $ lipo -info [your current directory]/BRLMPrinterKit.framework/BRLMPrinterKit
   \end{lstlisting}
   \subsubsubsection{Xcode 12で発生するビルドエラー解消}
   ``BRLMPrinterKit.framework''を含んだアプリケーションをXcode 12以上を使ってビルドするとき、下記のようなエラーメッセージが表示されてビルドに失敗する場合、エラーを解消できる方法を記す。
+  \begin{enumerate}[ケース1]
+   \item ``Building for iOS, but the linked and embedded framework `BRLMPrinterKit.framework' was built for iOS + iOS Simulator''\\
+   ``Build Settings''内の``Validate Workspace''の設定を\texttt{Yes}にしてビルドする。 \\
+   その後、``Validate Workspace''は\texttt{Yes},\texttt{No}のいずれでもよいが、ビルド結果が異なる。
+   \begin{itemize}
+    \item \texttt{Yes}のまま\\
+    ワーニングが発生しますが、アプリケーションのビルドは成功する。
+    \item \texttt{No}を選択\\
+    エラーもワーニングも発生することなくアプリケーションのビルドに成功する。
+   \end{itemize}
+   \item ``Building for iOS Simulator, but linking in dylib built for iOS''\\
+   \texttt{arm64}をプロジェクトのシミュレータアーキテクチャから除外する。\\
+    ``Build Settings''内の``Excluded Architecture""を\texttt{arm64}で指定し、 \texttt{Any iOS Simulator SDK}を追加する。
+   \item Apple Siliconを搭載したMacでエラーが出る\\
+   Xcodeを終了し、Finderから``アプリケーション''フォルダを開いて、``Xcode.app''を右クリックして、``情報をみる''をクリックする。ウィンドウが表示されるので``Rosettaを使用して開く''のチェックボックスをオンにして、Xcodeを再起動する。
+  \end{enumerate}
+  \subsubsection{API}
+   \subsubsubsection{画像やPDFを印刷する}
+   \lstset{language=swift}
+   \begin{lstlisting}
+func printPDF(path: URL) {
+    let channel = BRLMChannel(wifiIPAddress: "/* プリンターのIPアドレス */")
 
+    let generateResult = BRLMPrinterDriverGenerator.open(channel)
+    guard generateResult.error.code == .noError,let printerDriver = generateResult.driver else {
+            print("Error - Open Channel: \(generateResult.error.code)")
+            return
+    }
+    defer {
+        printerDriver.closeChannel()
+        print("channel closed")
+    }
+    guard let url = Bundle.main.url(forResource: "YourImageFilename", withExtension: "Extension"),
+        let printSettings = BRLMQLPrintSettings(defaultPrintSettingsWith: .QL_810W)
+        else {
+            print("エError - Image file is not found.")
+            return
+    }
+
+    printSettings.labelSize = .dieCutW23H23 /* ラベルサイズ */
+    printSettings.autoCut = false  /* 1ページずつカットをオフ */
+    printSettings.cutAtEnd = true  /* PDFの全ページを印刷してまとめてカット */
+    printSettings.hAlignment = .center /* 縦方向の揃え方 */
+    printSettings.vAlignment = .center /* 横方向の揃え方 */
+    printSettings.scaleMode = .fitPageAspect  /* ページギリギリまでコンテンツを拡大する */
+
+    let printError = printerDriver.printImage(with: path, settings: printSettings)
+
+    if printError.code != .noError {
+        print("Error - Print Image: \(printError.code)")
+    }
+    else {
+        print("Success - Print Image")
+    }
+}
+   \end{lstlisting}
 \newpage  
 \subsection{GoogleAppsScript$\sqrt{大全}$}
 ここはGoogleAppsScript（以下、GASとする）の使い方を大全とはいかなくとも、全ての機能のうちその平方根ぐらいは解説しようというコーナーである。初心者用ではないのでわからない場合は$n$回読むこと。
