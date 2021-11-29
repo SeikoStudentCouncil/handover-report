@@ -3087,7 +3087,7 @@ $ lipo -info [your current directory]/BRLMPrinterKit.framework/BRLMPrinterKit
    \item Apple Siliconを搭載したMacでエラーが出る\\
    Xcodeを終了し、Finderから``アプリケーション''フォルダを開いて、``Xcode.app''を右クリックして、``情報をみる''をクリックする。ウィンドウが表示されるので``Rosettaを使用して開く''のチェックボックスをオンにして、Xcodeを再起動する。
   \end{enumerate}
-  \subsubsection{API}
+  \subsubsection{サンプルコード}
    \subsubsubsection{画像やPDFを印刷する}
    \lstset{language=swift}
    \begin{lstlisting}
@@ -3127,6 +3127,68 @@ func printPDF(path: URL) {
     }
 }
    \end{lstlisting}
+   \subsubsubsection{プリンターを検索する}
+   このAPIは第62回聖光祭では使用していないが、使用を推奨する。
+   \begin{lstlisting}
+class YourClass/* クラス名 */: NSObject, BRPtouchNetworkDelegate {
+    private var networkManager: BRPtouchNetworkManager?
+
+    func startSearchWiFiPrinter() {
+        let manager = BRPtouchNetworkManager()
+        manager.delegate = self
+        manager.startSearch(5)
+        self.networkManager = manager
+    }
+
+    // BRPtouchNetworkDelegate
+    func didFinishSearch(_ sender: Any!) {
+        guard let manager = sender as? BRPtouchNetworkManager else {
+            return
+        }
+        guard let devices = manager.getPrinterNetInfo() else {
+            return
+        }
+        for deviceInfo in devices {
+            if let deviceInfo = deviceInfo as? BRPtouchDeviceInfo {
+                print("Model: \(deviceInfo.strModelName), IP Address: \(deviceInfo.strIPAddress)")
+            }
+        }
+    }
+}
+   \end{lstlisting}
+  \subsubsection{API}
+   \subsubsubsection{BRLMQLPrintSettingsLabelSize}
+   印刷するラベルサイズを指定するオプション
+   \begin{itemize}   
+     \item DieCutW17H54
+     \item DieCutW17H87
+     \item DieCutW23H23
+     \item DieCutW29H42
+     \item DieCutW29H90
+     \item DieCutW38H90
+     \item DieCutW39H48
+     \item DieCutW52H29
+     \item DieCutW62H29
+     \item DieCutW62H100
+     \item DieCutW60H86
+     \item DieCutW54H29
+     \item DieCutW102H51
+     \item DieCutW102H152
+     \item DieCutW103H164
+     \item RollW12
+     \item RollW29
+     \item RollW38
+     \item RollW50
+     \item RollW54
+     \item RollW62
+     \item RollW62RB
+     \item RollW102
+     \item RollW103
+     \item DTRollW90
+     \item DTRollW102
+     \item DTRollW102H51
+     \item DTRollW102H152
+    \end{itemize}
 \newpage  
 \subsection{GoogleAppsScript$\sqrt{大全}$}
 ここはGoogleAppsScript（以下、GASとする）の使い方を大全とはいかなくとも、全ての機能のうちその平方根ぐらいは解説しようというコーナーである。初心者用ではないのでわからない場合は$n$回読むこと。
@@ -3152,7 +3214,6 @@ GASはJavascriptを用いた開発が主流である。しかし、htmlファイ
 GoogleAppsScriptと調べてもすぐにはエディタにたどり着けない。スプレッドシートから飛ぶやりかたを紹介されがちだが、面倒なので\url{https://script.google.com/u/0/home}からアクセスし、ブックマークに登録しとく方がいいだろう。
 \subsubsubsection{GCPとの連携}
 GoogleCloudPlatformというサービスがGoogleにはあり、GoogleにおいてのすべてのCloudサービスと連携が取れる。私も詳しくは理解していないが、Googleが提供しているクラウドコンピューティングサービスの総称ということらしい。開発中、ログを出したりそれを検証したりすると思うが、通常ではそれはできない。\footnote{前までは見ることができた。}GASプロジェクトとGCPを紐付けし、GCP内のログエクスプローラーを利用しなければならない。GCPとの連携方法は以下を参照。
-
  \begin{enumerate}
  \item GCPを開く
  \item 左上のプロジェクト名から新しいプロジェクトを押下
