@@ -28,21 +28,8 @@
 \usepackage{here}
 \usepackage{multirow}
 \usepackage[table,xcdraw]{xcolor}
+\usepackage{color}
 
-\lstdefinelanguage{JavaScript}{
-  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
-  keywordstyle=\color{blue}\bfseries,
-  ndkeywords={class, export, boolean, throw, implements, import, this},
-  ndkeywordstyle=\color{darkgray}\bfseries,
-  identifierstyle=\color{black},
-  sensitive=false,
-  comment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  commentstyle=\color{purple}\ttfamily,
-  stringstyle=\color{red}\ttfamily,
-  morestring=[b]',
-  morestring=[b]"
-}
 
 \hypersetup{
  bookmarks=false,
@@ -52,6 +39,7 @@
  filecolor=black,
  urlcolor=[rgb]{0,0.4,0.8}
 }
+
 \usepackage{array}
 \usepackage{fvextra}
 \usepackage{longtable}
@@ -72,6 +60,38 @@ numberstyle={\scriptsize},
 stepnumber=1,
 numbersep=1zw,
 lineskip=-0.5ex
+}
+
+\definecolor{keywords}{RGB}{172, 94, 0}
+\definecolor{string}{RGB}{10, 48, 105}
+\definecolor{comment}{RGB}{110, 119, 129}
+\definecolor{method}{RGB}{130, 80, 223}
+\definecolor{class}{RGB}{151, 65, 21}
+\definecolor{variable}{RGB}{4, 80, 174}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{keywords}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{comment}\ttfamily,
+  stringstyle=\color{string}\ttfamily,
+  morekeywords = [2]{
+    getRange, getActiveSheet, getSheets, getSheetByName, openByUrl, getActiveSpreadsheet, open, openById
+  },
+  keywordstyle=[2]{\color{method}\bfseries},
+  morekeywords = [3]{
+    SpreadsheetApp
+  },
+  keywordstyle=[3]{\color{class}\bfseries},  
+  morekeywords = [4]{1, 2, 3, 4, 5, 6, 7, 8, 9, 0=},
+  keywordstyle=[4]{\color{variable}\bfseries},  
+  morestring=[b]',
+  morestring=[b]",
+  alsoletter={<>=-+}
 }
 
 \makeatletter
@@ -3042,13 +3062,13 @@ defaults write TeXShop FixPreviewBlur YES
   \subsubsubsection{Product Plan IDの取得}
   MFi 対応プリンター向けアプリケーションをApp Storeで公開する場合、Product Plan ID (PPID) を取得する必要があります。 PPID を取得するためには\link{MFi対応プリンター向けアプリケーション認証プロセス}{https://online.brother.co.jp/dev/MFiTop.aspx}を参照。
   \subsubsubsection{App Storeへリリースする際の注意点}
-  \texttt{BRLMPrinterKit.framework}を含んだアプリケーションをApp Store (TestFlight)へ公開する場合には、 下記コマンドを実行してシミュレータ用のアーキテクチャ（i386, x86_64）をFrameworkから除外する必要がある。\\
+  \texttt{BRLMPrinterKit.framework}を含んだアプリケーションをApp Store (TestFlight)へ公開する場合には、 下記コマンドを実行してシミュレータ用のアーキテクチャ（i386, x86\_64）をFrameworkから除外する必要がある。\\
   下記コマンド（ディレクトリ）とは``BRLMPrinterKit.framework''を内包しているフォルダのパスを意味する。
   \begin{lstlisting}
 $ lipo -remove i386 （ディレクトリ）/BRLMPrinterKit.framework/BRLMPrinterKit -o （ディレクトリ）/BRLMPrinterKit.framework/BRLMPrinterKit
 $ lipo -remove x86_64 （ディレクトリ）/BRLMPrinterKit.framework/BRLMPrinterKit -o （ディレクトリ）]/BRLMPrinterKit.framework/BRLMPrinterKit
   \end{lstlisting}
-  また、下記コマンドを実行することで、シミュレータ用のアーキテクチャ（i386, x86_64）が除外されていることを確認できる。
+  また、下記コマンドを実行することで、シミュレータ用のアーキテクチャ（i386, x86\_64）が除外されていることを確認できる。
   \begin{lstlisting}
 $ lipo -info [your current directory]/BRLMPrinterKit.framework/BRLMPrinterKit
   \end{lstlisting}
@@ -3134,7 +3154,7 @@ GoogleCloudPlatformというサービスがGoogleにはあり、Googleにおい�
 スプレッドシート操作に関する関数について説明する。基本しか説明しないので注意。なお、Javascriptは履修済みとする。
 
 \subparagraph{スプレッドシートの取得}
-なにはともあれ、スプレッドシートを取得しないと始まらない。
+なにはともあれ、スプレッドシートを取得しないと始まらない。取得した値はSpreadsheetクラスで格納される。
 \lstset{language=JavaScript}
 \begin{lstlisting}
 // スプレッドシートと紐付けされたプロジェクトで使用可
@@ -3148,7 +3168,7 @@ var ss = SpreadsheetApp.openByUrl(/* スプレッドシートのURL（文字列�
 \end{lstlisting}
 
 \subparagraph{シートの取得}
-スプレッドシートの中のシートを取得する
+スプレッドシートの中のシートを取得する。取得した値はSheetクラスで格納される。
 \begin{lstlisting}
 // スプレッドシートと紐付けされたプロジェクトで使用可
 var sh = SpreadsheetApp.getActiveSheet();
@@ -3160,5 +3180,31 @@ var sheets = ss.getSheets();
 // シートを名前から取得する
 var sh = ss.getSheetByName(/* シートの名前（文字列） */)
 \end{lstlisting}
+
+\subparagraph{セルと値の取得}
+シート内のセルを取得。値はcellクラスで格納される。ここに限り、例で紹介する。
+\begin{lstlisting}
+// 単一セルについてA1を指定するとする
+// シート名も指定しちゃう
+var cell = ss.getRange("'シート1'!A1")
+
+// セル番地で指定
+var cell = sh.getRange("A1")
+
+// 数字で指定
+var cell = sh.getRange(1, 1)
+
+// 範囲指定についてB2:C3を指定するとする
+// シート名も指定しちゃう
+var cell = ss.getRange("'シート1'!B2:C3")
+
+// セル番地で指定
+var cell = sh.getRange("B2:C3")
+
+// 数字で指定（後述）
+var cell = sh.getRange(2, 2, 2, 2)
+
+\end{lstlisting}
+注意してもらいたいのは範囲を数字で指定する際の第3、第4引数だ。第3引数は列の幅、つまり範囲の終着点ではなく第1引数からどれくらい範囲を拡張するかという値になっている。第4引数も行の幅となっている。Excelや.NET、VBAとは違う指定の仕方のため、何度もやられた。
 
 \end{document}
