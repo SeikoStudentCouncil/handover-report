@@ -30,8 +30,7 @@
 \usepackage[table,xcdraw]{xcolor}
 
 
-\lstdefinelanguage{swift}
-{
+\lstdefinelanguage{swift}{
   morekeywords={
 func,if,then,else,for,in,while,do,switch,case,default,where,break,continue,fallthrough,return,
 typealias,struct,class,enum,protocol,var,func,let,get,set,willSet,didSet,inout,init,deinit,extension,subscript,prefix,operator,infix,postfix,precedence,associativity,left,right,none,convenience,dynamic,
@@ -43,9 +42,9 @@ final,lazy,mutating,nonmutating,optional,override,required,static,unowned,safe,w
   morestring=[b]"
 }
 
-%\definecolor{keyword}{HTML}{BA2CA3}
-%\definecolor{string}{HTML}{D12F1B}
-%\definecolor{comment}{HTML}{008400}
+\definecolor{keyword}{HTML}{BA2CA3}
+\definecolor{string}{HTML}{D12F1B}
+\definecolor{comment}{HTML}{008400}
 
 \lstdefinelanguage{JavaScript}{
   keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
@@ -75,11 +74,11 @@ final,lazy,mutating,nonmutating,optional,override,required,static,unowned,safe,w
 \usepackage{longtable}
 \lstset{
 basicstyle={\ttfamily},
-identifierstyle={\small},
-commentstyle={\smallitshape},
-keywordstyle={\small\bfseries},
-ndkeywordstyle={\small},
-stringstyle={\small\ttfamily},
+basicstyle=\ttfamily\small,
+keywordstyle=\color{keyword},
+stringstyle=\color{string},
+commentstyle=\color{comment},
+showstringspaces=false,
 frame={tb},
 breaklines=true,
 columns=[l]{fullflexible},
@@ -3092,31 +3091,33 @@ $ lipo -info [your current directory]/BRLMPrinterKit.framework/BRLMPrinterKit
    \subsubsubsection{画像やPDFを印刷する}
    \lstset{language=swift}
    \begin{lstlisting}
-func printImage() {
-    let channel = BRLMChannel(wifiIPAddress: "IPAddress.of.your.printer")
+func printPDF(path: URL) {
+    let channel = BRLMChannel(wifiIPAddress: "/* プリンターのIPアドレス */")
 
     let generateResult = BRLMPrinterDriverGenerator.open(channel)
-    guard generateResult.error.code == BRLMOpenChannelErrorCode.noError,
-        let printerDriver = generateResult.driver else {
+    guard generateResult.error.code == .noError,let printerDriver = generateResult.driver else {
             print("Error - Open Channel: \(generateResult.error.code)")
             return
     }
     defer {
         printerDriver.closeChannel()
+        print("channel closed")
     }
-
-    guard
-        let url = Bundle.main.url(forResource: "YourImageFilename", withExtension: "Extension"),
-        let printSettings = BRLMQLPrintSettings(defaultPrintSettingsWith: .YourQLModel)
+    guard let url = Bundle.main.url(forResource: "YourImageFilename", withExtension: "Extension"),
+        let printSettings = BRLMQLPrintSettings(defaultPrintSettingsWith: .QL_810W)
         else {
-            print("Error - Image file is not found.")
+            print("エError - Image file is not found.")
             return
     }
 
-    printSettings.labelSize = .YourLabelSize
-    printSettings.autoCut = true
+    printSettings.labelSize = .dieCutW23H23 /* ラベルサイズ */
+    printSettings.autoCut = false  /* 1ページずつカットをオフ */
+    printSettings.cutAtEnd = true  /* PDFの全ページを印刷してまとめてカット */
+    printSettings.hAlignment = .center /* 縦方向の揃え方 */
+    printSettings.vAlignment = .center /* 横方向の揃え方 */
+    printSettings.scaleMode = .fitPageAspect  /* ページギリギリまでコンテンツを拡大する */
 
-    let printError = printerDriver.printImage(with: url, settings: printSettings)
+    let printError = printerDriver.printImage(with: path, settings: printSettings)
 
     if printError.code != .noError {
         print("Error - Print Image: \(printError.code)")
