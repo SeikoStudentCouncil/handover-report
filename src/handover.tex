@@ -137,11 +137,11 @@ lineskip=-0.5ex
 %  }
   \makeatother
  
-%\titleformat*{\chapter}{\LARGE \gtfamily \bfseries}
+%\titleformat*{\Chapter}{\LARGE \gtfamily \bfseries}
 %\titleformat*{\section}{\Large \gtfamily \bfseries}
 %\titleformat*{\subsection}{\Large \bfseries}
 %\setcounter{secnumdepth}{4}
-\newcommand{\chapterbreak}{\clearpage}
+\newcommand{\Chapterbreak}{\clearpage}
 \makeatletter
 \let\@makefntextOrig\@makefntext
 \def\@makefntext#1{\@makefntextOrig{%
@@ -180,11 +180,13 @@ lineskip=-0.5ex
 }
 \makeatother
 
- \pagestyle{fancy}
+\pagestyle{fancy}
 \lhead{\fontsize{8pt}{0pt}\selectfont \hyperlink{top}{聖光祭実行委員会\\技術部門引継書 第１次中間報告}}
 \lfoot{技術局}
 \rfoot{\copyright ITEC 2021}
 \cfoot{\thepage/\pageref{LastPage}}
+
+\newcommand{\Chapter}[1]{\chapter{#1}\thispagestyle{fancy}}
 
 \begin{document}
 \thispagestyle{empty}
@@ -243,9 +245,12 @@ lineskip=-0.5ex
 
 \newpage
 \setcounter{tocdepth}{4}
+\thispagestyle{fancy}
 \hypertarget{top}{\tableofcontents}
 
-\chapter{はじめに}
+
+
+\Chapter{はじめに}
 \section{挨拶}
 こんばんは。第62回聖光祭技術部門長の\mail{飼沼隼}{60050kainuma@seiko.ac.jp}です。聖光祭、体育祭、生徒会で死ぬほど色々やってました（それでいて演奏、ダンス、応援団とかやって自分の首を絞めてましたが）。技術の幹部はみんなそうだけど。この引継ぎ書では業務内容にとどまらず、細かいアドバイスや体験談も交えてできるだけこれ一枚で全てがわかるようにしていくのでぜひ熟読してください。さて、真面目な話は李が下に書いてくれていますので割愛するとして、みなさんには聖光祭を最大限楽しんでもらうべく必要なことを伝えておきたいと思います。一番大切なのは本気でやることです。僕らは初回の会議から一年半準備してきましたが、ずっと死にかけでした。61期の聖光祭は春開催で本当に大変だと思いますが、幹部全員が全速力でやらないと間に合わないですし、やりきった感皆無の聖光祭と青春になることを忠告しておきます。自分がやるだけでは全く足りないです。サボってる人にやらせるのもお互いがやり続けなければだめです。やる作業はひとつだけ、よくできるところを探して直す、これを繰り返すだけです。可能性は無限大です。期待してます！
 \\
@@ -266,7 +271,7 @@ AdobeAcrobatをご利用の方は左側に概要が出てきます。ぜひご�
 \section{開催時期}
 今年2021年は新型コロナウイルス感染症（COVID-19）により開催時期は2021年10月2日〜同4日になりました。準備期間が長く、また夏休みを挟んだということを考慮して以下の引き継ぎをお読みください。
 
-\chapter{基本}
+\Chapter{基本}
 \section{組織構成}
 \subsection{経緯}
 2013年、非公式のIT部門が執行部直属に非公式で爆誕。
@@ -620,7 +625,7 @@ AdobeAcrobatをご利用の方は左側に概要が出てきます。ぜひご�
   \item メール対応は死ぬほどめんどくさいから事前に気をつけよう。
 \end{enumerate}
 
-\chapter{概括}
+\Chapter{概括}
 \section{スケジュール}
 \subsection{選挙まで}
 任命式までは幹部としての資格はないことに注意。ただ拡大実行など会議は積極的にやったほうがいいと思います（62回の場合は 2020/5 第一回拡大実行、9 第二回拡大実行、 11 第三回拡大実行、 12初旬 規則関係会議、12中旬 第四回拡大実行 など）。引き継ぎが死ぬほど大変だったので、この頃から毎日日記を書いてると楽かも。
@@ -781,7 +786,7 @@ AdobeAcrobatをご利用の方は左側に概要が出てきます。ぜひご�
 \end{center}
 \end{figure}
 
-\chapter{動画局}
+\Chapter{動画局}
 62回局長：三枝　61回局長・62回局長代行：飼沼
 \section{ソフト}
  動画を作る上で必要なアプリケーションを紹介しておく。
@@ -860,7 +865,7 @@ AdobeAcrobatをご利用の方は左側に概要が出てきます。ぜひご�
  \end{itemize}
  おそらく、動画ごとに役割を振るよりはスキルに合わせて役割を振ったほうがいいと思う。
  
- \chapter{パンフ局}
+ \Chapter{パンフ局}
   62回局長：黒羽　61回副局長：飼沼\\
  ざっくり局の仕事を挙げると
  \begin{itemize}
@@ -1025,7 +1030,7 @@ GoogleDriveFileStreamを使うとファイル管理が楽です。くわしく�
 形はどんどん変えて、わかりやすいものを作ってください。地図とか引き継げるところは引き継ぎ、もっとよくできるところはどんどん改善していく、そういうメリハリが大切だと思います。
 僕からは以上です。頑張ってください。なにかあったら何でも聞いてくださいね。\footnote{いや柴田先輩じゃなくて前年の幹部にね}
 
-  \chapter{HP局}
+  \Chapter{HP局}
  62回局長：李
  \section{ソフト}
  あくまで僕が使用したソフトである。htmlとcssとjsをいじれるならなんだっていい。
@@ -1109,7 +1114,7 @@ FTPサーバにファイルを送信したり取得するときは「FTPユー�
 \subsection{命名規則を守れ}
 ウェブサイトの制作はそこまでスキルを求められない。むしろ情報量との戦いである。というより、莫大な情報を脳内で整理、あるいはコードで整理するそのことが"スキル"と言える。画像や文章などの素材、デザインや色などの要素、cssとjsとhtmlを反復横跳びするたびに忘れていく"目的"。コーディング中は求められるコーディングスキルとは相反してかなりのストレスがかかるだろう。そんななか、名前を見ただけで内容を理解するために命名規則を守ること。命名規則を守らないならこの仕事をする価値はない。詳しくは{\bf\ref{sec:命名規則}}を参照。
 
- \chapter{アプリ局}
+ \Chapter{アプリ局}
  \section{Android}
  \subsection{はじめに}
  引継書とは題しているがAndroid作る人は全員読んでおいて損はないのではないかと思われる(今年出してもらったプログラムの出来栄えを見る限り)。\par
@@ -1400,7 +1405,7 @@ Helperとは書くけれどこれを使う以外の方法でDBにアクセスす
     \end{itemize}
   \subsubsection{Apple Wallet}
 
-\chapter{音楽局}
+\Chapter{音楽局}
 \section{引き継ぎにあたって}
 引き継ぎは、来年もやりたいようにやってほしいと思っているのであまり書くことはないのですが、技術部門で音楽を担当していた人としての認識、知ってほしい知識について少し書こうと思います。
 
@@ -1436,8 +1441,8 @@ Helperとは書くけれどこれを使う以外の方法でDBにアクセスす
 \section{-}
 今回は初年度ということもあり仕事がうまく振れないなど迷惑をかけましたが、来年からこの部署が聖光祭で大きく活躍してくれることを願っています。以下は、細々とした事項を羅列しますが、来年は来年として、また新しい形の聖光祭における音楽の役割が生まれることを期待しています。
 
- \chapter{デザイン局}
- \chapter{特別業務}
+ \Chapter{デザイン局}
+ \Chapter{特別業務}
  \section{名簿}\label{sec:名簿}
 62回担当者：飼沼、浅井、李、古澤 他\vspace{3mm}
 
@@ -2228,7 +2233,7 @@ function createNewDocument(id, range, sdid) {
 }
 \end{lstlisting}
 
-\chapter{体育祭}
+\Chapter{体育祭}
 \section{名簿管理}
 \section{Tシャツ}
 \section{装飾物デザイン}
@@ -2240,7 +2245,7 @@ function createNewDocument(id, range, sdid) {
 広報委員会で撮影隊が結成されていないのであれば、動画局が代わりに撮影スタッフを募集すること。撮影と言っても写真がメインで良い。
 \section{動画局}
 ダンス動画の編集をしろみたいな流れがあったが、編集は頼まれた時のみやればいいと思う。
-\chapter{生徒会}
+\Chapter{生徒会}
 \section{Across}
 58期の代は洗足学園など他校の生徒会とともに学生団体「Across」が結成されていた。ただ、59に引き継がれた後パンデミックの間に有耶無耶に。僕（飼沼）はAcross Business Plan Contest 特別講演会ポスターの代金を踏み倒されているので、経理が判明したら連絡をください。
 
@@ -2444,7 +2449,7 @@ Buddycomでは誰かがボタンを押してしまい、単方向通話で誰も
 \subsubsection{対策}
 デフォルト設定でPTT式に強制しなるべく事故らないようにする。そして、最大通話時間を短くする。あとは周知させるだけ。また、緊急連絡グループを必須設定にし、本現象が怒った際にはここで対応する。これ以上は何もできない。
 
- \chapter{さいごに}
+ \Chapter{さいごに}
  \section{精神的な話}
  \section{ひとこと}
  \subsection{李より}
@@ -2490,7 +2495,7 @@ Buddycomでは誰かがボタンを押してしまい、単方向通話で誰も
 \\
 
 この引継書を全て読むこと。そして、\.そ\.の\.全\.て\.を\.疑\.え。
-\chapter{\textit{APPENDIX}}
+\Chapter{\textit{APPENDIX}}
 \section{【最重要】命名規則}\label{sec:命名規則}
 命名規則まもらないやつはこの部門にいる価値ない。
 \subsection{三つの方式}
