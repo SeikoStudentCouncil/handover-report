@@ -203,7 +203,7 @@ lineskip=-0.5ex
 \makeatother
 
 \pagestyle{fancy}
-\lhead{\fontsize{8pt}{0pt}\selectfont \hyperlink{top}{聖光祭実行委員会\\技術部門引継書 第１次中間報告}}
+\lhead{\fontsize{8pt}{0pt}\selectfont \hyperlink{top}{聖光祭実行委員会\\技術部門引継書}}
 \lfoot{技術局}
 \rfoot{\copyright ITEC 2021}
 \cfoot{\thepage/\pageref{LastPage}}
@@ -1389,10 +1389,11 @@ Helperとは書くけれどこれを使う以外の方法でDBにアクセスす
   \subsection{構成}
   第62回聖光祭ではiOSアプリ制作にSwift、またUIの作成にはSwiftUIを使用した。第60回以前の聖光祭アプリではSiwftとStoryboardという一般的なアプリの構成だったが、Sotryboardの扱いが大変なのに加え、アニメーションを強化したかったので、2019年に新しく登場したSwiftUIを使用した。
   \subsubsection{Swiftの学び方}
+  Apple公式の動画などをみて学習すること。今後バージョンも新しくなるので、都度新しいバージョンを参照すること。\\
   \url{https://apple.co/3BVig3C}\\
-  \url{https://developer.apple.com/tutorials/swiftui}\\
-  などを使って学習すること。今後バージョンも新しくなるので、都度新しいバージョンを参照すること。\\
-  SwiftUIでつまずきがちなのが、\texttt{@State,@Binding,@StateObject,@ObservedObject,@EnvironmentObject}などのデーターフローである。\\
+  \url{https://developer.apple.com/tutorials/swiftui}
+  SwiftUIでつまずきがちなのが、\\
+  \verb|@State|,\verb|@Binding|,\verb|@StateObject|,\verb|@ObservedObject|,\verb|@EnvironmentObject|などのデーターフローである。\\
   \url{https://developer.apple.com/videos/play/wwdc2020/10040/}(動画・日本語字幕)\\
   \url{https://developer.apple.com/documentation/SwiftUI/State-and-Data-Flow}(英語)\\
   などを参照のこと。
@@ -1400,11 +1401,12 @@ Helperとは書くけれどこれを使う以外の方法でDBにアクセスす
   UIと機能が一つのソースコードで作れるのが非常に楽。アニメーションをつけるのも楽。綺麗なUIを作るのも楽。ただしガチガチにUIをカスタマイズしたい場合は都度カスタマイズが必要。
   \subsubsection{SwiftUIの問題点}
    たまにプレビューが機能しなかったり、重くてXcodeが間違ったコードをハイライトしてくれないと言った不具合があった。あとはSwiftUI自体がコードが複雑になって重くなると、正しいコードを書いているのにプレビューされなかったり、ビルドに失敗したりした。大抵の場合は``Clean build Folder''かXcode再起動で解決する。\\
+   なお、上記の問題はSwift 5.5で修正されたと言われている。
   \subsection{AppStoreと配信}
    Apple Developer Programの会員であれば、AppStoreの配信権を獲得できる。
   \subsubsection{Apple Developer Program}
-  App StoreにアプリをリリースするにはApple Developer Programのライセンス契約が必要。個人契約、12,980円/年。予算で落ちるが、一人一ライセンスまで\footnote{昔はライセンスを共有することができ、同じAppを作っているメンバーであればライセンスが付与される使用だったが、最近変わった模様。}で、2~3アカウント落とすことを考えた方がいい。\\
-  法人契約もできるが、\ruby[g]{D-U-N-S}{ダンズ}番号が必要。学校にD-U-N-S番号を使わせてもらえないか交渉したところ、ダメとのこと。かなり前にも交渉した先輩がいたとも言われた。個人契約しかないだろう。
+  App StoreにアプリをリリースするにはApple Developer Programのライセンス契約が必要。個人契約、12,980円/年。予算で落ちるが、一人一ライセンスまで\footnote{昔はライセンスを共有することができ、同じAppを作っているメンバーであればライセンスが付与される使用だったが、最近変わった模様。}で、人数分の2~3アカウント落とすことを考えた方がいい。\\
+  法人契約もできるが、\ruby[g]{D-U-N-S}{ダンズ}番号が必要。学校にD-U-N-S番号を使わせてもらえないか交渉したところ、それはできないとのこと。かなり前にも交渉した先輩がいたとも言われた。個人契約しかないだろう。
   \subsubsection{TestFlight}\label{sec:TestFlight}
   TestFlightはAppStoreにリリースしなくても、ベータ版としてアプリケーションを公開できるというもの。\\
   聖光祭アプリなども聖光祭が始まる一ヶ月前くらいからTestFlightを始めると、バグ修正ができるのでいいと思う。2021年度は幹部のみに公開していたが、全校生徒に公開しても良いかもしれない。\\
@@ -1418,7 +1420,7 @@ Helperとは書くけれどこれを使う以外の方法でDBにアクセスす
   \subsubsection{配信}
  \subsection{改善点}
   \subsubsection{マルチプラットフォーム化}
-  今回の聖光祭AppはApple Wachに対応させる予定であったが、時間がなかったので今回話になった。
+  今回の聖光祭AppはApple Wachに対応させる予定であったが、時間がなかったので今回はなしになった。
   \subsubsection{App Clips}
    App Clipはアプリケーションの特定機能を10MB以下の小さいアプリ化して、モバイルデーター通信環境でもすぐにダウンロードして使えるというもの。\\
    フロアマップだけをApp Clipsにしてもいいし、放送リクエスト機能だけをApp Clipsにしてもいいので、やってみると聖光祭アプリのインストール数も増えると思う。\\
@@ -1429,6 +1431,10 @@ Helperとは書くけれどこれを使う以外の方法でDBにアクセスす
     \item \url{https://developer.apple.com/videos/play/wwdc2021/10012/}
     \end{itemize}
   \subsubsection{Apple Wallet}
+  Apple Wallet Kitを使うことで、iPhoneのWallet Appに入場チケットなどを登録できる。
+ iPhoneのサイドボタン\footnote{ホームボタン付きのモデルの場合はホームボタン}を2回押すことで、iPhoneのロックを解除しなくてもすぐに表示できるようになる。
+ Walletには一次元バーコード、二次元バーコード(QRコード)などを表示でき、Walletの情報を更新することもできる。\\
+ \link{Walletについて -Apple Developer}{https://developer.apple.com/jp/wallet/}
 
 \Chapter{音楽局}
 \section{引き継ぎにあたって}
@@ -2001,10 +2007,11 @@ B$\cdots$番号（0~5）0が代表者。
   \item スプレッドシートの「型」\\
   スプレッドシートにもStringやIntといった型が存在する。聖光祭当日に、大下が三枝の許可を得て動作確認用のサンプルデータをiOS版のスプレッドシートAppで追加したところ、型が狂ってしまい、iPadアプリケーションが落ちてしまった。結局、スプレッドシートを復元しないと解決せず、失敗した。
   \item ポケットWi-Fiの限界\\
-
-
+  一つのポケットWi-Fiに対し、iPadとプリンターそれぞれ3台、計6台までが限界である。ただし、iPadとプリンターそれぞれ2台、計4台を繋ぐことを推奨する。
  \end{itemize}
+ 
 \subsection{改善点}
+ 入場システムはiPad上でオフラインで動かせるようにすればポケットWi-Fiなどを作るようにすればいい。ネットワークにつながっていない高性能無線LANルーターを設置すれば、処理性能も高く、iPadとプリンター間の通信も速くなるだろう。
 \section{入場システム}
 \subsection{目的}
 予約したお客様の受付を行い、入場の管理をし、「個人ID」の発行を目的としたiPadアプリケーションである。
@@ -2219,12 +2226,12 @@ Chromebookの性能が悪いため、QRコードの読み取りに時間がか�
    \item それぞれのiPadで以上を繰り返す。
    \item 管理する端末で「追加」を選択して、クラスルームに生徒が追加された。
   \end{enumerate}
-
+\newpage
 \section{外務送付状の差込}\label{sec:外務送付状の差込}
 62回担当：飼沼
 
 \href{https://script.google.com/d/1peO_Bmf9jcnJWGCZMN2IRhBrCqokkgPmUVuC4BlryH9kxAiHoXzkjO_x/edit?usp=sharing}{スクリプト}を組んで外務部門が企業や学校に送るポスターの送付状を差し込みした。リストをスプレッドシートでもらって雛形の学校名とかの部分を変えればいい。
-
+\lstset{language=JavaScript}
 \begin{lstlisting}
 let cnt = 0
 
