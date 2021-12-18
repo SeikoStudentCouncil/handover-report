@@ -24,7 +24,7 @@ jobs:
         uses: akimasa-l/platex-action@main
         with:
           LATEX_FILE_NAME: "handover.tex"
-          WORKING_DIRECTORY: "./src"
+          WORKING_DIRECTORY: "./src/"
         # working-directory: ./src
       # Create Release
       - name: Create Release
