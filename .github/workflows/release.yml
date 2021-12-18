@@ -19,13 +19,20 @@ jobs:
       - name: こわいからls
         run: ls
         working-directory: ./src
-      - name: Compile Tex File
-        id: compile_tex_file
-        uses: akimasa-l/platex-action@main
-        with:
-          LATEX_FILE_NAME: "handover.tex"
-          WORKING_DIRECTORY: "./src/"
-        # working-directory: ./src
+      - name: install tex
+        run: |
+          brew update 
+          brew upgrade
+          brew cask install mactex
+          export PATH="/usr/local/texlive/2018/bin/x86_64-darwin:$PATH"
+          source ~/.zshrc
+          sudo tlmgr update --self --all
+          sudo tlmgr paper a4
+      - name: compile tex
+        run: |
+          platex handover
+          dvipdfmx handover
+        working-directory: ./src
       # Create Release
       - name: sleep time
         run: sleep 5
