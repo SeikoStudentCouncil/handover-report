@@ -28,7 +28,7 @@ jobs:
         # working-directory: ./src
       # Create Release
       - name: sleep time
-        run: sleep 20
+        run: sleep 5
       - name: check output
         run: ls
         working-directory: ./src
