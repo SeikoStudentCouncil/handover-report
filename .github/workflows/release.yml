@@ -16,17 +16,11 @@ jobs:
       # LATEX_FILE_NAME -> main.pdf generated
       - name: Set up Git repository
         uses: actions/checkout@v2
-      - name: こわいからls
-        run: ls
-      - name: Go to src directory
-        run: cd src
-      - name: こわいからls2
-        run: ls
-      - name: Compile Tex File
         id: compile_tex_file
         uses: tsukuba-mas/platex-action@main
         with:
           LATEX_FILE_NAME: "handover.tex"
+        working-directory: ./src
       # Create Release
       - name: Create Release
         id: create_release
@@ -44,6 +38,7 @@ jobs:
       - name: Upload Release Asset
         id: upload_release_asset
         uses: actions/upload-release-asset@v1
+        working-directory: ./src
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
