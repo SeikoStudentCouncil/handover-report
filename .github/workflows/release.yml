@@ -16,6 +16,7 @@ jobs:
       # LATEX_FILE_NAME -> main.pdf generated
       - name: Set up Git repository
         uses: actions/checkout@v2
+      - name: Compile Tex File
         id: compile_tex_file
         uses: tsukuba-mas/platex-action@main
         with:
