@@ -23,7 +23,7 @@ jobs:
         run: |
           brew update 
           brew upgrade
-          brew cask install mactex
+          brew install mactex --cask
           export PATH="/usr/local/texlive/2018/bin/x86_64-darwin:$PATH"
           source ~/.zshrc
           sudo tlmgr update --self --all
