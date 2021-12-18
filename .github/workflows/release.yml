@@ -16,8 +16,12 @@ jobs:
       # LATEX_FILE_NAME -> main.pdf generated
       - name: Set up Git repository
         uses: actions/checkout@v2
+      - name: こわいからls
+        run: ls
       - name: Go to src directory
         run: cd src
+      - name: こわいからls2
+        run: ls
       - name: Compile Tex File
         id: compile_tex_file
         uses: tsukuba-mas/platex-action@main
