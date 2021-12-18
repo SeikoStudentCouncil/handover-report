@@ -27,6 +27,10 @@ jobs:
           WORKING_DIRECTORY: "./src/"
         # working-directory: ./src
       # Create Release
+      - name: sleep time
+        run: sleep 20
+      - name: check output
+        run: ls
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
