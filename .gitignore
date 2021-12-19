@@ -277,3 +277,4 @@ TSWLatexianTemp*
 *.lpz
 引継書/引継書.pdf
 .DS_Store
+src/__latexindent_temp.tex
