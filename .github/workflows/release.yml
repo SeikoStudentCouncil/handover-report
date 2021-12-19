@@ -21,9 +21,9 @@ jobs:
         working-directory: ./src
       - name: install tex
         run: |
-          sudo brew update 
-          sudo brew upgrade
-          sudo brew install mactex-no-gui --cask
+          brew update 
+          brew upgrade
+          brew install mactex-no-gui --cask
           echo "/usr/local/texlive/2021/bin/x86_64-darwin" >> $GITHUB_PATH
           sudo tlmgr update --self --all
           sudo tlmgr paper a4
