@@ -1,0 +1,64 @@
+# The Example of Compiling LaTeX File
+# In your latex repository, make .github/workflows/main.yml like below.
+# You only have to change `LATEX_FILE_NAME` as your tex file.
+
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  test_job:
+    runs-on: macos-latest
+    name: Example of compiling pdf
+    steps:
+      # make pdf
+      # LATEX_FILE_NAME -> main.pdf generated
+      - name: Set up Git repository
+        uses: actions/checkout@v2
+      - name: こわいからls
+        run: ls
+        working-directory: ./src
+      - name: install tex
+        run: |
+          brew update 
+          brew upgrade
+          brew install mactex-no-gui --cask
+          echo "/usr/local/texlive/2021/bin/x86_64-darwin" >> $GITHUB_PATH
+          sudo tlmgr update --self --all
+          sudo tlmgr paper a4
+      - name: compile tex
+        run: |
+          platex handover
+          dvipdfmx handover
+        working-directory: ./src
+      # Create Release
+      - name: sleep time
+        run: sleep 5
+      - name: check output
+        run: ls
+        working-directory: ./src
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        with:
+          tag_name: ${{github.ref}}
+          release_name: Release ${{ github.ref }}
+          body: |
+            Compiled PDF ${{github.ref}}
+          draft: false
+          prerelease: false
+      # Upload Asset main.pdf
+      - name: Upload Release Asset
+        id: upload_release_asset
+        uses: actions/upload-release-asset@v1
+        # working-directory: ./src
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./src/handover.pdf
+          asset_name: handover.pdf
+          asset_content_type: application/pdf
