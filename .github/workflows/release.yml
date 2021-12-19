@@ -23,9 +23,8 @@ jobs:
         run: |
           brew update 
           brew upgrade
-          brew install mactex --cask
-          export PATH="/usr/local/texlive/2018/bin/x86_64-darwin:$PATH"
-          source ~/.zshrc
+          brew install mactex-no-gui --cask
+          echo "/usr/local/texlive/2021/bin/x86_64-darwin" >> $GITHUB_PATH
           sudo tlmgr update --self --all
           sudo tlmgr paper a4
       - name: compile tex
