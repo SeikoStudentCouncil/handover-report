@@ -9,7 +9,7 @@ on:
 
 jobs:
   test_job:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     name: Example of compiling pdf
     steps:
       # make pdf
@@ -19,19 +19,13 @@ jobs:
       - name: こわいからls
         run: ls
         working-directory: ./src
-      - name: install tex
-        run: |
-          brew update 
-          brew upgrade
-          brew install mactex-no-gui --cask
-          echo "/usr/local/texlive/2021/bin/x86_64-darwin" >> $GITHUB_PATH
-          sudo tlmgr update --self --all
-          sudo tlmgr paper a4
-      - name: compile tex
-        run: |
-          platex handover
-          dvipdfmx handover
-        working-directory: ./src
+      - name: Compile Tex File
+        id: compile_tex_file
+        uses: akimasa-l/platex-action@main
+        with:
+          LATEX_FILE_NAME: "handover.tex"
+          WORKING_DIRECTORY: "./src/"
+        # working-directory: ./src
       # Create Release
       - name: sleep time
         run: sleep 5
