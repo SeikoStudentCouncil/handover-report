@@ -1784,13 +1784,429 @@ TDはリアルタイムで画像処理ができ、無料であるという点で
 \subsection{飼沼管理}
 
 \section{Slackアーカイブ}
-62回担当者：飼沼、李
+62回担当者：飼沼、李、劉
 
 
 \section{スローガン}
 
 \section{Tシャツ処理}
 62回担当者：飼沼、浅井
+
+\\
+
+担当教員は聖光祭：飯岡先生、体育祭：川部先生になります。聖光祭については部門顧問を通す必要はないですが、どうせ顧問がうるさいので報告だけはしておきましょう。
+
+\subsection{今年お世話になった業者の方}
+プラスワン元横浜店（現渋谷店）早川さん
+本年もこちらにお願いする場合は先年の御礼も一緒に\link{リピート注文}{https://www.p1-intl.com/contents/repeat.html}から渋谷店早川さんにお願いします。登録法人名は聖マリア学園聖光学院中学校・高等学校、担当者名は同高等学校 飼沼 隼（080-3752-3385）、担当教員名は聖光学院中学校・高等学校生徒会 飯岡 雄介 および 川部 大輔、先年の注文内容は文化祭用Tシャツ1,918枚（¥1,400,140）体育祭用Tシャツ1,174枚（¥1,501,440）です。昨年は短い納期の中対応してくださった上値下げを大幅にしていただいたので、飼沼がお世話になったと伝えてくれると幸いです。
+
+業者は変える必要はないと思いますが、一枚¥1,000以上の見積もりを出されたら高めに提示しているだけなので、他社の見積もりも提示しつつ値切りしていきましょう。聖光祭は¥690、体育祭は¥960まで下げられました。
+
+仕事の流れは以下の通りです。今年は体育祭と聖光祭を一緒に集計しました。延期したらそうしましょう。延期するか微妙なタイミングなのでどうするか迷うと思いますが、早く動いた方がいいので（引き継ぎが遅くなって本当にごめん。土下座します）その辺は臨機応変に。
+
+\subsection{名簿・所属集計 I}
+死ぬほどめんどくさいし関数パズルです。これはなぜかというと、全校生徒が1000人以上いてデータが重すぎるせいですね。一人一人に対して情報が多すぎるので、スプレッドシートが本当に重くなります。スマホで開くと落ちるぐらい。Slackアーカイブよりはマシでした。
+
+まず、\ref{sec:名簿} の通り、全校生徒の名簿を整備します。これが間違っていると全てが終わります。3学期の間は今年使った名簿を使えばよいです。新年になったときに作った名簿と対応づけてください。聖光祭については、名簿は部門動向調査のものを使えば問題ないと思います。ただし、以降追加が生まれる可能性が高くなります。これについては下で書きます。
+
+専用シートを作って情報を加えていくのがいいと思います。部門動向調査で各部門名簿シートから \texttt{importrange} して来て、それを名簿シートに、生徒会名簿からとってきた方をmainシートにするところからです。
+
+\subsection{所属集計 II}
+部門動向調査で集計できなかった分を集計していきます。学籍でソートしていくといいと思う。だから \texttt{vlookup} を使えるように名簿の一番左は学籍にするべきです。学籍以外で探索したい時だけ \texttt{match} / \texttt{index} を使えばいいように整備しましょう。Spreadsheet の \texttt{vlookup} や \texttt{match} / \texttt{index} は大体数値型でバグります。これらの関数の引数に \texttt{int} / \texttt{to\_text} を挟む、Spreadsheet の表示形式を変更する、名簿の数値型を合わせるなどで解決することがあります。解決しないこともあります。ずっと悩んだ結果、既知のバグであることも実際あったので、できるだけスマートに解決しましょう。スプレッドシートじゃなくて聖光祭をするのが目的なので。
+
+\subsubsection{幹部}
+今年は幹部は動向調査に回答しない方針にしました。俺は間違えて送信しちゃったけど。幹部名簿を \texttt{importrange} して対応します。対応するTシャツはピンクTになります。
+
+\subsubsection{展示チーフ}
+チーフに掛け持ち制限をつけたために、「チーフ・店長」等の情報は破棄してしまったので、聖光祭ドライブに入っている展示の名簿から持ってきます。こういうのも整えてあげると気が利きます。展示部門長にここに載っている人は全員展示Tをもらうのか？確認しましょう。対応するTシャツは展示Tになります。
+
+\subsubsection{食品}
+食品店舗ごとに集計がなされていたので、これを結合します。配列の縦結合は \texttt{\{\}}です。\texttt{indirect()} を用いて \texttt{counta()} を挟めば配列の空データは抜けます。こんな感じです。以降もそうですが、全部脳筋で書いてるので適宜修正してください。
+\\
+\begin{lstlisting}
+={indirect("a3:a"&counta(A:A));indirect("b3:b"&counta(B:B));indirect("c3:c"&counta(C:C));indirect("d3:d"&counta(D:D));indirect("e3:e"&counta(E:E));indirect("f3:f"&counta(F:F));indirect("g3:g"&counta(G:G))}
+\end{lstlisting}
+\\
+対応するTシャツは食品Tになります。
+
+\subsubsection{展示団体}
+展示団体ごとの名簿は作っていなかった（シート数がおかしいことになるので）ので、回答一覧から引っ張ってきます。
+\\
+\begin{lstlisting}
+=sort(query(importrange("***","'*所属羅列'!a:l"), "select * where Col1!=''"),1,true)
+\end{lstlisting}
+\\
+その上で、展示団体のみ抽出します。\texttt{boolean} です。当たり前ですけど \texttt{OR} です。間違っても複数所属しているからと言って同じ人に3枚とか展示T発注しないでくださいね。こういう時に団体の種類ごとに識別コード分けてあると便利です。なお、英語劇と喫茶は抜きました。もちろん展示部門に確認必須。
+\\
+\begin{lstlisting}
+=regexmatch(substitute(substitute(concatenate(G2:L2), "19.", ""), "25.", ""),"[0-9]")
+\end{lstlisting}
+\\
+対応するTシャツは展示Tになります。
+
+\subsubsection{幹部の展示団体など所属}
+幹部の掛け持ち制限をつけたがために、統一シフトに際して幹部の掛け持ち希望フォーム（流石に幹部なのでスプレッドシートで対応しました）を作って記入させ、執行部がこれを個別に許可しました。対応するTシャツは展示Tになります。フォームの方で出演系かそうでないか分けておきましょう。出演系の企画・ダンス、吹部、弦オケ、フルオケ、剣道部、英語ディベート（場合による）、英語劇、Mサロ、バンド、野球部、グラフィナを除外。なおバンドについては演出の所属に入れるのかただ演出Tを渡すのかTシャツも渡さないのかそれぞれ考えてください。対応するTシャツは展示T、演出Tになります。
+
+\subsubsection{生徒会展示}
+所属にもれていた生徒会展示を生徒会長から個別。生徒会役員、生徒会委員、場合によっては副委員長、などから忙しい幹部などを抜きます。対応するTシャツは展示Tになります。
+
+\subsubsection{インターアクト}
+所属にもれていたインターアクト名簿をチーフからもらいます。が、入ってるのかよくわからんやつが大量にいるのでチーフに用途を伝えて確認してください。三年前執行部管轄にした覚えがあります。対応するTシャツは展示Tになります。
+
+\subsubsection{技術}
+統括所への所属を必要としていたので、その名簿を持ってきました。対応するTシャツは技術Tになります。
+
+\subsection{所属集計 III}
+体育祭です。ついに。
+
+\subsubsection{色}
+色Tの欄を作ります。高2は高1のクラスなので、昨年度の名簿を用意した上で分岐させます。基本全員受け取るわけですが、体育祭に出席しない人の分は手動で強制上書きできるような欄を作っておきます。
+\\
+\begin{lstlisting}
+=IFS(B3="S2",IFS(H3="A","青",H3="B","黄",H3="C","緑",H3="D","白",H3="E","赤"),B3<>"S2",I3)
+\end{lstlisting}
+
+\subsubsection{体育祭幹部}
+体育祭幹部のピンクTです。体育祭の幹部名簿も技術局が作ってくださいね。正副実行委員長、課長、技術正副局長、装飾局長、審判正副団長（16枚）に渡しました。放送はTシャツがあります。副課長に渡すかは三役に確認してください。
+
+\subsubsection{応援団}
+まずスプレッドシートでフォームを作ります。生徒会名簿から \texttt{importrange} し、学籍が打たれたら自動で他の情報が出ておくようにしておきます。もちろん名簿のシートはロックした上非表示にしておきます。また、学籍の欄など以外の関数を入れた場所はロックします。\footnote{ちなみに、Spreadsheetに慣れていない人に書き込んでもらうシートなどは適宜ロックした方がいいですが、担当者を多めに入れておかないと一人がぶっ倒れてる間に誰も編集できないみたいなことが起こります。}
+\\
+\begin{lstlisting}
+=IFERROR(VLOOKUP($E3, '名簿'!$A:$E, 3), "")
+\end{lstlisting}
+\\
+大将団長に共有します。上記の機能を説明した上で、なるはやで書いてもらいます。これは三役にもせかしてもらおう。そしたら全部統合したシートを作ります。
+\\
+\begin{lstlisting}
+=QUERY({'青組'!B3:F60;'黄組'!B3:F60;'緑組'!B3:F60;'白組'!B3:F60;'赤組'!B3:F60},"WHERE Col5!=''")
+\end{lstlisting}
+\\
+その上で、これと色欄を照らし合わせて集計するときに用います。個人ごとの数を出すときはこのままで良いです。
+
+\subsubsection{実行委員・審判団}
+例によって技術の仕事です。フォームで募集する場合は、メアド集計だけでいいことを三役に伝えましょう。
+その上で名簿を作っていきます。審判は組内での人数の関係などを考慮しながら人員を埋めていきます。これもなる早でやるべきです。
+Buddycomの有無と勤怠などつけていくのもいいと思います。実行委員は課の割り振りが決まったらそれも決めていきます。
+
+\subsubsection{放送局}
+放送局長とおはなしをして、名簿を埋めてもらいます。割と直前まで決まらないのが通例のようだったので、早く決めてもらうように言っておきましょう。
+
+\subsection{サイズ集計}
+所属集計が終わったら、サイズです。親御さんからの送信で、雑費引き落としの許可を得るという形にしました。教室にそれぞれの所属を掲示し、それを生徒に確認させ、親から送ってもらうという形です。
+
+\subsubsection{追加T}
+よくわからない事情でTシャツ追加になった人を入れていきます。別に欄作ればいいですが、会計する時に忘れないように。
+
+\subsubsection{所属表}
+所属表を作っていきます。左詰めで入れます。体育祭と聖光祭を分けた方がいいでしょう。
+まず、体育祭の各組Tを入れます。配列行列 $D$ の転置 $D^\top$ は \texttt{transpose()} を用います。
+\\
+\begin{lstlisting}
+=iferror(transpose(arrayformula(query(transpose({main.!$K$2:$O$2;main.!$K3:$O3}), "select Col1 where Col2=true")&"T")),"")
+\end{lstlisting}
+\\
+聖光祭も同様です。追加Tとか書いた欄もあるといいと思います。以下のように備考も作りました。
+\\
+\begin{lstlisting}
+=ifna(join(", ", query({ifna(substitute("聖光祭"&substitute(right(join(",",query({sequence(98,1,3),'幹部.聖光祭'!B$3:B$100}, "select Col2 where Col2<>'' and Col1<="&to_text(match(to_text($A3),'幹部.聖光祭'!$H:$H,0)))),2), "行部", ""),"聖光祭徒会", "")&index('幹部.聖光祭'!$A:$L,match(to_text($A3),'幹部.聖光祭'!$H:$H,0),3), "");ifna("体育祭"&vlookup(to_text($A3), '幹部.体育祭'!$A:$C, 3, false), "");if($AJ3<>"","追加T: ["&$AJ3&"]","");$AM3}, "where Col1 is not null")), "")
+\end{lstlisting}
+
+\subsubsection{印刷}
+これを印刷します。\textbf{必ずmainシートのバックアップシートを作り、静的データを保存します。}じゃないと後から名簿変えられて終わります。
+\\
+\begin{lstlisting}
+=query(arrayformula(to_text('掲示'!A2:P1500)), "where Col2 ='"&left(B2,2)&"' and Col3='"&right(B2,1)&"'")
+\end{lstlisting}
+\\
+みたいなのを作って、クラスごとに表示できるようにします。気持ちいいですね。そしたらGASでこれを回してpdfにするのを繰り返します。集合 $Class:=\{A,B,C,D,E\}$ と $Grade:=\{J1,J2,J3,S1,S2\}$ の直積 $Class\times Grade$ を取り、 S2Fを加えた上でこれにおいてループを回します。
+\\
+\begin{lstlisting}
+function all_print() {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const intro = ss.getSheetByName('Intro.');
+    const trigger = intro.getRange("H19");
+
+    if (trigger.getValue() == false) {
+        return false;
+    }
+
+    const sheet = ss.getSheetByName('掲示印刷');
+    const ssID = ss.getId();
+    const shID = sheet.getSheetId();
+    const parentFolders = DriveApp.getFileById(ss.getId()).getParents();
+    const folder = DriveApp.getFolderById(parentFolders.next().getId()).getFoldersByName('pdf').next();
+    let baseUrl = "https://docs.google.com/spreadsheets/d/"
+        + ssID
+        + "/export?gid="
+        + shID;
+    let pdfOptions = "&exportFormat=pdf&format=pdf"
+        + "&size=A4"
+        + '&portrait=false'
+        + "&fitw=true"
+        + "&top_margin=0.1"
+        + "&bottom_margin=0.1"
+        + "&left_margin=0.1"
+        + "&right_margin=0.1"
+        + "&horizontal_alignment=LEFT"
+        + "&vertical_alignment=TOP"
+        + "&gridlines=false";
+    let url = baseUrl + pdfOptions;
+    const cartesian =
+        (...a) => a.reduce((a, b) => a.flatMap(d => b.map(e => [d, e].flat())));
+
+    let classes = cartesian(["J1", "J2", "J3", "S1", "S2"], ["A", "B", "C", "D", "E"]);
+
+    classes.push(["S2", "F"]);
+
+    trigger.setValue(false);
+
+    var iterList = folder.getFiles();
+    while (iterList.hasNext()) {
+        iterList.next().setTrashed(true);
+    }
+    for (let c of classes) {
+        let grd, cls;
+        [grd, cls] = c;
+        const v = grd + cls;
+        let token = ScriptApp.getOAuthToken();
+        let options = {
+          headers: {
+              'Authorization': 'Bearer ' +  token
+          },
+          muteHttpExceptions : true
+        };
+        sheet.getRange("B2").setValue(v);
+        SpreadsheetApp.flush();
+        let blob = UrlFetchApp.fetch(url, options).getBlob().setName(v + '.pdf');
+        folder.createFile(blob);
+        Utilities.sleep(6000);
+    }
+
+    return true;
+}
+\end{lstlisting}
+\\
+ただし、一名バグります。61期の「（姓）すばる」君のシートが印刷できません。「すはる」に変更すると消えるバグです。
+
+あと、sleepかまさないとErrorが出ます。というかかましても何回かFetch制限がかかってすぐには成功しません。
+
+その上で、これを事務局に出すか、あるいは飯岡先生に印刷してもらいます。その上で、小泉先生を通じて、職員朝礼で確認の上フォーム回答の旨を言っていただきます。四分の一ぐらいの担任は朝礼をちゃんと聞いていないので、生徒に適当に伝えることに留意してください。
+\\
+\subsubsection{フォーム}
+同時に配信するフォームを作っておきます。サイズを書きます。聖光祭と体育祭が離れた場合に使いまわせないのはこれが理由です。なお、ここ最近使っているTシャツ ACT-Glimmer 00300（発注時はぜひこれで）の公式詐称サイズは以下の通りです。フォームにもこれを書きました。LL/XLの表記揺れ注意。
+
+.\\
+SS (157cm〜)\\
+S (163cm〜)\\
+M (170cm〜)\\
+L (179cm〜)\\
+XL (181cm〜)\\
+.
+\\
+
+そんなことはありません。そもそも聖光祭はみんな忙しいし、オーバーサイズぐらいでいいんじゃないかと思います。ちょっと値ずらすのもいいかと思います。
+
+さらに以下の文面を入れます。
+\\
+
+ご子息とご一緒に所属をご確認の上、7/12(月) までに保護者アドレスでご回答お願いいたします。
+質問や相談がある場合は、お手数ですがご子息を通じて高校2年F組飼沼 (60050kainuma@seiko.ac.jp) までお願いいたします。/ 第62回聖光祭実行委員会・第36回体育祭実行委員会\\
+
+さらに、小泉先生に（飯岡先生を通じてかも。確認して）以下のような文章とフォームのリンク、を送ります。seiko.ac.jp限定共有設定、メアド記録、スプレッドシートの記録先は処理シートであることを確認してください。\\
+
+保護者各位
+
+今秋に開催される聖光祭および体育祭のTシャツ購入に際して、Tシャツの申込フォームを配信いたします。各クラスに掲示してある必要分Tシャツの一覧をご子息に確認していただいた上で、7月12日(月)までに保護者アドレスからフォームをお送りください。聖光祭および体育祭の所属している部門等の数によってご子息ごとに購入枚数が異なりますことをあらかじめご承知おきください。本フォームの送信をもって、ご子息の所属数分・希望サイズのTシャツの注文確定とさせていただきます。所属数についてなど、Tシャツの購入に関するお問い合わせは、ご子息を通じて高校2年F組飼沼 (60050kainuma@seiko.ac.jp) までお願いいたします。
+
+＊前回実施時のTシャツデザインの資料を添付しておりますので、参考になさってください。
+
+＊Tシャツの代金は1枚あたり約1,000円ですが、デザインなどによって変動することがありますのでご了承ください。また、Tシャツの購入代金は、雑費からの引き落としとさせていただきます。
+
+＊ご子息のアドレスではなく、保護者アドレス（p 〜 @seiko.ac.jp）からご送信ください。ご兄弟で在学されている場合は、それぞれの保護者アドレスからご回答をお願いいたします。
+
+＊フォームの回答は編集できますので、期限までは書き換えていただいて構いません。
+
+＊メールアドレスを収集しておりますので、氏名等の回答は必要ありません。
+
+＊後に所属の変更等があった場合は個別に対応させていただきます。
+\\
+
+\subsubsection{クレーム}
+あとはクレーム、連絡、漏れに対応していきます。まず、期限までに提出しない人が全校生徒の1/3ぐらいいます。びっくり。担任を通じて催促します。これができるよう、学校があるうちがいいです。
+
+それでも出さない人が1/8ぐらいいます。担任の協力を飯岡先生を通じて仰ぎ、不登校であるか、聖光祭・体育祭に参加しないか、留学・休学などの可能性を排除します。教員側の名簿に載っていなくて逆に増えたりすることもあります。これはもちろん別途記録してください。
+
+次に全員のメアドを一覧にし、（もちろん生徒アドレス）Gmailにぶち込み怒りのメールを送ります。これで50人ぐらいに減ります。
+
+さらに担任を通じて催促します。最後には聞きにいきます。もう間に合わなかった人のTシャツは予備で賄います。
+
+親から謝罪のメールとか質問のメールとかも来るので、超丁寧に対応してください。生徒には仕組みをしっかり説明してください。
+
+手動で提出できない人がいます。なぜか兄弟のアドレスを切り替えているのに回答が上書きされる既知のバグがあるので、兄弟がいることをまず疑ってください。他に、親の入院など事情がある人、生徒アドレスで間違って送ってきているのに返送しても応答なしの場合はもう口頭で良いです。最悪の場合責任は飯岡先生たちがとる、ということを先生に確認してください。
+
+保護者アドレスは最初は違反登録をします。
+\\
+\begin{lstlisting}
+=ARRAYFORMULA(IF(B2:B2344="", "", NOT(REGEXMATCH(B2:B2344, "^p"))))
+\end{lstlisting}
+\\
+\begin{lstlisting}
+=iF(NOT(OR(D2,C2="")), INT(MID(B2, 2, 5)), "")
+\end{lstlisting}
+\\
+違反チェックをすり抜けたら学籍欄をもうけ、記録します。これをmainシートから逆探索します。手動用のシートも作っておきます。
+\\
+\begin{lstlisting}
+=IFERROR(IF(AK3 = True, "-", INDEX(SPLIT(INDEX({Form!A:E;size_manual!A:E},MATCH(INT($A3),{Form!E:E;size_manual!E:E},0),3), " "), 1)),"")
+\end{lstlisting}
+
+\subsection{所属集計III}
+「なんかこんなの動向調査で回答してないです」みたいなクレームが来ます。対応します。最初は同意書をいちいち書いてたんですが、このせいで僕のハンコをなくして萎えました。親に言っといてねって言えばもうフォームとかは送った後でもいいと思います（飯岡先生に確認してください）。名簿に追加する場合と、追加Tに入れるのを使い分けてください。なお、今年は幹部の複数枚購入をOKにしました。
+
+ちなみに追加Tは今年の書式ならば正規表現を使って
+\\
+\begin{lstlisting}
+=if($F30="-",0,sum(arrayformula(K30:AC30*1))+1+sum(split(regexreplace(AJ30, "\D+T\*", "+")&"+0", "+")))
+\end{lstlisting}
+\\
+で枚数集計に入ります。ちなみにこれは負の値にも対応しているので、消し去りたい時に使えます。ふざけて浅井の値を\texttt{[技術T*300]}とかにしていたら、間違えてそのまま会計を提出して浅井の雑費が30万になるところでした。気をつけてください。
+
+\subsubsection{diff}
+mainシートがどんどん変わっていくので、印刷時に取っておいたアーカイブから差分をとり間違いがないか確認していきます。\texttt{boolean} は演算ができるので、
+\\
+\begin{lstlisting}
+=if(B3="","", arrayformula(query(main.!K3:AC3)-query(main._archive!K3:AC3)))
+#とチェッカーの
+=and(ARRAYFORMULA(H3:Z3 = 0),main.!AJ3=main._archive!AJ3)
+\end{lstlisting}
+\\
+を両方用いて土台を作ります。追加Tも変わったので、その差分は
+\\
+\begin{lstlisting}
+=regexreplace(regexreplace(regexreplace(join(", ", arrayformula(search_key!$A$1:$S$1&"T: "&(iferror(mid(vlookup($A3, main.!$A$1:$AJ, 36), find(search_key!$A$1:$S$1, vlookup($A3, main.!$A$1:$AJ, 36))+len(search_key!$A$1:$S$1)+2, find(",", vlookup($A3, main.!$A$1:$AJ, 36)&",", find(search_key!$A$1:$S$1, vlookup($A3, main.!$A$1:$AJ, 36)))-(find(search_key!$A$1:$S$1, vlookup($A3, main.!$A$1:$AJ, 36))+len(search_key!$A$1:$S$1)+2)), 0)-iferror(mid(vlookup($A3, main._archive!$A$1:$AJ, 36), find(search_key!$A$1:$S$1, vlookup($A3, main._archive!$A$1:$AJ, 36))+len(search_key!$A$1:$S$1)+2, find(",", vlookup($A3, main._archive!$A$1:$AJ, 36)&",", find(search_key!$A$1:$S$1, vlookup($A3, main._archive!$A$1:$AJ, 36)))-(find(search_key!$A$1:$S$1, vlookup($A3, main._archive!$A$1:$AJ, 36))+len(search_key!$A$1:$S$1)+2)), 0)))), "[^T:0, ]*T: 0", ", "), "(, )+", ", "), "(^, |, $)", "")
+\end{lstlisting}
+\\
+のようにして正規表現で取りました。あとはこれを
+\\
+\begin{lstlisting}
+=query(diff._base!A2:AA, "select "&join(",",arrayformula(char(sequence(26)+64)))&" where F!='-' and AA=true")
+\end{lstlisting}
+\\
+として整形しました。\texttt{query} は文字列でクエリを指定できるのがいいところです。
+ただ、差分も動的に変わるので、これを変わった順にGASの定期実行で静的に記録していきました。この辺は必要に応じてやればいいです。
+\\
+\begin{lstlisting}
+function onOpen() {
+    const ui = SpreadsheetApp.getUi();
+    ui.createMenu('User')
+    .addItem('changes.更新', 'modifier')
+    .addToUi();
+}
+
+function modifier() {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const diff = ss.getSheetByName('diff.');
+    const change = ss.getSheetByName('changes.');
+
+    let data1 = diff.getRange(3, 1, getDataLastRow(diff) - 1, 26).getValues()
+                .map((element) => element.slice(0, 5).concat(element.slice(6)));
+    let data2 = change.getRange(3, 5, getDataLastRow(change) - 1, 28).getValues()
+                .filter((element) => !/^B-/.test(element[1]));
+
+    let data1Table = data1.map((element) => parseInt(element[0]));
+
+    data2.sort((a, b) => {
+        if (b[3] == 'null') return -2;
+        if (a[3] < b[3]) return -1;
+        if (a[3] > b[3]) return 1;
+    });
+
+    let i = 0;
+    let j = 0;
+    let r = getDataLastRow(change) + 2;
+    while (i < data1.length) {
+        if (j < data2.length && data2[j][3] != 'null' && !(data1Table.includes(parseInt(data2[j][3])))) {
+            change.getRange(data2[j][0] + 2, 6, 1, 27).clearContent();
+            change.getRange(data2[j][0] + 2, 8).setValue('null');
+            change.getRange(data2[j][0] + 2, 1, 1, 3).setValues([['OK', '-', '-']]);
+            j++;
+        } else if (j >= data2.length || data1[i][0] != data2[j][3] || data2[j][3] == 'null') {
+            change.getRange(r, 8, 1, 25).setValues([data1[i]]);
+            i++;
+            r++;
+        } else if (JSON.stringify(data1[i].slice(5)) != JSON.stringify(data2[j].slice(8))) {
+            change.getRange(data2[j][0] + 2, 8, 1, 25).setValues([data1[i]]);
+            req = change.getRange(data2[j][0] + 2, 3, 1, 2);
+            rep = req.getValues()[0][1];
+            if (!rep) {
+                req.setValues([['', 'modified: 01']]);
+            } else if (!/modified: \d$/.test(rep)) {
+                req.setValues([['', rep.slice(0, -2) + ('00' + parseInt(rep.slice(-2)) + 1).slice(-2)]]);
+            } else {
+                req.setValues([['', String(rep) + ', modified: 01']]);
+            }
+            i++;
+            j++;
+        } else {
+            i++;
+            j++;
+        }
+    }
+    return true;
+}
+
+function getDataLastRow(sheet) {
+    return sheet.getRange('E:E').getValues().filter(String).length;
+}
+\end{lstlisting}
+
+\subsection{発注}
+\subsubsection{必要枚数}
+色Tは
+\\
+\begin{lstlisting}
+=iferror(query(main.!$F:$G, "select count(F) where F='"&$D4&"' and G='"&G$2&"' label count(F) ''"), 0)
+\end{lstlisting}
+\\
+みたいにして、
+応援団Tは
+\\
+\begin{lstlisting}
+=iferror(query(main.!$F:$K, "select count(F) where F='"&$D9&"' and G='"&E$8&"' and K=true label count(F) ''"), 0)
+\end{lstlisting}
+\\
+みたいに、役職つきは
+\\
+\begin{lstlisting}
+=iferror(query(main.!$F:$O, "select count(F) where F='"&$J5&"' and "&split(address(1,column(L$2)+1,4),1)&"=true label count(F) ''"), 0)
+\end{lstlisting}
+\\
+聖光祭は
+\\
+\begin{lstlisting}
+=iferror(query(main.!$F:$AC, "select count(F) where F='"&indirect("C"&row())&"' and "&split(address(1,column()+13,4),1)&"=true label count(F) ''"), 0)
+\end{lstlisting}
+\\
+のようにすれば集計できます。なお、追加Tも集計をしてください。
+\\
+\begin{lstlisting}
+=sum(ArrayFormula(int(ifna(regexextract(regexreplace(indirect("T2:T"&(counta($T$2:$T)+1)), $C19&H$15&"T\*([-0-9]+)$", "$1"), "^[-\d]+$"),"0"))))
+\end{lstlisting}
+\\
+みたいなことをしました。
+
+\subsubsection{予備枚数}
+予備枚数を幾らか設定します。人数によるので、執行部/三役に任せてください。
+
+\subsubsection{発注枚数}
+必要＋予備＋その他。これも発注時に別シートに値のみコピーでうつし（担当者の方にこれを共有）、さらに静的にアーカイブ。
+
+\subsubsection{デザインなど}
+これは今年も河原がやってくれたので詳しくは書きませんが、時間がないです。デザイン局で聖光祭も体育祭も早めに作りましょう。執行部/体育祭幹部に適宜見せながら意見をもらうといいと思います。なお、応援団Tのデザインは各応援団のデザインチーフが行います（組Tはデザイン局のものを使うので注意。今年は組・役職系は全部一緒でした。ついでに聖光祭は全部異なります）。デザインチェックは技術局と装飾局でしてください。大体遅すぎるのでほんとに急かそう。今年は緑のデザインチーフが浅井だったんですが、他の組は期限の24時に終わったのに緑が終わらず授業がある日の5時まで起こされました。許すまじ。
+
+発注は本番1ヶ月ぐらい前までには終わらせてください。今年は1ヶ月すぎてから連絡、工場にもめっちゃ急がせてギリすぎてまじで冷や汗をかきました。あと一日連絡が遅かったらTシャツなしの体育祭でした。1ヶ月半前とかまでに終わるとめちゃくちゃ良いです。集計作業（後述）があるので、集計する暇ができる本番前の日曜とかまでには届かせましょう。台風とかの時期だと結構遅れたりします。
+
 
 \section{統一シフト}\label{sec:統一シフト}
 62回担当者：李
@@ -2290,7 +2706,9 @@ function createNewDocument(id, range, sdid) {
 
 \Chapter{体育祭}
 \section{名簿管理}
+
 \section{Tシャツ}
+
 \section{装飾物デザイン}
 \section{オンライン得点板}
 36回担当：李\\
