@@ -276,11 +276,12 @@ lineskip=-0.5ex
 \end{center}
 
 \newpage
-\setcounter{tocdepth}{4}
 \thispagestyle{fancy}
+\twocolumn
+\setcounter{tocdepth}{4}
 \hypertarget{top}{\tableofcontents}
 
-
+\onecolumn
 
 \Chapter{はじめに}
 \section{挨拶}
@@ -1792,8 +1793,6 @@ TDはリアルタイムで画像処理ができ、無料であるという点で
 \section{Tシャツ処理}
 62回担当者：飼沼、浅井
 
-\\
-
 担当教員は聖光祭：飯岡先生、体育祭：川部先生になります。聖光祭については部門顧問を通す必要はないですが、どうせ顧問がうるさいので報告だけはしておきましょう。
 
 \subsection{今年お世話になった業者の方}
@@ -1822,26 +1821,26 @@ TDはリアルタイムで画像処理ができ、無料であるという点で
 
 \subsubsection{食品}
 食品店舗ごとに集計がなされていたので、これを結合します。配列の縦結合は \texttt{\{\}}です。\texttt{indirect()} を用いて \texttt{counta()} を挟めば配列の空データは抜けます。こんな感じです。以降もそうですが、全部脳筋で書いてるので適宜修正してください。
-\\
+
 \begin{lstlisting}
 ={indirect("a3:a"&counta(A:A));indirect("b3:b"&counta(B:B));indirect("c3:c"&counta(C:C));indirect("d3:d"&counta(D:D));indirect("e3:e"&counta(E:E));indirect("f3:f"&counta(F:F));indirect("g3:g"&counta(G:G))}
 \end{lstlisting}
-\\
+
 対応するTシャツは食品Tになります。
 
 \subsubsection{展示団体}
 展示団体ごとの名簿は作っていなかった（シート数がおかしいことになるので）ので、回答一覧から引っ張ってきます。
-\\
+
 \begin{lstlisting}
 =sort(query(importrange("***","'*所属羅列'!a:l"), "select * where Col1!=''"),1,true)
 \end{lstlisting}
-\\
+
 その上で、展示団体のみ抽出します。\texttt{boolean} です。当たり前ですけど \texttt{OR} です。間違っても複数所属しているからと言って同じ人に3枚とか展示T発注しないでくださいね。こういう時に団体の種類ごとに識別コード分けてあると便利です。なお、英語劇と喫茶は抜きました。もちろん展示部門に確認必須。
-\\
+
 \begin{lstlisting}
 =regexmatch(substitute(substitute(concatenate(G2:L2), "19.", ""), "25.", ""),"[0-9]")
 \end{lstlisting}
-\\
+
 対応するTシャツは展示Tになります。
 
 \subsubsection{幹部の展示団体など所属}
@@ -1871,17 +1870,17 @@ TDはリアルタイムで画像処理ができ、無料であるという点で
 
 \subsubsection{応援団}
 まずスプレッドシートでフォームを作ります。生徒会名簿から \texttt{importrange} し、学籍が打たれたら自動で他の情報が出ておくようにしておきます。もちろん名簿のシートはロックした上非表示にしておきます。また、学籍の欄など以外の関数を入れた場所はロックします。\footnote{ちなみに、Spreadsheetに慣れていない人に書き込んでもらうシートなどは適宜ロックした方がいいですが、担当者を多めに入れておかないと一人がぶっ倒れてる間に誰も編集できないみたいなことが起こります。}
-\\
+
 \begin{lstlisting}
 =IFERROR(VLOOKUP($E3, '名簿'!$A:$E, 3), "")
 \end{lstlisting}
-\\
+
 大将団長に共有します。上記の機能を説明した上で、なるはやで書いてもらいます。これは三役にもせかしてもらおう。そしたら全部統合したシートを作ります。
-\\
+
 \begin{lstlisting}
 =QUERY({'青組'!B3:F60;'黄組'!B3:F60;'緑組'!B3:F60;'白組'!B3:F60;'赤組'!B3:F60},"WHERE Col5!=''")
 \end{lstlisting}
-\\
+
 その上で、これと色欄を照らし合わせて集計するときに用います。個人ごとの数を出すときはこのままで良いです。
 
 \subsubsection{実行委員・審判団}
@@ -1901,26 +1900,26 @@ Buddycomの有無と勤怠などつけていくのもいいと思います。実
 \subsubsection{所属表}
 所属表を作っていきます。左詰めで入れます。体育祭と聖光祭を分けた方がいいでしょう。
 まず、体育祭の各組Tを入れます。配列行列 $D$ の転置 $D^\top$ は \texttt{transpose()} を用います。
-\\
+
 \begin{lstlisting}
 =iferror(transpose(arrayformula(query(transpose({main.!$K$2:$O$2;main.!$K3:$O3}), "select Col1 where Col2=true")&"T")),"")
 \end{lstlisting}
-\\
+
 聖光祭も同様です。追加Tとか書いた欄もあるといいと思います。以下のように備考も作りました。
-\\
+
 \begin{lstlisting}
 =ifna(join(", ", query({ifna(substitute("聖光祭"&substitute(right(join(",",query({sequence(98,1,3),'幹部.聖光祭'!B$3:B$100}, "select Col2 where Col2<>'' and Col1<="&to_text(match(to_text($A3),'幹部.聖光祭'!$H:$H,0)))),2), "行部", ""),"聖光祭徒会", "")&index('幹部.聖光祭'!$A:$L,match(to_text($A3),'幹部.聖光祭'!$H:$H,0),3), "");ifna("体育祭"&vlookup(to_text($A3), '幹部.体育祭'!$A:$C, 3, false), "");if($AJ3<>"","追加T: ["&$AJ3&"]","");$AM3}, "where Col1 is not null")), "")
 \end{lstlisting}
 
 \subsubsection{印刷}
 これを印刷します。\textbf{必ずmainシートのバックアップシートを作り、静的データを保存します。}じゃないと後から名簿変えられて終わります。
-\\
+
 \begin{lstlisting}
 =query(arrayformula(to_text('掲示'!A2:P1500)), "where Col2 ='"&left(B2,2)&"' and Col3='"&right(B2,1)&"'")
 \end{lstlisting}
-\\
+
 みたいなのを作って、クラスごとに表示できるようにします。気持ちいいですね。そしたらGASでこれを回してpdfにするのを繰り返します。集合 $Class:=\{A,B,C,D,E\}$ と $Grade:=\{J1,J2,J3,S1,S2\}$ の直積 $Class\times Grade$ を取り、 S2Fを加えた上でこれにおいてループを回します。
-\\
+
 \begin{lstlisting}
 function all_print() {
     const ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -1986,7 +1985,7 @@ function all_print() {
     return true;
 }
 \end{lstlisting}
-\\
+
 ただし、一名バグります。61期の「（姓）すばる」君のシートが印刷できません。「すはる」に変更すると消えるバグです。
 
 あと、sleepかまさないとErrorが出ます。というかかましても何回かFetch制限がかかってすぐには成功しません。
@@ -2046,17 +2045,17 @@ XL (181cm〜)\\
 手動で提出できない人がいます。なぜか兄弟のアドレスを切り替えているのに回答が上書きされる既知のバグがあるので、兄弟がいることをまず疑ってください。他に、親の入院など事情がある人、生徒アドレスで間違って送ってきているのに返送しても応答なしの場合はもう口頭で良いです。最悪の場合責任は飯岡先生たちがとる、ということを先生に確認してください。
 
 保護者アドレスは最初は違反登録をします。
-\\
+
 \begin{lstlisting}
 =ARRAYFORMULA(IF(B2:B2344="", "", NOT(REGEXMATCH(B2:B2344, "^p"))))
 \end{lstlisting}
-\\
+
 \begin{lstlisting}
 =iF(NOT(OR(D2,C2="")), INT(MID(B2, 2, 5)), "")
 \end{lstlisting}
-\\
+
 違反チェックをすり抜けたら学籍欄をもうけ、記録します。これをmainシートから逆探索します。手動用のシートも作っておきます。
-\\
+
 \begin{lstlisting}
 =IFERROR(IF(AK3 = True, "-", INDEX(SPLIT(INDEX({Form!A:E;size_manual!A:E},MATCH(INT($A3),{Form!E:E;size_manual!E:E},0),3), " "), 1)),"")
 \end{lstlisting}
@@ -2065,37 +2064,37 @@ XL (181cm〜)\\
 「なんかこんなの動向調査で回答してないです」みたいなクレームが来ます。対応します。最初は同意書をいちいち書いてたんですが、このせいで僕のハンコをなくして萎えました。親に言っといてねって言えばもうフォームとかは送った後でもいいと思います（飯岡先生に確認してください）。名簿に追加する場合と、追加Tに入れるのを使い分けてください。なお、今年は幹部の複数枚購入をOKにしました。
 
 ちなみに追加Tは今年の書式ならば正規表現を使って
-\\
+
 \begin{lstlisting}
 =if($F30="-",0,sum(arrayformula(K30:AC30*1))+1+sum(split(regexreplace(AJ30, "\D+T\*", "+")&"+0", "+")))
 \end{lstlisting}
-\\
+
 で枚数集計に入ります。ちなみにこれは負の値にも対応しているので、消し去りたい時に使えます。ふざけて浅井の値を\texttt{[技術T*300]}とかにしていたら、間違えてそのまま会計を提出して浅井の雑費が30万になるところでした。気をつけてください。
 
 \subsubsection{diff}
 mainシートがどんどん変わっていくので、印刷時に取っておいたアーカイブから差分をとり間違いがないか確認していきます。\texttt{boolean} は演算ができるので、
-\\
+
 \begin{lstlisting}
 =if(B3="","", arrayformula(query(main.!K3:AC3)-query(main._archive!K3:AC3)))
 #とチェッカーの
 =and(ARRAYFORMULA(H3:Z3 = 0),main.!AJ3=main._archive!AJ3)
 \end{lstlisting}
-\\
+
 を両方用いて土台を作ります。追加Tも変わったので、その差分は
-\\
+
 \begin{lstlisting}
 =regexreplace(regexreplace(regexreplace(join(", ", arrayformula(search_key!$A$1:$S$1&"T: "&(iferror(mid(vlookup($A3, main.!$A$1:$AJ, 36), find(search_key!$A$1:$S$1, vlookup($A3, main.!$A$1:$AJ, 36))+len(search_key!$A$1:$S$1)+2, find(",", vlookup($A3, main.!$A$1:$AJ, 36)&",", find(search_key!$A$1:$S$1, vlookup($A3, main.!$A$1:$AJ, 36)))-(find(search_key!$A$1:$S$1, vlookup($A3, main.!$A$1:$AJ, 36))+len(search_key!$A$1:$S$1)+2)), 0)-iferror(mid(vlookup($A3, main._archive!$A$1:$AJ, 36), find(search_key!$A$1:$S$1, vlookup($A3, main._archive!$A$1:$AJ, 36))+len(search_key!$A$1:$S$1)+2, find(",", vlookup($A3, main._archive!$A$1:$AJ, 36)&",", find(search_key!$A$1:$S$1, vlookup($A3, main._archive!$A$1:$AJ, 36)))-(find(search_key!$A$1:$S$1, vlookup($A3, main._archive!$A$1:$AJ, 36))+len(search_key!$A$1:$S$1)+2)), 0)))), "[^T:0, ]*T: 0", ", "), "(, )+", ", "), "(^, |, $)", "")
 \end{lstlisting}
-\\
+
 のようにして正規表現で取りました。あとはこれを
-\\
+
 \begin{lstlisting}
 =query(diff._base!A2:AA, "select "&join(",",arrayformula(char(sequence(26)+64)))&" where F!='-' and AA=true")
 \end{lstlisting}
-\\
+
 として整形しました。\texttt{query} は文字列でクエリを指定できるのがいいところです。
 ただ、差分も動的に変わるので、これを変わった順にGASの定期実行で静的に記録していきました。この辺は必要に応じてやればいいです。
-\\
+
 \begin{lstlisting}
 function onOpen() {
     const ui = SpreadsheetApp.getUi();
@@ -2164,36 +2163,36 @@ function getDataLastRow(sheet) {
 \subsection{発注}
 \subsubsection{必要枚数}
 色Tは
-\\
+
 \begin{lstlisting}
 =iferror(query(main.!$F:$G, "select count(F) where F='"&$D4&"' and G='"&G$2&"' label count(F) ''"), 0)
 \end{lstlisting}
-\\
+
 みたいにして、
 応援団Tは
-\\
+
 \begin{lstlisting}
 =iferror(query(main.!$F:$K, "select count(F) where F='"&$D9&"' and G='"&E$8&"' and K=true label count(F) ''"), 0)
 \end{lstlisting}
-\\
+
 みたいに、役職つきは
-\\
+
 \begin{lstlisting}
 =iferror(query(main.!$F:$O, "select count(F) where F='"&$J5&"' and "&split(address(1,column(L$2)+1,4),1)&"=true label count(F) ''"), 0)
 \end{lstlisting}
-\\
+
 聖光祭は
-\\
+
 \begin{lstlisting}
 =iferror(query(main.!$F:$AC, "select count(F) where F='"&indirect("C"&row())&"' and "&split(address(1,column()+13,4),1)&"=true label count(F) ''"), 0)
 \end{lstlisting}
-\\
+
 のようにすれば集計できます。なお、追加Tも集計をしてください。
-\\
+
 \begin{lstlisting}
 =sum(ArrayFormula(int(ifna(regexextract(regexreplace(indirect("T2:T"&(counta($T$2:$T)+1)), $C19&H$15&"T\*([-0-9]+)$", "$1"), "^[-\d]+$"),"0"))))
 \end{lstlisting}
-\\
+
 みたいなことをしました。
 
 \subsubsection{予備枚数}
