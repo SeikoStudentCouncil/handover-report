@@ -1,5 +1,5 @@
 \documentclass[a4paper]{ltjsreport}
-\usepackage[top=24truemm,bottom=24truemm,left=20truemm,right=20truemm]{geometry}
+\usepackage[top=17truemm,bottom=17truemm,left=11truemm,right=11truemm]{geometry}
 \usepackage{multicol}
 \usepackage{titlesec}
 \usepackage{fancyhdr}
@@ -20,7 +20,8 @@
 \usepackage{pdfpages}
 \usepackage{here}
 \usepackage{multirow}
-\usepackage[table, xcdraw, dvipsnames]{xcolor}
+\usepackage[dvipsnames, table, xcdraw]{xcolor}
+\usepackage{tikz}
 \usepackage{siunitx}
 \usepackage{amsmath, amssymb}
 \usepackage{type1cm}
@@ -30,6 +31,18 @@
 \setmainjfont[BoldFont=HiraMinProN-W6]{HiraMinProN-W3}
 \setsansjfont[BoldFont=HiraginoSans-W6]{HiraginoSans-W3}
 \setsansfont{Helvetica}
+
+\newcommand{\stamp}[2]{%
+  \begin{tikzpicture}[baseline=(A.base),font=\sffamily]
+    \node[draw=#1, rectangle, rounded corners=2pt,
+          text=#1, solid,
+          fill=#1!10!white,
+          line width=.6pt, inner sep=1pt, outer sep=0pt
+          ] (A) {#2};
+  \end{tikzpicture}%
+}
+\newcommand{\GD}{\stamp{NavyBlue}{Docs}}
+\newcommand{\GS}{\stamp{ForestGreen}{Sheets}}
 
 \lstdefinelanguage{swift}{
   morekeywords={
@@ -163,10 +176,10 @@ lineskip=-0.5ex
 #1}}
 \makeatother
 
-\footnotesep=13pt
+% \footnotesep=13pt
 
 \renewcommand{\footnoterule}{%
- \vspace{6pt}
+ \vspace{3pt}
  \noindent\rule{\textwidth}{0.4pt}
  \vspace{0pt}\noindent
 }
@@ -266,7 +279,7 @@ lineskip=-0.5ex
 
 また、本書をPDFでお読みの方はリンクをご利用できます。本書のURL、青文字、目次、各ページの左上の「聖光祭実行委員会 技術部門引継書 第1次中間報告」、注釈は押すことができます。URL、青文字はそのリンクまたはそれに関係する部分に飛ぶことができます。目次はその項目へ、左上の文字は目次に飛ぶことができます。また、下の最大ページ数は最終ページに飛びます。
 
-各資料項目の「D」は Google Document、「S」は Google Spreadsheet を示します。
+各資料項目の\GD は Google Document、\GS は Google Spreadsheet を示します。
 
 11月下旬に発行されるものは初版です。任命式当日までに最終版として発行されます。
 
@@ -573,16 +586,16 @@ AdobeAcrobatをご利用の方は左側に概要が出てきます。ぜひご�
 
 \subsection{資料}
 \begin{itemize}
-  \item \href{https://docs.google.com/spreadsheets/d/1cCHlfuN5FRR4mlCLDqwohB5WyJ2stmBoUM762DVa7aM/edit##gid=848718781}{技術局統合予算 - 先代が残した減価償却【静】(S)}
+  \item \href{https://docs.google.com/spreadsheets/d/1cCHlfuN5FRR4mlCLDqwohB5WyJ2stmBoUM762DVa7aM/edit##gid=848718781}{技術局統合予算 - 先代が残した減価償却【静】\GS}
         \\ 技術局・技術部門の予算・決算についてはこちら他シートにまとめてあるので確認してください。決算は決算終了時に更新します。また、体育祭では金銭は使っていません。
-  \item \href{https://docs.google.com/spreadsheets/d/1Tg_4jKLywMSQpIjNebaPKgTH9YmPqoLZAOGBRs1sr7I/edit?usp=sharing}{第62回聖光祭　第三次予算フォーム (S)}
-  \item \href{https://docs.google.com/spreadsheets/d/1zZcA076Hvox9dDIvhHAMnmiIAQI0af1ChN1slH4WyVw/edit?usp=sharing}{第35期生徒会 第二次予算案 (S)}
-  \item \href{https://docs.google.com/spreadsheets/d/1uNOAvcq1S3ErZTklh8G7kT6zPYlna-8pR9Jqv2RYYKc/edit?usp=sharing}{第35期生徒会 第一次予算案 (S)}
-  \item \href{https://docs.google.com/document/d/1hR_gEl9qHiXGgSxzFDBNH7U6hyPKhjvPEHOStIhGmo8/edit?usp=sharing}{62nd 聖光祭 第1次予算審議議事録 (D)}
-  \item \href{https://docs.google.com/document/d/1brt8Fwv7bYzFQlV_zTF3Tmtmhg8zD4gGt-oBMQM-7Iw/edit?usp=sharing}{R2/統括所予算説明資料 (D)}
-  \item \href{https://docs.google.com/spreadsheets/d/1tlZiJdgfzjbsGDRE5cx0bnHmj2DNoOukDPuPQMx2N5g/edit?usp=sharing}{撮影機材予算 (S)}
+  \item \href{https://docs.google.com/spreadsheets/d/1Tg_4jKLywMSQpIjNebaPKgTH9YmPqoLZAOGBRs1sr7I/edit?usp=sharing}{第62回聖光祭　第三次予算フォーム \GS}
+  \item \href{https://docs.google.com/spreadsheets/d/1zZcA076Hvox9dDIvhHAMnmiIAQI0af1ChN1slH4WyVw/edit?usp=sharing}{第35期生徒会 第二次予算案 \GS}
+  \item \href{https://docs.google.com/spreadsheets/d/1uNOAvcq1S3ErZTklh8G7kT6zPYlna-8pR9Jqv2RYYKc/edit?usp=sharing}{第35期生徒会 第一次予算案 \GS}
+  \item \href{https://docs.google.com/document/d/1hR_gEl9qHiXGgSxzFDBNH7U6hyPKhjvPEHOStIhGmo8/edit?usp=sharing}{62nd 聖光祭 第1次予算審議議事録 \GD}
+  \item \href{https://docs.google.com/document/d/1brt8Fwv7bYzFQlV_zTF3Tmtmhg8zD4gGt-oBMQM-7Iw/edit?usp=sharing}{R2/統括所予算説明資料 \GD}
+  \item \href{https://docs.google.com/spreadsheets/d/1tlZiJdgfzjbsGDRE5cx0bnHmj2DNoOukDPuPQMx2N5g/edit?usp=sharing}{撮影機材予算 \GS}
         \\検討段階のもの。技術予算ではありません。
-  \item \href{https://docs.google.com/spreadsheets/d/1-HWo9Lh8epNt7tHbg88feTvWC146bmrN0XXh0YFmPzU/edit?usp=sharing}{プリンタ購入予算 (S)}
+  \item \href{https://docs.google.com/spreadsheets/d/1-HWo9Lh8epNt7tHbg88feTvWC146bmrN0XXh0YFmPzU/edit?usp=sharing}{プリンタ購入予算 \GS}
         \\検討段階のもの。技術予算ではありません。
   \item \href{https://drive.google.com/file/d/1TN5O2NX7dg8xD_-Y-93Du-caYc1XWezX/view?usp=sharing}{経費申告書 (B5 pdf)}
   \item 他なぜか5年前の外務予算とか装飾予算とか持ってたりします。欲しいものあったら連絡してください。
@@ -672,11 +685,11 @@ AdobeAcrobatをご利用の方は左側に概要が出てきます。ぜひご�
 
 \subsubsection{資料}
 \begin{itemize}
-  \item \href{https://docs.google.com/spreadsheets/d/1CQqoQk9K2541dx-WhdyMl7i6m3l4NQxOgOrnMKgY9Eg/edit?usp=sharing}{第61回パンフ局 4月開催予定時のワークフロー (S)}
-  \item \href{https://docs.google.com/spreadsheets/d/1_B39iTxYG4pPTYhmjbtjTS1wA9dnm_Zg4s-35IgFcXM/edit?usp=sharing}{第61回パンフ局 実際のワークフロー (S)}
-  \item \href{https://docs.google.com/spreadsheets/d/1NF84N6ftFbk_4xFw5B_V4LpxlGhZCpm0oSgIBLLYLrs/edit?usp=sharing}{第62回統合素材表 (S)}
+  \item \href{https://docs.google.com/spreadsheets/d/1CQqoQk9K2541dx-WhdyMl7i6m3l4NQxOgOrnMKgY9Eg/edit?usp=sharing}{第61回パンフ局 4月開催予定時のワークフロー \GS}
+  \item \href{https://docs.google.com/spreadsheets/d/1_B39iTxYG4pPTYhmjbtjTS1wA9dnm_Zg4s-35IgFcXM/edit?usp=sharing}{第61回パンフ局 実際のワークフロー \GS}
+  \item \href{https://docs.google.com/spreadsheets/d/1NF84N6ftFbk_4xFw5B_V4LpxlGhZCpm0oSgIBLLYLrs/edit?usp=sharing}{第62回統合素材表 \GS}
         \\ これ統合できてないかもしれない。すまない。同じフォルダに素材表全て入ってます。
-  \item \href{https://docs.google.com/spreadsheets/d/1-toba1DrCHhMQ5el9HqFxUu-kmNuYwbTGwxs1x6KUWQ/edit?usp=sharing}{62nd聖光祭 パンフ用素材一覧 (S)}
+  \item \href{https://docs.google.com/spreadsheets/d/1-toba1DrCHhMQ5el9HqFxUu-kmNuYwbTGwxs1x6KUWQ/edit?usp=sharing}{62nd聖光祭 パンフ用素材一覧 \GS}
         \\ これが最新か...？
 \end{itemize}
 
